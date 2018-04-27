@@ -9,9 +9,9 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[test]]></title>
+    <title><![CDATA[关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？]]></title>
     <url>%2F2018%2F04%2F26%2Ftest3%2F</url>
-    <content type="text"><![CDATA[testtest]]></content>
+    <content type="text"><![CDATA[大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助 Node.js是用来做什么的？ 它一种javascript的运行环境，能够使得javascript脱离浏览器运行 Git是什么？ git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方) 大家可以参考一下：https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000http://blog.jobbole.com/111187/ 总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了 以下不写出完整过程，仅写出一些关键点 1 首先是安装Node.js和Git 2 在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务) 3 (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次 4 匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客 5 配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分 6 每个参数后基本都有空格 7 个别hexo官方的主题可能会无法显示 8 标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚 9 评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理 10 换电脑以后怎么继续使用？ 答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥) 11 hexo的使用可以参考官方文档: https://hexo.io/zh-cn/docs/ 附：Next主题使用: http://theme-next.iissnan.com/ 如何发布第一篇文章: https://www.jianshu.com/p/2c9f0b3b2b0e Lean Clond: https://leancloud.cn/]]></content>
       <tags>
         <tag>test</tag>
       </tags>

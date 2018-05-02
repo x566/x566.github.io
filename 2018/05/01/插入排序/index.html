@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析   #include  #include &amp;lt;stdio.h&amp;gt; using namespace std; void print(">
+<meta name="description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析    #include   #include   using namespace std;  void print(int sort[],">
 <meta name="keywords" content="Base_arithmetic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="插入排序">
 <meta property="og:url" content="http://yoursite.com/2018/05/01/插入排序/index.html">
 <meta property="og:site_name" content="x566">
-<meta property="og:description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析   #include  #include &amp;lt;stdio.h&amp;gt; using namespace std; void print(">
+<meta property="og:description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析    #include   #include   using namespace std;  void print(int sort[],">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-01T12:16:27.282Z">
+<meta property="og:updated_time" content="2018-05-02T14:39:13.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="插入排序">
-<meta name="twitter:description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析   #include  #include &amp;lt;stdio.h&amp;gt; using namespace std; void print(">
+<meta name="twitter:description" content="插入排序法，思想是将待排数列分为&amp;lt;待排数据集合&amp;gt;和&amp;lt;已排数据集合&amp;gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)    ##下面从代码的角度分析    #include   #include   using namespace std;  void print(int sort[],">
 
 
 
@@ -398,51 +398,39 @@
       
         <p>   插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)</p>
 <p>   ##下面从代码的角度分析</p>
-<ul>
-<li></li>
-<li>#include <iostream></iostream></li>
-<li>#include &lt;stdio.h&gt;</li>
-<li>using namespace std;</li>
-<li>void print(int sort[],int N)//将待排数列打印出来</li>
-<li>{</li>
-<li>for (int i = 0; i &lt; N; i++)</li>
-<li>cout &lt;&lt; sort[i] &lt;&lt;” “;</li>
-<li><p>cout &lt;&lt; endl;<br>}</p>
-</li>
-<li><p>void InsertSort(int sort[],int N)//插入排序核心算法</p>
-</li>
-<li>{</li>
-<li>int v = 0, j = 0;</li>
-<li>for (int i = 1; i &lt;= N-1; i++)//第一个元素视为已排集合，这里将待排集合遍历</li>
-<li>{</li>
-<li>v = sort[i];</li>
-<li>j = i-1;         </li>
-<li>while (j &gt;= 0 &amp;&amp; sort[j] &gt; v)//在已排集合中搜索插入的位置</li>
-<li>{</li>
-<li>sort[j + 1] = sort[j];</li>
-<li>j–;</li>
-<li>}</li>
-<li>sort[j + 1] = v;</li>
-<li>print(sort,N);</li>
-<li>}</li>
-<li><p>}</p>
-</li>
-<li><p>int main(void)</p>
-</li>
-<li>{</li>
-<li>int N = 0;</li>
-<li>int A[100] = { 0 };</li>
-<li>cin &gt;&gt; N;</li>
-<li>for (int i = 0; i &lt; N; i++)</li>
-<li>cin&gt;&gt;A[i];<br>//以上是初始化我们的素材</li>
-<li>print(A,N);</li>
-<li><p>InsertSort(A,N);</p>
-</li>
-<li><p>system(“pause”);</p>
-</li>
-<li>return 0;</li>
-<li>}</li>
-</ul>
+<pre> 
+ #include <iostream>
+ #include <stdio.h>
+ using namespace std;
+ void print(int sort[],int N)//将待排数列打印出来
+ {
+     for (int i = 0; i < N; i++)
+          cout << sort[i] <<" ";="" cout="" <<="" endl;="" }="" void="" insertsort(int="" sort[],int="" n)="" 插入排序核心算法="" {="" int="" v="0," j="0;" for="" (int="" i="1;" <="N-1;" i++)="" 第一个元素视为已排集合，这里将待排集合遍历="" while="" (j="">= 0 && sort[j] > v)//在已排集合中搜索插入的位置
+         {
+             sort[j + 1] = sort[j];
+             j--;
+         }
+         sort[j + 1] = v;
+         print(sort,N);
+     }
+ }
+
+ int main(void)
+ {
+     int N = 0;
+     int A[100] = { 0 };
+     cin >> N;
+     for (int i = 0; i < N; i++)
+       cin>>A[i];
+//以上是初始化我们的素材
+     print(A,N);
+     InsertSort(A,N);
+
+     system("pause");
+    return 0;
+}
+</"></stdio.h></iostream></pre>
+
 <p> 结果<br>输入 &gt;&gt;5 3 4 1 2</p>
 <pre><code>&gt;&gt; 5|3 4 1 2|
 &gt;&gt; 3 5|4 1 2|

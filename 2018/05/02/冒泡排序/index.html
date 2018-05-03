@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="x566">
 <meta property="og:description" content="今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端 (举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他应该与他前面的人比身高，如果比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T14:33:55.746Z">
+<meta property="og:updated_time" content="2018-05-03T15:38:22.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冒泡排序">
 <meta name="twitter:description" content="今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端 (举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他应该与他前面的人比身高，如果比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直">
@@ -402,7 +402,8 @@
 <p>  每次的排序都会将比已排数列次小的值放入指定位置</p>
 <p>  每次都会有数据元素进入最终位置,即每次的排序对于已排数列已经是最终结果<br>  (假如第一次最小值到了数组头，第二次排序跟在它后面的一定是次小值)</p>
 <p>  参考代码：</p>
-<p><pre><code><br>int BubbleSort(int sort[], int N)//冒泡排序<br>{<br>    bool flag = true;<br>    int  cou = 0;//存在相反的元素<br>    for (int i = 0; flag; i++)<br>    {<br>        flag = false;<br>        for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿<br>        {<br>            if (sort[j]&lt;sort[j-1])<br>            {<br>                swap(sort[j],sort[j-1]);<br>                flag = true;<br>                cou++;<br>            }<br>        }<br>    }<br>}<br></code><br>  ·代码参考了《挑战程序设计竞赛》的内容</pre></p>
+<p><pre><code><br>int BubbleSort(int sort[], int N)//冒泡排序<br>{<br>    bool flag = true;<br>    int  cou = 0;//存在相反的元素<br>    for (int i = 0; flag; i++)<br>    {<br>        flag = false;<br>        for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿<br>        {<br>            if (sort[j]&lt;sort[j-1])<br>            {<br>                swap(sort[j],sort[j-1]);<br>                flag = true;<br>                cou++;<br>            }<br>        }<br>    }<br>}</code></pre></p>
+<p>时间复杂度是 O(n<sup>2</sup>)<br>空间复杂度是O(1)<br><br>  ·代码参考了《挑战程序设计竞赛》的内容</p>
 
       
     </div>
@@ -442,6 +443,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/03/选择排序/" rel="prev" title="选择排序">
+                选择排序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -512,7 +517,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

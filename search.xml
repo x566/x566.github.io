@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[插入排序]]></title>
     <url>%2F2018%2F05%2F01%2F%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入) ##下面从代码的角度分析 #include #include using namespace std; void print(int sort[],int N)//将待排数列打印出来 { for (int i = 0; i < N; i++) cout < sort[i]]]></content>
+    <content type="text"><![CDATA[插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止 ##下面从代码的角度分析 #include #include using namespace std; void print(int sort[],int N)//将待排数列打印出来 { for (int i = 0; i < N; i++) cout < sort[i]]]></content>
       <tags>
         <tag>Base_arithmetic</tag>
       </tags>

@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完  void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i">
+<meta name="description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i &amp;lt;= N - 1; i++) //外循环遍历待排数据     {         mi">
 <meta name="keywords" content="Base_arithmetic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="选择排序">
 <meta property="og:url" content="http://yoursite.com/2018/05/03/选择排序/index.html">
 <meta property="og:site_name" content="x566">
-<meta property="og:description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完  void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i">
+<meta property="og:description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i &amp;lt;= N - 1; i++) //外循环遍历待排数据     {         mi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-04T16:40:38.571Z">
+<meta property="og:updated_time" content="2018-05-04T16:44:34.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="选择排序">
-<meta name="twitter:description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完  void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i">
+<meta name="twitter:description" content="先将待排序列分为 已排序部分 和 未排序部分   选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) {     int min = 0, j = 0;     for (int i = 0; i &amp;lt;= N - 1; i++) //外循环遍历待排数据     {         mi">
 
 
 
@@ -398,19 +398,23 @@
       
         <p>  先将待排序列分为 已排序部分 和 未排序部分</p>
 <p>  选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完</p>
-<pre><p>
-void Selection_Sort(int sort[], int N)
+<pre><code>void Selection_Sort(int sort[], int N)
 {
     int min = 0, j = 0;
-    for (int i = 0; i <= n="" -="" 1;="" i++)="" 外循环遍历待排数据="" {="" min="sort[i];" for="" (int="" j="i;" <="N-1;" j++)="" 内循环挑选最小值="" if="" (min=""> sort[j])
+    for (int i = 0; i &lt;= N - 1; i++)
+//外循环遍历待排数据
+    {
+        min = sort[i];
+        for (int j = i; j &lt;= N-1; j++)
+//内循环挑选最小值
+        {
+            if (min &gt; sort[j])
                 swap(min,sort[j]);
             sort[i] = min;
         }
     }
 }
-</=></p></pre>
-
-<p>结果</p>
+</code></pre><p>结果</p>
 <p><pre><br>输入：5 3 1 4 2</pre></p>
 <p>1|5 3 4 2|<br>1 2|5 4 3|<br>1 2 3|5 4|<br>1 2 3 4|5|<br><br>时间复杂度是 O(n<sup>2</sup>) </p>
 <p>空间复杂度是O(1)</p>

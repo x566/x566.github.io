@@ -847,15 +847,12 @@ void Selection_Sort(int sort[], int N)
         
           
             <p>   插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止</p>
-<p>   ##下面从代码的角度分析</p>
-<pre><code>
- #include <iostream>
- #include <stdio.h>
- using namespace std;
- void print(int sort[],int N)//将待排数列打印出来
+<pre>
+ void InsertSort(int sort[],int N)//插入排序核心算法
  {
-     for (int i = 0; i < N; i++)
-          cout << sort[i] <<" ";="" cout="" <<="" endl;="" }="" void="" insertsort(int="" sort[],int="" n)="" 插入排序核心算法="" {="" int="" v="0," j="0;" for="" (int="" i="1;" <="N-1;" i++)="" 第一个元素视为已排集合，这里将待排集合遍历="" while="" (j="">= 0 && sort[j] > v)//在已排集合中搜索插入的位置
+     int v = 0, j = 0;
+     for (int i = 1; i <= n-1;="" i++)="" 第一个元素视为已排集合，这里将待排集合遍历="" {="" v="sort[i];" j="i-1;" while="" (j="">= 0 && sort[j] > v)
+//在已排集合中搜索插入的位置
          {
              sort[j + 1] = sort[j];
              j--;
@@ -864,22 +861,7 @@ void Selection_Sort(int sort[], int N)
          print(sort,N);
      }
  }
-
- int main(void)
- {
-     int N = 0;
-     int A[100] = { 0 };
-     cin >> N;
-     for (int i = 0; i < N; i++)
-       cin>>A[i];
-//以上是初始化我们的素材
-     print(A,N);
-     InsertSort(A,N);
-
-     system("pause");
-    return 0;
-}</"></stdio.h></iostream></code>
-</pre>
+</=></pre>
 
 <p> 结果<br>输入 &gt;&gt;5 3 4 1 2</p>
 <pre><code>&gt;&gt; 5|3 4 1 2|

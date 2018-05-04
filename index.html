@@ -560,7 +560,7 @@ void ShellSort(int sort[], int N)
           
             <p>  先将待排序列分为 已排序部分 和 未排序部分</p>
 <p>  选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完</p>
-<pre>
+<pre><code>
 void Selection_Sort(int sort[], int N)
 {
     int min = 0, j = 0;
@@ -568,9 +568,9 @@ void Selection_Sort(int sort[], int N)
                 swap(min,sort[j]);
             sort[i] = min;
         }
-        print(sort, N);
     }
-}</=></pre>
+}</=></code>
+</pre>
 
 <p>结果</p>
 <p><pre><br>输入：5 3 1 4 2</pre></p>
@@ -848,7 +848,7 @@ void Selection_Sort(int sort[], int N)
           
             <p>   插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止</p>
 <p>   ##下面从代码的角度分析</p>
-<pre> 
+<pre><code>
  #include <iostream>
  #include <stdio.h>
  using namespace std;
@@ -878,8 +878,8 @@ void Selection_Sort(int sort[], int N)
 
      system("pause");
     return 0;
-}
-</"></stdio.h></iostream></pre>
+}</"></stdio.h></iostream></code>
+</pre>
 
 <p> 结果<br>输入 &gt;&gt;5 3 4 1 2</p>
 <pre><code>&gt;&gt; 5|3 4 1 2|

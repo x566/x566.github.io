@@ -2,6 +2,14 @@
 <search>
   <entry>
     <title><![CDATA[选择排序]]></title>
+    <url>%2F2018%2F05%2F05%2F%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看 希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为打字有序从而减少时间复杂度 希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 大概是 (1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件 ) 我在这里贴个b站up主上传的希尔排序可视化视频，特别有趣形象，建议参考：https://www.bilibili.com/video/av17004970 下面贴代码: void ShellSort(int sort[], int N) { int tags = 1;//排序间隔,步长 int j = 0; for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间 { for (int i = tags; i < N; i++) //插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历 { j = i; while (j >= tags && sort[i] < sort[j - tags]) //一直朝前边插入，直到不能插入，即插入排序 { swap(sort[j],sort[j-tags]); j = j - tags; } } } } 时间复杂度大约是 O(n1.25)，空间复杂度是O(1) ，是不稳定排序]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[选择排序]]></title>
     <url>%2F2018%2F05%2F03%2F%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[先将待排序列分为 已排序部分 和 未排序部分 选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) { int min = 0, j = 0; for (int i = 0; i]]></content>
       <tags>

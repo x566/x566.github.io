@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-03T15:53:28.606Z</updated>
+  <updated>2018-05-04T16:20:56.849Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>选择排序</title>
+    <link href="http://yoursite.com/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2018/05/05/希尔排序/</id>
+    <published>2018-05-04T16:16:24.444Z</published>
+    <updated>2018-05-04T16:20:56.849Z</updated>
+    
+    <content type="html"><![CDATA[<p>这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看</p><p>希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为打字有序从而减少时间复杂度</p><p>希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 大概是 (1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件 )</p><p>我在这里贴个b站up主上传的希尔排序可视化视频，特别有趣形象，建议参考：<a href="https://www.bilibili.com/video/av17004970" target="_blank" rel="noopener">https://www.bilibili.com/video/av17004970</a></p><p>下面贴代码:</p><pre>void ShellSort(int sort[], int N){    int tags = 1;//排序间隔,步长    int j = 0;    for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间    {        for (int i = tags; i < N; i++)//插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历        {            j = i;            while (j >= tags && sort[i] < sort[j - tags])//一直朝前边插入，直到不能插入，即插入排序            {                swap(sort[j],sort[j-tags]);                j = j - tags;            }        }    }}</pre><p>时间复杂度大约是 O(n<sup>1.25</sup>)，空间复杂度是O(1) ，是不稳定排序</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看&lt;/p&gt;
+&lt;p&gt;希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为打字有序从而减少时间复杂度&lt;/p&gt;
+&lt;p&gt;希尔排序的基本思想：将数据分为若干组，对每组进
+      
+    
+    </summary>
+    
+    
+      <category term="Base_arithmetic" scheme="http://yoursite.com/tags/Base-arithmetic/"/>
+    
+  </entry>
   
   <entry>
     <title>选择排序</title>

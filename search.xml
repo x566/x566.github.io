@@ -1,121 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title>计数排序</title>
-      <link href="/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
-      <url>/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<p>   今天带来的是计数排序，这个算法难度会比较大，请耐心往下看</p><p>计数排序：是一种非基于比较的算法,顾名思义，它在排序时用计数来排序的</p><p>排序思想:先建立两个数组</p><p>第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[N]中有4个5,则 count[5] = 4</p><p>第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组</p><p>排序步骤：</p><ol><li><p>先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中<br>(说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:<a href="https://www.bilibili.com/video/av18980575多看几次就清楚了(+_+)?" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980575多看几次就清楚了(+_+)?</a>)</p></li><li><p>对count数组进行加法处理 count[i] = count[i] + count[i - 1]，为什么要这么做?<br>你会发现这个加法操作其实：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了)</p></li><li><p>将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座</p></li><li><p>将结果output[] 写入给待排数组</p></li></ol><p>代码:</p><pre><code>void Counting_Sort(int sort[], int N){    int *output = new int[N];//分配中间数组    int count[10];    memset(count,0,sizeof(count));//将cout数组初始化为0    for (int i = 0;i &lt; 10; i++)  //count数组存放sort数组每个元素的个数     if (sort[i])        ++count[sort[i]];     for (int i = 2; i &lt; 10; i++)//将cout数组进行加法处理，数组结果是表示当前位置        count[i] = count[i] + count[i - 1];    for (int i = 0; i &lt; N; i++)//0不计入排序,以sort内容为基础遍历    {        output[count[sort[i]]-1] = sort[i];//sort和output的内容和下标是相反的        --count[sort[i]];    }    for (int i = 0; i &lt; N; i++)        sort[i] = output[i];     delete []output;}</code></pre><p>总结:</p><p>时间复杂度<br>时间复杂度是 O(n+K)</p><p>k = range</p><p>在O(k)&lt;O(n*log(n))快于任何排序法</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Base_arithmetic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>希尔排序</title>
-      <link href="/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
-      <url>/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<p>这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看</p><p>希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为打字有序从而减少时间复杂度</p><p>希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 大概是 (1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件 )</p><p>我在这里贴个b站up主上传的希尔排序可视化视频，特别有趣形象，建议参考：<a href="https://www.bilibili.com/video/av17004970" target="_blank" rel="noopener">https://www.bilibili.com/video/av17004970</a></p><p>下面贴代码:</p><pre>void ShellSort(int sort[], int N){    int tags = 1;//排序间隔,步长    int j = 0;    for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间    {        for (int i = tags; i < N; i++)//插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历        {            j = i;            while (j >= tags && sort[i] < sort[j - tags])//一直朝前边插入，直到不能插入，即插入排序            {                swap(sort[j],sort[j-tags]);                j = j - tags;            }        }    }}</pre><p>时间复杂度大约是 O(n<sup>1.25</sup>)，空间复杂度是O(1) ，是不稳定排序</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Base_arithmetic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>选择排序</title>
-      <link href="/2018/05/03/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"/>
-      <url>/2018/05/03/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<p>  先将待排序列分为 已排序部分 和 未排序部分</p><p>  选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完</p><pre><code>void Selection_Sort(int sort[], int N){    int min = 0, j = 0;    for (int i = 0; i &lt;= N - 1; i++)//外循环遍历待排数据    {        min = sort[i];        for (int j = i; j &lt;= N-1; j++)//内循环挑选最小值        {            if (min &gt; sort[j])                swap(min,sort[j]);            sort[i] = min;        }    }}</code></pre><p>结果</p><p><pre><br>输入：5 3 1 4 2</pre></p><p>1|5 3 4 2|<br>1 2|5 4 3|<br>1 2 3|5 4|<br>1 2 3 4|5|<br><br>时间复杂度是 O(n<sup>2</sup>) </p><p>空间复杂度是O(1)</p><p>是不稳定排序：<br>  例：将括号中的数据(3h,5s,3d,1s)“以数字为基准”手动在稿纸上执行一次算法可以发现是不稳定的3h和3d的相对位置发生了变化</p><p>引用《挑战程序设计竞赛》的总结：</p><p>相比冒泡排序，冒泡排序法与选择排序法相比，一个从局部入手减少逆序元素，一个放眼大局逐个选取最小值，二者思路大部相同。但是他们又有着“通过i次外层循环，从数据中顺次求出i个最小值”的相同特征。相对地插入排序法是通过i次外层循环，之间将原数组的i个元素重新排序。另外，不含flag的简单冒泡排序法和选择排序法不依赖数据，即比较运算的次数(算法复杂度)不受输入数据影响，而插入排序法在执行时却依赖数据，处理某些数据时有很高的效率(插入排序法要在已排数列中搜索自己插入的位置)</p><p>  ·此文参考了《挑战程序设计竞赛》的内容</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Base_arithmetic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>冒泡排序</title>
-      <link href="/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-      <url>/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<p>  今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端</p><p>(举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他应该与他前面的人比身高，如果比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直比啊比啊比啊比，最后找到比他矮的人，他就完成了他的任务，我们给所有人都按这个规矩比遍，冒泡排序就完成了)</p><p>  待排数列分为已排集合和未排集合两部分</p><p>  每次的排序都会将比已排数列次小的值放入指定位置</p><p>  每次都会有数据元素进入最终位置,即每次的排序对于已排数列已经是最终结果<br>  (假如第一次最小值到了数组头，第二次排序跟在它后面的一定是次小值)</p><p>  参考代码：</p><p><pre><code><br>int BubbleSort(int sort[], int N)//冒泡排序<br>{<br>    bool flag = true;<br>    int  cou = 0;//存在相反的元素<br>    for (int i = 0; flag; i++)<br>    {<br>        flag = false;<br>        for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿<br>        {<br>            if (sort[j]&lt;sort[j-1])<br>            {<br>                swap(sort[j],sort[j-1]);<br>                flag = true;<br>                cou++;<br>            }<br>        }<br>    }<br>}</code></pre></p><p>时间复杂度是 O(n<sup>2</sup>)<br>空间复杂度是O(1)<br><br>  ·代码参考了《挑战程序设计竞赛》的内容</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Base_arithmetic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>插入排序</title>
-      <link href="/2018/05/01/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
-      <url>/2018/05/01/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
-      <content type="html"><![CDATA[<p>   插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止</p><pre><code>void InsertSort(int sort[],int N)//插入排序核心算法{      int v = 0, j = 0;      for (int i = 1; i &lt;= N-1; i++)      //第一个元素视为已排集合，这里将待排集合遍历      {        v = sort[i];         j = i-1;                 while (j &gt;= 0 &amp;&amp; sort[j] &gt; v)        //在已排集合中搜索插入的位置        {            sort[j + 1] = sort[j];           j--;        }         sort[j + 1] = v;        print(sort,N);     }}</code></pre><p>结果<br>输入 &gt;&gt;5 3 4 1 2</p><pre><code>&gt;&gt; 5|3 4 1 2|&gt;&gt; 3 5|4 1 2|&gt;&gt; 1 3 4|5 2|&gt;&gt; 1 2 3 4|5|</code></pre><p>在经历的5次输出结果中，待排数列数据个数逐个减少，已排数列数据个数逐一增加，这是因为我们每次都只对一个数据操作，每次操作的任务是将这个数据插入已排数据</p><p>由数据元素元素的位置可以发现该排序法是稳定排序法，且每次操作后数据元素不一定到达最终位置</p><p>时间复杂度是 O(n<sup>2</sup>) 空间复杂度O(1)</p><p>稳定性指的是经过排序，这些记录的相对次序时否保持相对不变</p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> Base_arithmetic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>finaltest</title>
-      <link href="/2018/04/27/finaltest/"/>
-      <url>/2018/04/27/finaltest/</url>
-      <content type="html"><![CDATA[<p>分类页面使用方法:</p><p>#—<br>title: finaltest<br>categories: flag1</p><p>#—</p><p>标签页使用方法:</p><p>#—<br>title: test<br>tags:<br> -test</p><p>#—</p>]]></content>
-      
+<search>
+  <entry>
+    <title><![CDATA[计数排序]]></title>
+    <url>%2F2018%2F05%2F05%2F%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[今天带来的是计数排序，这个算法难度会比较大，请耐心往下看 计数排序：是一种非基于比较的算法,顾名思义，它在排序时用计数来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤： 先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中(说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:https://www.bilibili.com/video/av18980575多看几次就清楚了(+_+)?) 对count数组进行加法处理 count[i] = count[i] + count[i - 1]，为什么要这么做?你会发现这个加法操作其实：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了) 将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座 将结果output[] 写入给待排数组 代码: void Counting_Sort(int sort[], int N) { int *output = new int[N];//分配中间数组 int count[10]; memset(count,0,sizeof(count));//将cout数组初始化为0 for (int i = 0;i &lt; 10; i++) //count数组存放sort数组每个元素的个数 if (sort[i]) ++count[sort[i]]; for (int i = 2; i &lt; 10; i++)//将cout数组进行加法处理，数组结果是表示当前位置 count[i] = count[i] + count[i - 1]; for (int i = 0; i &lt; N; i++)//0不计入排序,以sort内容为基础遍历 { output[count[sort[i]]-1] = sort[i];//sort和output的内容和下标是相反的 --count[sort[i]]; } for (int i = 0; i &lt; N; i++) sort[i] = output[i]; delete []output; } 总结: 时间复杂度时间复杂度是 O(n+K) k = range 在O(k)&lt;O(n*log(n))快于任何排序法 代码中 count[10]中的10是我测试用的，这个就是range各位替换就好]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[希尔排序]]></title>
+    <url>%2F2018%2F05%2F05%2F%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看 希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为打字有序从而减少时间复杂度 希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 大概是 (1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件 ) 我在这里贴个b站up主上传的希尔排序可视化视频，特别有趣形象，建议参考：https://www.bilibili.com/video/av17004970 下面贴代码: void ShellSort(int sort[], int N) { int tags = 1;//排序间隔,步长 int j = 0; for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间 { for (int i = tags; i < N; i++) //插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历 { j = i; while (j >= tags && sort[i] < sort[j - tags]) //一直朝前边插入，直到不能插入，即插入排序 { swap(sort[j],sort[j-tags]); j = j - tags; } } } } 时间复杂度大约是 O(n1.25)，空间复杂度是O(1) ，是不稳定排序]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[选择排序]]></title>
+    <url>%2F2018%2F05%2F03%2F%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[先将待排序列分为 已排序部分 和 未排序部分 选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) { int min = 0, j = 0; for (int i = 0; i &lt;= N - 1; i++) //外循环遍历待排数据 { min = sort[i]; for (int j = i; j &lt;= N-1; j++) //内循环挑选最小值 { if (min &gt; sort[j]) swap(min,sort[j]); sort[i] = min; } } } 结果 输入：5 3 1 4 2 1|5 3 4 2|1 2|5 4 3|1 2 3|5 4|1 2 3 4|5|时间复杂度是 O(n2) 空间复杂度是O(1) 是不稳定排序： 例：将括号中的数据(3h,5s,3d,1s)“以数字为基准”手动在稿纸上执行一次算法可以发现是不稳定的3h和3d的相对位置发生了变化 引用《挑战程序设计竞赛》的总结： 相比冒泡排序，冒泡排序法与选择排序法相比，一个从局部入手减少逆序元素，一个放眼大局逐个选取最小值，二者思路大部相同。但是他们又有着“通过i次外层循环，从数据中顺次求出i个最小值”的相同特征。相对地插入排序法是通过i次外层循环，之间将原数组的i个元素重新排序。另外，不含flag的简单冒泡排序法和选择排序法不依赖数据，即比较运算的次数(算法复杂度)不受输入数据影响，而插入排序法在执行时却依赖数据，处理某些数据时有很高的效率(插入排序法要在已排数列中搜索自己插入的位置) ·此文参考了《挑战程序设计竞赛》的内容]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[冒泡排序]]></title>
+    <url>%2F2018%2F05%2F02%2F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端 (举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他应该与他前面的人比身高，如果比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直比啊比啊比啊比，最后找到比他矮的人，他就完成了他的任务，我们给所有人都按这个规矩比遍，冒泡排序就完成了) 待排数列分为已排集合和未排集合两部分 每次的排序都会将比已排数列次小的值放入指定位置 每次都会有数据元素进入最终位置,即每次的排序对于已排数列已经是最终结果 (假如第一次最小值到了数组头，第二次排序跟在它后面的一定是次小值) 参考代码： int BubbleSort(int sort[], int N)//冒泡排序{ bool flag = true; int cou = 0;//存在相反的元素 for (int i = 0; flag; i++) { flag = false; for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿 { if (sort[j]&lt;sort[j-1]) { swap(sort[j],sort[j-1]); flag = true; cou++; } } }} 时间复杂度是 O(n2)空间复杂度是O(1) ·代码参考了《挑战程序设计竞赛》的内容]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[插入排序]]></title>
+    <url>%2F2018%2F05%2F01%2F%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止 void InsertSort(int sort[],int N)//插入排序核心算法 { int v = 0, j = 0; for (int i = 1; i &lt;= N-1; i++) //第一个元素视为已排集合，这里将待排集合遍历 { v = sort[i]; j = i-1; while (j &gt;= 0 &amp;&amp; sort[j] &gt; v) //在已排集合中搜索插入的位置 { sort[j + 1] = sort[j]; j--; } sort[j + 1] = v; print(sort,N); } } 结果输入 &gt;&gt;5 3 4 1 2 &gt;&gt; 5|3 4 1 2| &gt;&gt; 3 5|4 1 2| &gt;&gt; 1 3 4|5 2| &gt;&gt; 1 2 3 4|5| 在经历的5次输出结果中，待排数列数据个数逐个减少，已排数列数据个数逐一增加，这是因为我们每次都只对一个数据操作，每次操作的任务是将这个数据插入已排数据 由数据元素元素的位置可以发现该排序法是稳定排序法，且每次操作后数据元素不一定到达最终位置 时间复杂度是 O(n2) 空间复杂度O(1) 稳定性指的是经过排序，这些记录的相对次序时否保持相对不变]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[finaltest]]></title>
+    <url>%2F2018%2F04%2F27%2Ffinaltest%2F</url>
+    <content type="text"><![CDATA[分类页面使用方法: #—title: finaltestcategories: flag1 #— 标签页使用方法: #—title: testtags: -test #—]]></content>
       <categories>
-          
-          <category> flag1 </category>
-          
+        <category>flag1</category>
       </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？</title>
-      <link href="/2018/04/26/test3/"/>
-      <url>/2018/04/26/test3/</url>
-      <content type="html"><![CDATA[<p>大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助<br>   Node.js是用来做什么的？<br>        它一种javascript的运行环境，能够使得javascript脱离浏览器运行<br>   Git是什么？<br>    git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方)<br>   大家可以参考一下：<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000</a><br><a href="http://blog.jobbole.com/111187/" target="_blank" rel="noopener">http://blog.jobbole.com/111187/</a></p><p>   总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了</p><p>   以下不写出完整过程，仅写出一些关键点<br>   1  首先是安装Node.js和Git<br>   2  在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务)<br>   3  (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次<br>   4  匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客<br>   5  配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分<br>   6  每个参数后基本都有空格<br>   7  个别hexo官方的主题可能会无法显示<br>   8  标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚<br>   9  评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理<br>   10 换电脑以后怎么继续使用？<br>       答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥)<br>   11 hexo的使用可以参考官方文档: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p><p>附：Next主题使用:   <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>    如何发布第一篇文章: <a href="https://www.jianshu.com/p/2c9f0b3b2b0e" target="_blank" rel="noopener">https://www.jianshu.com/p/2c9f0b3b2b0e</a><br>    Lean Clond: <a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a> </p>]]></content>
-      
-      
-        <tags>
-            
-            <tag> test </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2018/04/25/hello-world/"/>
-      <url>/2018/04/25/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-    </entry>
-    
-  
-  
+  </entry>
+  <entry>
+    <title><![CDATA[关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？]]></title>
+    <url>%2F2018%2F04%2F26%2Ftest3%2F</url>
+    <content type="text"><![CDATA[大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助 Node.js是用来做什么的？ 它一种javascript的运行环境，能够使得javascript脱离浏览器运行 Git是什么？ git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方) 大家可以参考一下：https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000http://blog.jobbole.com/111187/ 总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了 以下不写出完整过程，仅写出一些关键点 1 首先是安装Node.js和Git 2 在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务) 3 (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次 4 匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客 5 配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分 6 每个参数后基本都有空格 7 个别hexo官方的主题可能会无法显示 8 标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚 9 评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理 10 换电脑以后怎么继续使用？ 答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥) 11 hexo的使用可以参考官方文档: https://hexo.io/zh-cn/docs/ 附：Next主题使用: http://theme-next.iissnan.com/ 如何发布第一篇文章: https://www.jianshu.com/p/2c9f0b3b2b0e Lean Clond: https://leancloud.cn/]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F25%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>

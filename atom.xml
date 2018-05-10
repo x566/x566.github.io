@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-05T09:32:13.886Z</updated>
+  <updated>2018-05-10T13:00:50.065Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快速排序</title>
+    <link href="http://yoursite.com/2018/05/10/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2018/05/10/快速排序/</id>
+    <published>2018-05-10T12:06:10.752Z</published>
+    <updated>2018-05-10T13:00:50.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>  今天带来的是大名鼎鼎的快速排序法，所谓快速排序法，是因为它的排序速度很快，在多种情下仍能保持着很高的效率</p><p>  快速排序法，是一种基于比较的算法，基本思想是选定一个元素作为中间元素，我们的目的是使得比他小的元素归在它的左边，比他大的元素归在在它的右边，当前元素就会变成一个分界点把其它数分列在它的左右两边（例如： [8 16 5 35 12 20] (80) [90 110 85 105 100]）然后在对中间元素左右两边的数列进行同样的操作直到每个子数列仅含一个元素或没有元素，这就是整个排序的过程</p><p>总结：快速排序通过一趟操作将待排数列划分为左右两个部分，使得左边任一元素不大于右边任一元素，再分别对左右两部分进行同样的排序</p><p>由此可见，对数列进行元素选择和划分是关键，下面给出划分算法，这个算法对数列进行了划分，我们只需要对每个划分进行操作</p><pre><code>void Quick_sort(int sort[], int be ,int end )//划分{    int i;    if (be &lt; end)//集合至少有两个元素    {        partition(sort,be,end,&amp;i);        Quick_sort(sort,be,i-1);  //左半部分        Quick_sort(sort,i+1,end); //右半部分    }}这个算法是递归的，大家可以和二叉树的递归遍历算法对比一下</code></pre><p>下面给出对每次划分进行操作的算法</p><pre><code>void partition(int a[], int be, int end, int* cut){    int x = a[be],i = be,j = end;    while (i!=j)    {        while (i &lt; j&amp;&amp;a[j] &gt; x)            j--;        if (i&lt;j)        {            a[i] = a[j];            i += 1;        }        while (i &lt; j&amp;&amp;a[i] &lt; x)            i++;        if (i&lt;j)        {            a[j] = a[i];            j -= 1;        }    }    a[i] = x;//i==j    *cut = i;}例子：对(80 16 100 35 85 20 12 90 110 5 105)//从右边选取比中间元素80小的数放到左边,空位是80，但先不填入([] 16 100 35 85 20 12 90 110 5 105 8)   80&lt;--------------------------------|//从左边选取比中间元素80大的100放到右边(8 16 100 35 85 20 12 90 110 5 [])       |-----------------------&gt;//从右边选取比中间元素80小的5放到左边(8 16 [] 35 85 20 12 90 110 5 100)       &lt;--------------------|//从左边选取比中间元素80大的85放到右边(8 16 5 35 85 20 12 90 110 [] 100)             |--------------&gt;最后：    [8 16 5 35 12 20] (80) [90 110 85 105 100]</code></pre><p>大家可以试试在自己的稿纸上进行推导</p><p>总结：平均时间复杂度为：O(knlog<sub>2</sub>n)k为常数，最坏的情况是每次选中的中间元素是其中最大或最小的元素，这时为O(n<sup>2</sup>)</p><p>平均性能上默认为目前最好的一种内部排序算法</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;  今天带来的是大名鼎鼎的快速排序法，所谓快速排序法，是因为它的排序速度很快，在多种情下仍能保持着很高的效率&lt;/p&gt;
+&lt;p&gt;  快速排序法，是一种基于比较的算法，基本思想是选定一个元素作为中间元素，我们的目的是使得比他小的元素归在它的左边，比他大的元素归在在它的右边，当前元
+      
+    
+    </summary>
+    
+    
+      <category term="Base_arithmetic" scheme="http://yoursite.com/tags/Base-arithmetic/"/>
+    
+  </entry>
   
   <entry>
     <title>计数排序</title>

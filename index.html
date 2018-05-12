@@ -309,6 +309,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/堆排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/堆排序/" itemprop="url">堆排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T13:43:45+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/12/堆排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/12/堆排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>  “堆排序”:就是利用堆来进行的一种排序</p>
+<p>在了解堆排序前我们应了解以下几点:</p>
+<ol>
+<li>当满足 k<sub>i</sub> &lt;= k<sub>2i</sub> 和 k<sub>i</sub> &lt;= k<sub>2i+1</sub> 或 k<sub>i</sub> &gt;= k<sub>2i</sub> 和 k<sub>i</sub> &gt;= k<sub>2i+1</sub> 时称为”堆”</li>
+<li>第一点的含义是:每一结点均不大于或不小于其左右孩子节点的值，并且将根值最大的称为”大根堆”，小根堆则反之</li>
+<li>堆排序的第一步就是创造如上两点所描述的”堆”，这和排序有何关系?这样的堆有什么特点?</li>
+<li><p>解答第三点 我们建的堆类似如下,只要我们用一个循环每次把根选出来(即选出最大值或最小值)，依次填入一个数组，排序就完成了</p>
+<pre><code>       100
+    80     90
+  70  60 65  55
+30  50
+</code></pre><p>概括:堆排序可以分为三步</p>
+</li>
+<li>第一步，从待排数列取元素构造一棵完全二叉树(还不是堆),然后将这棵完全二叉树”改造”为有序的”堆”</li>
+<li>第二步，将根(最大/小值)输出</li>
+<li>第三步，将刚才去掉了根的”堆”重新排列整理为新的”堆”,重复步骤二直至将所有元素输出</li>
+</ol>
+<blockquote>
+</blockquote>
+<p>代码</p>
+<ol>
+<li><p>“改造”函数:将二叉树改为有规律的”堆”</p>
+<p> void shif(int A[],int key,int m)<br> //m是对序号不大于m的以key为根的子序列调整<br> {</p>
+<pre><code>A[0] = A[key];          //A[0]元素作为临时变量保存根值
+bool finish = false;
+int i = key, j = i*2;   //i指示空位(树根),j指示左孩子
+while ( j&lt;=m &amp;&amp; !finish)//i不是叶子结点且搜索为结束
+{
+    if ( j&lt;m &amp;&amp; A[j]&lt;A[j+1])
+        j = j + 1;        //选出根key左右孩子中最大者
+    if (A[0] &gt;= A[j])
+        finish = true;  //原根最大，此次调整结束
+    else
+    {
+        A[i] = A[j];    //值大的孩子节点上移
+        i = j;            //继续向下(子树)筛选
+        j = j * 2;
+    }
+}
+A[i] = A[0];//将原根值元素填到当前空位
+</code></pre></li>
+</ol>
+<blockquote>
+</blockquote>
+<p>代码</p>
+<ol start="2">
+<li><p>建初堆和添加循环</p>
+<p> void HeapSort(int sort[],int n)<br> {</p>
+<pre><code>//第一部分建初堆的过程是从叶子结点往树根方向梳理的,i为各个子树的树根
+//一颗有n个元素的二叉树有n/2个有孩子的子树(即前n/2个)
+for (int i = n/2; i &gt;= 1; i--)
+    shif(sort,i,n);
+//建初堆后的排序是从树根往叶子结点方向筛选的(已经有序),每次循环排号一个数
+for (int i = n; i &gt;= 2; i--)
+{
+    swap(sort[1],sort[i]);
+    shif(sort,1,i-1);      //调整子序列sort[1]-sort[i-1]为堆
+}
+</code></pre><p> }</p>
+</li>
+</ol>
+<p>以上描述比较抽象，现在引用B站两个排序过程动画帮助大家了解:</p>
+<p><a href="https://www.bilibili.com/video/av18980178" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980178</a></p>
+<p><a href="https://www.bilibili.com/video/av12667435" target="_blank" rel="noopener">https://www.bilibili.com/video/av12667435</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/快速排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1742,7 +1935,7 @@ void ShellSort(int sort[], int N)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

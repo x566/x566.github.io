@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-12T06:39:24.301Z</updated>
+  <updated>2018-05-13T05:30:10.644Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>归并排序</title>
+    <link href="http://yoursite.com/2018/05/12/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+    <id>http://yoursite.com/2018/05/12/归并排序/</id>
+    <published>2018-05-12T11:55:59.741Z</published>
+    <updated>2018-05-13T05:30:10.644Z</updated>
+    
+    <content type="html"><![CDATA[<p>归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表</p><p>归并排序的基本思想:</p><blockquote></blockquote><p>将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个长度为2的有序子表，再将这n/2个长度为2的有序子表合并为n/4个长度为4的有序子表，以此类推直至合并为长度为n的有序表</p><p>例如:</p><pre><code>(12,15,30,80,100,46,78,33,90,86,64,55,120,230,45）([12][15][30][80][100][46][78][33][90][86][64][55][120][230] [45])   |——|    |——|     |——|    |——|    |——|    |——|     |——|     |( [12 15] [30 80] [46 100] [33 78] [86 90] [55 64] [120 230] [45])       |————|           |————|          |————|           |————|(  [12 15 30 80]    [33 46 78 100]  [55 64 86 90]   [45 120 230] )...</code></pre><p>完成这个归并过程一般分为2步:</p><ol><li>划分原表</li><li>归并子表</li></ol><p>1&gt;划分原表(利用递归)</p><pre><code>/*用不同的Al我们可以对数组中自己想要的区间排序,这里可以和快速排序与二叉树的遍历对比,递归的顺序不同了，归并是先划分，快排是先排后划分，请仔细体会两者差异*/void mergeSort(int arr[], int Al, int Ar){    if (Al &lt; Ar)    {        int m = Al + (Ar - Al)/2;        mergeSort(arr,Al,m);    //划分左半个数组        mergeSort(arr,m+1,Ar);  //划分右半个数组        merge(arr,Al,m,Ar);    }}/*以上类似二叉树的后续遍历，只要还有子表的长度大于一，就会一直划分*//*递归是个巧妙的过程，比较难理解可以画图分析*/</code></pre><p>2&gt;归并子表</p><pre><code>/*这个函数并不神秘，其实就是两个有序集合的合并*/void merge(int arr[],int Al,int m,int Ar){    int i, j, k;    int n1 = m - Al + 1;//左半边元素个数    int n2 = Ar - m;    //右半边元素个数    /*建立临时数组*/    int *L = new int[n1], *R = new int[n2];    /*将原数列数据填充到两个临时数组*/    for ( i = 0; i &lt; n1; i++)        L[i] = arr[Al+i];    for ( j = 0; j &lt; n2; j++)        R[j] = arr[m + 1 + j];    /*将临时数组处理后合并回去*/    i = 0;    j = 0;    k = Al;    while ( i&lt;n1 &amp;&amp; j&lt;n2)    {        if (L[i] &lt;= R[j])        {            arr[k] = L[i];            i++;        }        else        {            arr[k] = R[j];            j++;        }        k++;    }    /*将余下的元素填充*/    while (i &lt; n1)    {        arr[k] = L[i];        i++;        k++;    }    while (j &lt; n2)    {        arr[k] = R[j];        j++;        k++;    }    delete []L;    delete []R;}</code></pre><p>代码参考自:<a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/</a><br>这是一个学习各种算法的好网站(●’◡’●)</p><p>归并排序动态视频演示推荐:<a href="https://www.bilibili.com/video/av18980253" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980253</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表&lt;/p&gt;
+&lt;p&gt;归并排序的基本思想:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个
+      
+    
+    </summary>
+    
+    
+      <category term="Base_arithmetic" scheme="http://yoursite.com/tags/Base-arithmetic/"/>
+    
+  </entry>
+  
+  <entry>
     <title>堆排序</title>
     <link href="http://yoursite.com/2018/05/12/%E5%A0%86%E6%8E%92%E5%BA%8F/"/>
     <id>http://yoursite.com/2018/05/12/堆排序/</id>
     <published>2018-05-12T05:43:45.324Z</published>
-    <updated>2018-05-12T06:39:24.301Z</updated>
+    <updated>2018-05-12T06:45:31.384Z</updated>
     
-    <content type="html"><![CDATA[<p>  “堆排序”:就是利用堆来进行的一种排序</p><p>在了解堆排序前我们应了解以下几点:</p><ol><li>当满足 k<sub>i</sub> &lt;= k<sub>2i</sub> 和 k<sub>i</sub> &lt;= k<sub>2i+1</sub> 或 k<sub>i</sub> &gt;= k<sub>2i</sub> 和 k<sub>i</sub> &gt;= k<sub>2i+1</sub> 时称为”堆”</li><li>第一点的含义是:每一结点均不大于或不小于其左右孩子节点的值，并且将根值最大的称为”大根堆”，小根堆则反之</li><li>堆排序的第一步就是创造如上两点所描述的”堆”，这和排序有何关系?这样的堆有什么特点?</li><li><p>解答第三点 我们建的堆类似如下,只要我们用一个循环每次把根选出来(即选出最大值或最小值)，依次填入一个数组，排序就完成了</p><pre><code>       100    80     90  70  60 65  5530  50</code></pre><p>概括:堆排序可以分为三步</p></li><li>第一步，从待排数列取元素构造一棵完全二叉树(还不是堆),然后将这棵完全二叉树”改造”为有序的”堆”</li><li>第二步，将根(最大/小值)输出</li><li>第三步，将刚才去掉了根的”堆”重新排列整理为新的”堆”,重复步骤二直至将所有元素输出</li></ol><blockquote></blockquote><p>代码</p><ol><li><p>“改造”函数:将二叉树改为有规律的”堆”</p><p> void shif(int A[],int key,int m)<br> //m是对序号不大于m的以key为根的子序列调整<br> {</p><pre><code>A[0] = A[key];          //A[0]元素作为临时变量保存根值bool finish = false;int i = key, j = i*2;   //i指示空位(树根),j指示左孩子while ( j&lt;=m &amp;&amp; !finish)//i不是叶子结点且搜索为结束{    if ( j&lt;m &amp;&amp; A[j]&lt;A[j+1])        j = j + 1;        //选出根key左右孩子中最大者    if (A[0] &gt;= A[j])        finish = true;  //原根最大，此次调整结束    else    {        A[i] = A[j];    //值大的孩子节点上移        i = j;            //继续向下(子树)筛选        j = j * 2;    }}A[i] = A[0];//将原根值元素填到当前空位</code></pre></li></ol><blockquote></blockquote><p>代码</p><ol start="2"><li><p>建初堆和添加循环</p><p> void HeapSort(int sort[],int n)<br> {</p><pre><code>//第一部分建初堆的过程是从叶子结点往树根方向梳理的,i为各个子树的树根//一颗有n个元素的二叉树有n/2个有孩子的子树(即前n/2个)for (int i = n/2; i &gt;= 1; i--)    shif(sort,i,n);//建初堆后的排序是从树根往叶子结点方向筛选的(已经有序),每次循环排号一个数for (int i = n; i &gt;= 2; i--){    swap(sort[1],sort[i]);    shif(sort,1,i-1);      //调整子序列sort[1]-sort[i-1]为堆}</code></pre><p> }</p></li></ol><p>以上描述比较抽象，现在引用B站两个排序过程动画帮助大家了解:</p><p><a href="https://www.bilibili.com/video/av18980178" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980178</a></p><p><a href="https://www.bilibili.com/video/av12667435" target="_blank" rel="noopener">https://www.bilibili.com/video/av12667435</a></p>]]></content>
+    <content type="html"><![CDATA[<p>  “堆排序”:就是利用堆来进行的一种排序</p><p>在了解堆排序前我们应了解以下几点:</p><ol><li>当满足 k<sub>i</sub> &lt;= k<sub>2i</sub> 和 k<sub>i</sub> &lt;= k<sub>2i+1</sub> 或 k<sub>i</sub> &gt;= k<sub>2i</sub> 和 k<sub>i</sub> &gt;= k<sub>2i+1</sub> 时称为”堆”</li><li>第一点的含义是:每一结点均不大于或不小于其左右孩子节点的值，并且将根值最大的称为”大根堆”，小根堆则反之</li><li>堆排序的第一步就是创造如上两点所描述的”堆”，这和排序有何关系?这样的堆有什么特点?</li><li><p>解答第三点 我们建的堆类似如下,只要我们用一个循环每次把根选出来(即选出最大值或最小值)，依次填入一个数组，排序就完成了</p><pre><code>       100    80     90  70  60 65  5530  50</code></pre><p>概括:堆排序可以分为三步</p></li><li>第一步，从待排数列取元素构造一棵完全二叉树(还不是堆),然后将这棵完全二叉树”改造”为有序的”堆”</li><li>第二步，将根(最大/小值)输出</li><li>第三步，将刚才去掉了根的”堆”重新排列整理为新的”堆”,重复步骤二直至将所有元素输出</li></ol><blockquote></blockquote><p>代码</p><ol><li><p>“改造”函数:将二叉树改为有规律的”堆”</p><p> void shif(int A[],int key,int m)<br> //m是对序号不大于m的以key为根的子序列调整<br> {</p><pre><code>A[0] = A[key];          //A[0]元素作为临时变量保存根值bool finish = false;int i = key, j = i*2;   //i指示空位(树根),j指示左孩子while ( j&lt;=m &amp;&amp; !finish)//i不是叶子结点且搜索为结束{    if ( j&lt;m &amp;&amp; A[j]&lt;A[j+1])        j = j + 1;        //选出根key左右孩子中最大者    if (A[0] &gt;= A[j])        finish = true;  //原根最大，此次调整结束    else    {        A[i] = A[j];    //值大的孩子节点上移        i = j;            //继续向下(子树)筛选        j = j * 2;    }}A[i] = A[0];//将原根值元素填到当前空位</code></pre></li></ol><blockquote></blockquote><p>代码</p><ol start="2"><li><p>建初堆和添加循环</p><p> void HeapSort(int sort[],int n)<br> {</p><pre><code>//第一部分建初堆的过程是从叶子结点往树根方向梳理的,i为各个子树的树根//一颗有n个元素的二叉树有n/2个有孩子的子树(即前n/2个)for (int i = n/2; i &gt;= 1; i--)    shif(sort,i,n);//建初堆后的排序是从树根往叶子结点方向筛选的(已经有序),每次循环排号一个数for (int i = n; i &gt;= 2; i--){    swap(sort[1],sort[i]);    shif(sort,1,i-1);      //调整子序列sort[1]-sort[i-1]为堆}</code></pre><p> }</p></li></ol><p>以上描述比较抽象，现在引用B站两个排序过程动画帮助大家了解:</p><p><a href="https://www.bilibili.com/video/av18980178" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980178</a></p><p><a href="https://www.bilibili.com/video/av12667435" target="_blank" rel="noopener">https://www.bilibili.com/video/av12667435</a></p><blockquote><blockquote><p>本文参考了，张先宜编辑的&lt;&lt;数据结构&gt;&gt;第266-269页的部分内容</p></blockquote></blockquote>]]></content>
     
     <summary type="html">
     

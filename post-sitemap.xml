@@ -7,6 +7,38 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</loc>
+        <lastmod>2018-05-13T06:33:47.560Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/05/10/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</loc>
+        <lastmod>2018-05-13T06:28:30.201Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</loc>
+        <lastmod>2018-05-13T06:26:10.001Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</loc>
+        <lastmod>2018-05-13T06:20:42.091Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2018/05/12/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</loc>
         <lastmod>2018-05-13T05:30:10.644Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,22 +49,6 @@
     <url>
         <loc>http://yoursite.com/2018/05/12/%E5%A0%86%E6%8E%92%E5%BA%8F/</loc>
         <lastmod>2018-05-12T06:45:31.384Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/05/10/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</loc>
-        <lastmod>2018-05-10T13:00:50.065Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</loc>
-        <lastmod>2018-05-05T09:32:13.886Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -55,32 +71,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</loc>
-        <lastmod>2018-05-04T16:23:57.427Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</loc>
-        <lastmod>2018-05-03T15:38:22.227Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2018/04/26/test3/</loc>
         <lastmod>2018-04-27T14:47:18.495Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2018/04/27/finaltest/</loc>
-        <lastmod>2018-04-27T03:14:47.041Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

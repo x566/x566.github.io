@@ -81,18 +81,17 @@
 
 
 
-<meta name="description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
 <meta name="keywords" content="Base_arithmetic">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计数排序">
-<meta property="og:url" content="http://yoursite.com/2018/05/05/计数排序/index.html">
+<meta property="og:title" content="排序小结">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/排序总结/index.html">
 <meta property="og:site_name" content="x566">
-<meta property="og:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-13T06:33:47.560Z">
+<meta property="og:image" content="http://yoursite.com/2.jpg">
+<meta property="og:updated_time" content="2018-05-23T14:08:32.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计数排序">
-<meta name="twitter:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
+<meta name="twitter:title" content="排序小结">
+<meta name="twitter:image" content="http://yoursite.com/2.jpg">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/05/计数排序/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/排序总结/"/>
 
 
 
 
 
-  <title>计数排序 | x566</title>
+  <title>排序小结 | x566</title>
   
 
 
@@ -309,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/05/计数排序/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/排序总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x566">
@@ -326,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计数排序</h1>
+          <h1 class="post-title" itemprop="name headline">排序小结</h1>
         
 
         <div class="post-meta">
@@ -338,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-05T17:27:51+08:00">
-                2018-05-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T21:55:12+08:00">
+                2018-05-23
               </time>
             
 
@@ -357,8 +356,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/05/计数排序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/05/计数排序/" itemprop="commentCount"></span>
+                <a href="/2018/05/23/排序总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/23/排序总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,52 +385,7 @@
       
 
       
-        <p>计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的</p>
-<p>排序思想:先建立两个数组</p>
-<p>第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4</p>
-<p>第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组</p>
-<p>排序步骤：</p>
-<ol>
-<li><p>先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中<br>(说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:<a href="https://www.bilibili.com/video/av18980575" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980575</a>)</p>
-</li>
-<li><p>对count数组进行加法处理 count[i] = count[i] + count[i-1]，为什么要这么做?<br>你会发现这个加法操作：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了)</p>
-</li>
-<li><p>将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座</p>
-</li>
-<li><p>将结果output[] 写入给待排数组</p>
-</li>
-</ol>
-<p>代码:</p>
-<pre><code>void Counting_Sort(int sort[], int N)
-{
-    int *output = new int[N];//分配中间数组
-    int count[10];
-    memset(count,0,sizeof(count));//将cout数组初始化为0
-
-    for (int i = 0;i &lt; 10; i++)  //count数组存放sort数组每个元素的个数
-     if (sort[i])
-        ++count[sort[i]];
-
-     for (int i = 2; i &lt; 10; i++)//将cout数组进行加法处理，数组结果是表示当前位置
-        count[i] = count[i] + count[i - 1];
-
-    for (int i = 0; i &lt; N; i++)//0不计入排序,以sort内容为基础遍历,写入output数组
-    {
-        output[count[sort[i]]-1] = sort[i];//sort和output的内容和下标是相反的
-        --count[sort[i]];
-    }
-
-    for (int i = 0; i &lt; N; i++)
-        sort[i] = output[i];
-
-     delete []output;
-
-}
-</code></pre><p>总结:</p>
-<p>时间复杂度<br>时间复杂度是 O(n+K)</p>
-<p>k = range</p>
-<p>在O(k)&lt;O(n*log(n))快于任何排序法</p>
-<p>代码中 count[10]中的10是我测试用的，这个就是range各位替换就好</p>
+        <p><img src="/2.jpg" alt="avatar"></p>
 
       
     </div>
@@ -462,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/05/希尔排序/" rel="next" title="希尔排序">
-                <i class="fa fa-chevron-left"></i> 希尔排序
+              <a href="/2018/05/12/归并排序/" rel="next" title="归并排序">
+                <i class="fa fa-chevron-left"></i> 归并排序
               </a>
             
           </div>
@@ -471,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/10/快速排序/" rel="prev" title="快速排序">
-                快速排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[排序小结]]></title>
+    <url>%2F2018%2F05%2F23%2F%E6%8E%92%E5%BA%8F%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>Base_arithmetic</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[归并排序]]></title>
     <url>%2F2018%2F05%2F12%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表 归并排序的基本思想: 将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个长度为2的有序子表，再将这n/2个长度为2的有序子表合并为n/4个长度为4的有序子表，以此类推直至合并为长度为n的有序表 例如: (12,15,30,80,100,46,78,33,90,86,64,55,120,230,45） ([12][15][30][80][100][46][78][33][90][86][64][55][120][230] [45]) |——| |——| |——| |——| |——| |——| |——| | ( [12 15] [30 80] [46 100] [33 78] [86 90] [55 64] [120 230] [45]) |————| |————| |————| |————| ( [12 15 30 80] [33 46 78 100] [55 64 86 90] [45 120 230] ) ... 完成这个归并过程一般分为2步: 划分原表 归并子表 1&gt;划分原表(利用递归) /*用不同的Al我们可以对数组中自己想要的区间排序,这里可以和快速排序与二叉树的 遍历对比,递归的顺序不同了，归并是先划分，快排是先排后划分，请仔细体会两者差异*/ void mergeSort(int arr[], int Al, int Ar) { if (Al &lt; Ar) { int m = Al + (Ar - Al)/2; mergeSort(arr,Al,m); //划分左半个数组 mergeSort(arr,m+1,Ar); //划分右半个数组 merge(arr,Al,m,Ar); } } /*以上类似二叉树的后续遍历，只要还有子表的长度大于一，就会一直划分*/ /*递归是个巧妙的过程，比较难理解可以画图分析*/ 2&gt;归并子表 /*这个函数并不神秘，其实就是两个有序集合的合并*/ void merge(int arr[],int Al,int m,int Ar) { int i, j, k; int n1 = m - Al + 1;//左半边元素个数 int n2 = Ar - m; //右半边元素个数 /*建立临时数组*/ int *L = new int[n1], *R = new int[n2]; /*将原数列数据填充到两个临时数组*/ for ( i = 0; i &lt; n1; i++) L[i] = arr[Al+i]; for ( j = 0; j &lt; n2; j++) R[j] = arr[m + 1 + j]; /*将临时数组处理后合并回去*/ i = 0; j = 0; k = Al; while ( i&lt;n1 &amp;&amp; j&lt;n2) { if (L[i] &lt;= R[j]) { arr[k] = L[i]; i++; } else { arr[k] = R[j]; j++; } k++; } /*将余下的元素填充*/ while (i &lt; n1) { arr[k] = L[i]; i++; k++; } while (j &lt; n2) { arr[k] = R[j]; j++; k++; } delete []L; delete []R; } 代码参考自:https://www.geeksforgeeks.org/这是一个学习各种算法的好网站(●’◡’●) 归并排序动态视频演示推荐:https://www.bilibili.com/video/av18980253]]></content>

@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
+<meta name="description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原">
 <meta name="keywords" content="Base_arithmetic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计数排序">
 <meta property="og:url" content="http://yoursite.com/2018/05/05/计数排序/index.html">
 <meta property="og:site_name" content="x566">
-<meta property="og:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
+<meta property="og:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-13T06:33:47.560Z">
+<meta property="og:updated_time" content="2018-06-02T08:05:53.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计数排序">
-<meta name="twitter:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原数组)中各数据">
+<meta name="twitter:description" content="计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤：  先计数待排数组(原">
 
 
 
@@ -388,13 +388,19 @@
       
         <p>计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的</p>
 <p>排序思想:先建立两个数组</p>
-<p>第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有4个5,则 count[5] = 4</p>
+<p>第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4</p>
 <p>第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组</p>
 <p>排序步骤：</p>
 <ol>
-<li><p>先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中<br>(说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:<a href="https://www.bilibili.com/video/av18980575" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980575</a>)</p>
+<li><p>先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中</p>
+<blockquote>
+<p>说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:<a href="https://www.bilibili.com/video/av18980575" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980575</a>)</p>
+</blockquote>
 </li>
-<li><p>对count数组进行加法处理 count[i] = count[i] + count[i-1]，为什么要这么做?<br>你会发现这个加法操作：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了)</p>
+<li><p>对count数组进行加法处理 count[i] = count[i] + count[i-1]</p>
+<blockquote>
+<p>  为什么要这么做?<br>你会发现这个加法操作：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了)</p>
+</blockquote>
 </li>
 <li><p>将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座</p>
 </li>
@@ -545,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

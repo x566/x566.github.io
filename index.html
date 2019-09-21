@@ -304,7 +304,7 @@
   
   
 
-  <article class="post post-type-ctips" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-c_tips" itemscope itemtype="http://schema.org/Article">
   
   
   
@@ -394,8 +394,23 @@
 <p> 经常，浮点数经过运算后会发生改变如3.14变成3.14000001，这样的误差会逐渐积累，那么在判断浮点数相等时就没办法了？</p>
 <p> 这种现象无法避免，所以实际中我们允许一定的误差，那么在判断两数相等时只要判断另一数是否在允许的区间内即可</p>
 <pre><code>const double eps = 1e-8;//10的负8次方，大多数情况下不会误判也不会漏判 
-#define EQU(a,b) (fabs((a)-(b)) &lt; (eps))
-</code></pre>
+const double Pi acos((double)-1.0)
+
+#define EQU(a,b)       (fabs((a)-(b)) &lt; (eps))//等于
+#define More(a,b)      ((a)-(b) &gt; (eps))        //大于
+#define Less(a,b)      ((a)-(b) &lt; (-eps))         //小于
+#define MoreEqu(a,b) ((a)-(b) &gt; (-eps))      //大于等于
+#define LessEqu(a,b) ((a)-(b) &lt; (eqs))        //小于等于
+
+
+if(EQU(a,y))
+{
+    printf(&quot;Hello&quot;);
+}
+</code></pre><p>1.由于精度问题，经过大量运算，变量中存储的0可能是很小的负数，这时候开平方会出错asin(x),acos(x),x=1||x=-1时要检查是否在定义域内</p>
+<p>2.编译环境影响0.00可能会变成-0.00,这时需要将-0.00存放到字符串中再与-0.00比较如果成功，加上eps修正为0.00</p>
+<p>参考：曾磊《算法笔记》</p>
+
           
         
       

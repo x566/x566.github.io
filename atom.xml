@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-21T08:29:54.985Z</updated>
+  <updated>2019-09-21T11:47:35.445Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于误差</title>
+    <link href="http://yoursite.com/2019/09/21/c1/"/>
+    <id>http://yoursite.com/2019/09/21/c1/</id>
+    <published>2019-09-21T11:46:10.449Z</published>
+    <updated>2019-09-21T11:47:35.445Z</updated>
+    
+    <content type="html"><![CDATA[<p>浮点数的比较</p><p> 经常，浮点数经过运算后会发生改变如3.14变成3.14000001，这样的误差会逐渐积累，那么在判断浮点数相等时就没办法了？</p><p> 这种现象无法避免，所以实际中我们允许一定的误差，那么在判断两数相等时只要判断另一数是否在允许的区间内即可</p><pre><code>const double eps = 1e-8;//10的负8次方，大多数情况下不会误判也不会漏判 #define EQU(a,b) (fabs((a)-(b)) &lt; (eps))</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;浮点数的比较&lt;/p&gt;
+&lt;p&gt; 经常，浮点数经过运算后会发生改变如3.14变成3.14000001，这样的误差会逐渐积累，那么在判断浮点数相等时就没办法了？&lt;/p&gt;
+&lt;p&gt; 这种现象无法避免，所以实际中我们允许一定的误差，那么在判断两数相等时只要判断另一数是否在允许的区间内即
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>初识正则表达式和元字符</title>

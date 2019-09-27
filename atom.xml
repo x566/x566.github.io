@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-26T06:36:08.823Z</updated>
+  <updated>2019-09-27T02:08:45.106Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,104 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>java_problem5</title>
+    <link href="http://yoursite.com/2019/09/25/java_problem5/"/>
+    <id>http://yoursite.com/2019/09/25/java_problem5/</id>
+    <published>2019-09-25T01:09:13.957Z</published>
+    <updated>2019-09-27T02:08:45.106Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h2><p> super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。</p><p> 使用super调用普通方法，语句没有位置限制，可以在子类中随便调用。</p><p> 若是构造方法的第一行代码没有显式的调用super(…)或者this(…);那么Java默认都会调用super(),含义是调用父类的无参数构造方法。这里的super()可以省略。</p><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>包机制是Java中管理类的重要手段。 开发中，我们会遇到大量同名的类，通过包我们很容易对解决类重名的问题，也可以实现对类的有效管理。 包对于类，相当于文件夹对于文件的作用。</p><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态指的是同一个方法调用，由于对象不同可能会有不同的行为。现实生活中，同一个方法，具体实现会完全不同。 比如：同样是调用人的“休息”方法，张三是睡觉，李四是旅游，高淇老师是敲代码，数学教授是做数学题; 同样是调用人“吃饭”的方法，中国人用筷子吃饭，英国人用刀叉吃饭，印度人用手吃饭。</p><pre><code>多态的要点：1. 多态是方法的多态，不是属性的多态(多态与属性无关)。2. 多态的存在要有3个必要条件：继承，方法重写，父类引用指向子类对象。3. 父类引用指向子类对象后，用该父类引用调用子类重写的方法，此时多态就出现了。4. 但是多态也有弊端，就是无法调用子类特有的功能，比如，我不能使用父类的引用变量调用Dog类特有的seeDoor()方法。那如果我们就想使用子类特有的功能行不行呢?行!这就是我们下一章节所讲的内容：对象的转型</code></pre><h2 id="对象的转型-casting"><a href="#对象的转型-casting" class="headerlink" title="对象的转型(casting)"></a>对象的转型(casting)</h2><p>父类引用指向子类对象，我们称这个过程为向上转型，属于自动类型转换。</p><p> 向上转型后的父类引用变量只能调用它编译类型的方法，不能调用它运行时类型的方法。这时，我们就需要进行类型的强制转换，我们称之为向下转型!</p><p>在向下转型过程中，必须将引用变量转成真实的子类类型(运行时类型)否则会出现类型转换异常</p><p>为了避免出现这种异常，我们可以使用instanceof运算符（判断对象是否是类的实例）进行判断</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><ol><li><p>修饰变量: 被他修饰的变量不可改变。一旦赋了初值，就不能被重新赋值。</p><pre><code>final  int   MAX_SPEED = 120;</code></pre></li><li><p>修饰方法：该方法不可被子类重写。但是可以被重载!</p><pre><code>final  void  study(){}</code></pre></li><li><p>修饰类: 修饰的类不能被继承。比如：Math、String等。</p><pre><code>final   class  A {}</code></pre></li></ol><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;super关键字&quot;&gt;&lt;a href=&quot;#super关键字&quot; class=&quot;headerlink&quot; title=&quot;super关键字&quot;&gt;&lt;/a&gt;super关键字&lt;/h2&gt;&lt;p&gt; super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="java_base" scheme="http://yoursite.com/tags/java-base/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaProblem4</title>
+    <link href="http://yoursite.com/2019/09/24/Java_problem4/"/>
+    <id>http://yoursite.com/2019/09/24/Java_problem4/</id>
+    <published>2019-09-24T12:01:40.483Z</published>
+    <updated>2019-09-27T02:08:46.369Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态初始化块"><a href="#静态初始化块" class="headerlink" title="静态初始化块"></a>静态初始化块</h1><p>构造方法用于对象的初始化!静态初始化块，用于类的初始化操作!在静态初始化块中不能直接访问非static成员。</p><p>注意事项：</p><p>　　静态初始化块执行顺序(学完继承再看这里)：</p><p>　　1. 上溯到Object类，先执行Object的静态初始化块，再向下执行子类的静态初始化块，直到我们的类的静态初始化块为止。</p><p>　　2. 构造方法执行顺序和上面顺序一样!!</p><h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><p>我们通过package实现对类的管理，package的使用有两个要点：</p><p>　　1. 通常是类的第一句非注释性语句。</p><p>　　2. 包名：域名倒着写即可，再加上模块名，便于内部管理类。</p><blockquote><p>package的命名举例</p></blockquote><pre><code>com.sun.test;com.oracle.test;cn.sxt.gao.test;cn.sxt.gao.view;cn.sxt.gao.view.model;</code></pre><blockquote><p>注意事项：</p></blockquote><p>　　1. 写项目时都要加包，不要使用默认包。</p><p>　　2. com.gao和com.gao.car，这两个包没有包含关系，是两个完全独立的包。只是逻辑上看起来后者是前者的一部分。</p><blockquote><p>package的使用</p></blockquote><p>package cn.sxt;<br>public class Test {<br>    public static void main(String[] args) {<br>        System.out.println(“helloworld”);<br>    }<br>}</p><h2 id="导入类import"><a href="#导入类import" class="headerlink" title="导入类import"></a>导入类import</h2><p>　　如果我们要使用其他包的类，需要使用import导入，从而可以在本类中直接通过类名来调用，否则就需要书写类的完整包名和类名。import后，便于编写代码，提高可维护性。</p><p>注意要点：</p><p>　　1. Java会默认导入java.lang包下所有的类，因此这些类我们可以直接使用。</p><p>　　2. 如果导入两个同名的类，只能用包名+类名来显示调用相关类：　</p><pre><code>java.util.Date date  = new  java.util.Date();</code></pre><p>静态导入(static import)是在JDK1.5新增加的功能，其作用是用于导入指定类的静态属性，这样我们可以直接使用静态属性。</p><h2 id="静态导入的使用"><a href="#静态导入的使用" class="headerlink" title="静态导入的使用　　"></a>静态导入的使用　　</h2><pre><code>package cn.sxt; //以下两种静态导入的方式二选一即可import static java.lang.Math.*;//导入Math类的所有静态属性import static java.lang.Math.PI;//导入Math类的PI属性public class Test2{    public static void main(String [] args)    {            System.out.println(PI);        System.out.println(random());    }}</code></pre><h2 id="instanceof-运算符"><a href="#instanceof-运算符" class="headerlink" title="instanceof 运算符"></a>instanceof 运算符</h2><p>instanceof是二元运算符，左边是对象，右边是类；当对象是右面类或子类所创建对象时，返回true；否则，返回false。比如：</p><blockquote><p>使用instanceof运算符进行类型判断</p></blockquote><pre><code>public class Test{    public static void main(String[] args) {        Student s = new Student(&quot;高淇&quot;,172,&quot;Java&quot;);        System.out.println(s instanceof Person);        System.out.println(s instanceof Student);    }}</code></pre><p> 两条语句的输出结果都是true。</p><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><blockquote><p>1.object,getClass()//取得对象类型</p></blockquote><blockquote><p>2.如果想要自定义两个对象（不是一个对象，即这两个对象分别有自己的一块内存）是否相等的规则，那么必须在对象的类定义中重写equals()方法，如果不重写equals()方法的话，默认的比较方式是比较两个对象是否为同一个对象。<br>注：有些类比如String类已经为我们重写好了equals()方法<br>（此条引用自：<a href="https://blog.csdn.net/u013063153/article/details/78808923）" target="_blank" rel="noopener">https://blog.csdn.net/u013063153/article/details/78808923）</a></p></blockquote><p>》</p><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;静态初始化块&quot;&gt;&lt;a href=&quot;#静态初始化块&quot; class=&quot;headerlink&quot; title=&quot;静态初始化块&quot;&gt;&lt;/a&gt;静态初始化块&lt;/h1&gt;&lt;p&gt;构造方法用于对象的初始化!静态初始化块，用于类的初始化操作!在静态初始化块中不能直接访问非static成员。
+      
+    
+    </summary>
+    
+    
+      <category term="java_base" scheme="http://yoursite.com/tags/java-base/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaProblem3</title>
+    <link href="http://yoursite.com/2019/09/24/Java_problem3/"/>
+    <id>http://yoursite.com/2019/09/24/Java_problem3/</id>
+    <published>2019-09-24T11:27:49.467Z</published>
+    <updated>2019-09-27T02:08:46.362Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="通用的分代垃圾回收机制"><a href="#通用的分代垃圾回收机制" class="headerlink" title="通用的分代垃圾回收机制"></a>通用的分代垃圾回收机制</h1><p>　　分代垃圾回收机制，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。我们将对象分为三种状态：年轻代、年老代、持久代。JVM将堆内存划分为 Eden、Survivor 和 Tenured/Old 空间。</p><p>　　1. 年轻代</p><p>　　所有新生成的对象首先都是放在Eden区。 年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象，对应的是Minor GC，每次 Minor GC 会清理年轻代的内存，算法采用效率较高的复制算法，频繁的操作，但是会浪费内存空间。当“年轻代”区域存放满对象后，就将对象存放到年老代区域。</p><p>　　2. 年老代</p><p>　　在年轻代中经历了N(默认15)次垃圾回收后仍然存活的对象，就会被放到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。年老代对象越来越多，我们就需要启动Major GC和Full GC(全量回收)，来一次大扫除，全面清理年轻代区域和年老代区域。</p><p>　　3. 持久代</p><p>　　用于存放静态文件，如Java类、方法等。持久代对垃圾回收没有显著影响。</p><blockquote><p>·Minor GC:</p></blockquote><p>　　用于清理年轻代区域。Eden区满了就会触发一次Minor GC。清理无用对象，将有用对象复制到“Survivor1”、“Survivor2”区中(这两个区，大小空间也相同，同一时刻Survivor1和Survivor2只有一个在用，一个为空)</p><blockquote><p>·Major GC：</p></blockquote><p>　　用于清理老年代区域。</p><blockquote><p>·Full GC：</p></blockquote><p>　　用于清理年轻代、年老代区域。 成本较高，会对系统性能产生影响。</p><p>垃圾回收过程：</p><pre><code>1、新创建的对象，绝大多数都会存储在Eden中，2、当Eden满了（达到一定比例）不能创建新对象，则触发垃圾回收（GC），将无用对象清理掉，       然后剩余对象复制到某个Survivor中，如S1，同时清空Eden区3、当Eden区再次满了，会将S1中的不能清空的对象存到另外一个Survivor中，如S2，      同时将Eden区中的不能清空的对象，也复制到S1中，保证Eden和S1，均被清空。4、重复多次(默认15次)Survivor中没有被清理的对象，则会复制到老年代Old(Tenured)区中，5、当Old区满了，则会触发一个一次完整地垃圾回收（FullGC），之前新生代的垃圾回收称为（minorGC）</code></pre><h2 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h2><p>在对JVM调优的过程中，很大一部分工作就是对于Full GC的调节。有如下原因可能导致Full GC：</p><p>　　1.年老代(Tenured)被写满</p><p>　　2.持久代(Perm)被写满</p><p>　　3.System.gc()被显式调用（程序建议GC启动，不是调用GC）</p><p>　　4.上一次GC之后Heap的各域分配策略动态变化</p><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;通用的分代垃圾回收机制&quot;&gt;&lt;a href=&quot;#通用的分代垃圾回收机制&quot; class=&quot;headerlink&quot; title=&quot;通用的分代垃圾回收机制&quot;&gt;&lt;/a&gt;通用的分代垃圾回收机制&lt;/h1&gt;&lt;p&gt;　　分代垃圾回收机制，是基于这样一个事实：不同的对象的生命周期是不一
+      
+    
+    </summary>
+    
+    
+      <category term="java_base" scheme="http://yoursite.com/tags/java-base/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDouble2</title>
+    <link href="http://yoursite.com/2019/09/24/Java_problem2/"/>
+    <id>http://yoursite.com/2019/09/24/Java_problem2/</id>
+    <published>2019-09-24T11:22:50.772Z</published>
+    <updated>2019-09-27T02:08:46.354Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="垃圾回收原理和算法"><a href="#垃圾回收原理和算法" class="headerlink" title="垃圾回收原理和算法"></a>垃圾回收原理和算法</h1><p>·内存管理</p><p>　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。</p><p>　　对象空间的分配：使用new关键字创建对象即可</p><p>　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。</p><p>·垃圾回收过程</p><p>　　任何一种垃圾回收算法一般要做两件基本事情：</p><p>　　1. 发现无用的对象</p><p>　　2. 回收无用对象占用的内存空间。</p><p>　　垃圾回收机制保证可以将“无用的对象”进行回收。无用的对象指的就是没有任何变量引用该对象。Java的垃圾回收器通过相关算法发现无用对象，并进行清除和整理。</p><h1 id="·垃圾回收相关算法"><a href="#·垃圾回收相关算法" class="headerlink" title="·垃圾回收相关算法"></a>·垃圾回收相关算法</h1><h2 id="1-引用计数法"><a href="#1-引用计数法" class="headerlink" title="　　1. 引用计数法"></a>　　1. 引用计数法</h2><p>　　堆中每个对象都有一个引用计数。被引用一次，计数加1. 被引用变量值变为null，则计数减1，直到计数为0，则表示变成无用对象。优点是算法简单，缺点是“循环引用的无用对象”无法别识别。</p><pre><code>循环引用示例:　　public class Student {    String name;    Student friend;    public static void main(String[] args) {        Student s1 = new Student();        Student s2 = new Student();        s1.friend = s2;        s2.friend = s1;                s1 = null;        s2 = null;    }}</code></pre><p>　　s1和s2互相引用对方，导致他们引用计数不为0，但是实际已经无用，但无法被识别。</p><h2 id="2-引用可达法-根搜索算法"><a href="#2-引用可达法-根搜索算法" class="headerlink" title="　　2. 引用可达法(根搜索算法)"></a>　　2. 引用可达法(根搜索算法)</h2><p>　　程序把所有的引用关系看作一张图，从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。</p><blockquote><p>本文引用：<a href="https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;垃圾回收原理和算法&quot;&gt;&lt;a href=&quot;#垃圾回收原理和算法&quot; class=&quot;headerlink&quot; title=&quot;垃圾回收原理和算法&quot;&gt;&lt;/a&gt;垃圾回收原理和算法&lt;/h1&gt;&lt;p&gt;·内存管理&lt;/p&gt;
+&lt;p&gt;　　Java的内存管理很大程度指的就是对象的管理，其中包括
+      
+    
+    </summary>
+    
+    
+      <category term="java_base" scheme="http://yoursite.com/tags/java-base/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaProblem_1</title>
     <link href="http://yoursite.com/2019/09/23/Java_problem1/"/>
     <id>http://yoursite.com/2019/09/23/Java_problem1/</id>
     <published>2019-09-23T12:48:58.876Z</published>
-    <updated>2019-09-26T06:36:08.823Z</updated>
+    <updated>2019-09-27T02:02:32.126Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-JAVA精度问题-double-float变量如何比较相等"><a href="#1-JAVA精度问题-double-float变量如何比较相等" class="headerlink" title="1.JAVA精度问题 double,float变量如何比较相等?"></a>1.JAVA精度问题 double,float变量如何比较相等?</h2><p>解决办法<br>  java.math包下面的两个有用的类：</p><pre><code>BigInteger和BigDecimal，这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。</code></pre><h2 id="2-字符串连接符："><a href="#2-字符串连接符：" class="headerlink" title="2.字符串连接符："></a>2.字符串连接符：</h2><pre><code>“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串)int a=12;System.out.println(&quot;a=&quot;+a);//输出结果: a=12</code></pre><h2 id="3-变量类型误区"><a href="#3-变量类型误区" class="headerlink" title="3.变量类型误区"></a>3.变量类型误区</h2><pre><code>1.boolean 是bit类型的它只占一位存储空间2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！3.byte是一字节，short是两字节</code></pre><h2 id="4-自动类型转换"><a href="#4-自动类型转换" class="headerlink" title="4.自动类型转换"></a>4.自动类型转换</h2><pre><code>自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。</code></pre><p><img src="http://boze.club//images/transform.png" alt=""></p><pre><code>可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。</code></pre><h2 id="5-带标签的break和continue"><a href="#5-带标签的break和continue" class="headerlink" title="5.带标签的break和continue"></a>5.带标签的break和continue</h2><pre><code> goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。  “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。  在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。 //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数) public class Test18  {    public static void main(String args[])     {        outer: for (int i = 101; i &lt; 150; i++)     {        for (int j = 2; j &lt; i / 2; j++)         {            if (i % j == 0)                continue outer;        }        System.out.print(i + &quot;  &quot;);    }}</code></pre><p>}</p><h2 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK,JRE,JVM"></a>JDK,JRE,JVM</h2><p><img src="http://boze.club//images/JDK_JRE_JVM.png" alt=""></p><p>部分转自：<a href="https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html</a></p>]]></content>
     
@@ -35,7 +128,7 @@
     </summary>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+      <category term="java_base" scheme="http://yoursite.com/tags/java-base/"/>
     
   </entry>
   

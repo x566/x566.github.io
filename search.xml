@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[java_problem5]]></title>
+    <title><![CDATA[JavaProblem5]]></title>
     <url>%2F2019%2F09%2F25%2Fjava_problem5%2F</url>
     <content type="text"><![CDATA[super关键字 super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。 使用super调用普通方法，语句没有位置限制，可以在子类中随便调用。 若是构造方法的第一行代码没有显式的调用super(…)或者this(…);那么Java默认都会调用super(),含义是调用父类的无参数构造方法。这里的super()可以省略。 包包机制是Java中管理类的重要手段。 开发中，我们会遇到大量同名的类，通过包我们很容易对解决类重名的问题，也可以实现对类的有效管理。 包对于类，相当于文件夹对于文件的作用。 多态多态指的是同一个方法调用，由于对象不同可能会有不同的行为。现实生活中，同一个方法，具体实现会完全不同。 比如：同样是调用人的“休息”方法，张三是睡觉，李四是旅游，高淇老师是敲代码，数学教授是做数学题; 同样是调用人“吃饭”的方法，中国人用筷子吃饭，英国人用刀叉吃饭，印度人用手吃饭。 多态的要点： 1. 多态是方法的多态，不是属性的多态(多态与属性无关)。 2. 多态的存在要有3个必要条件：继承，方法重写，父类引用指向子类对象。 3. 父类引用指向子类对象后，用该父类引用调用子类重写的方法，此时多态就出现了。 4. 但是多态也有弊端，就是无法调用子类特有的功能，比如，我不能使用父类的引用变量调用Dog类特有的seeDoor()方法。 那如果我们就想使用子类特有的功能行不行呢?行!这就是我们下一章节所讲的内容：对象的转型 对象的转型(casting)父类引用指向子类对象，我们称这个过程为向上转型，属于自动类型转换。 向上转型后的父类引用变量只能调用它编译类型的方法，不能调用它运行时类型的方法。这时，我们就需要进行类型的强制转换，我们称之为向下转型! 在向下转型过程中，必须将引用变量转成真实的子类类型(运行时类型)否则会出现类型转换异常 为了避免出现这种异常，我们可以使用instanceof运算符（判断对象是否是类的实例）进行判断 final 修饰变量: 被他修饰的变量不可改变。一旦赋了初值，就不能被重新赋值。 final int MAX_SPEED = 120; 修饰方法：该方法不可被子类重写。但是可以被重载! final void study(){} 修饰类: 修饰的类不能被继承。比如：Math、String等。 final class A {} 部分转自：https://www.sxt.cn]]></content>
       <tags>
@@ -25,7 +25,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaDouble2]]></title>
+    <title><![CDATA[JavaProblrm2]]></title>
     <url>%2F2019%2F09%2F24%2FJava_problem2%2F</url>
     <content type="text"><![CDATA[垃圾回收原理和算法·内存管理 Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。 对象空间的分配：使用new关键字创建对象即可 对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。 ·垃圾回收过程 任何一种垃圾回收算法一般要做两件基本事情： 1. 发现无用的对象 2. 回收无用对象占用的内存空间。 垃圾回收机制保证可以将“无用的对象”进行回收。无用的对象指的就是没有任何变量引用该对象。Java的垃圾回收器通过相关算法发现无用对象，并进行清除和整理。 ·垃圾回收相关算法 1. 引用计数法 堆中每个对象都有一个引用计数。被引用一次，计数加1. 被引用变量值变为null，则计数减1，直到计数为0，则表示变成无用对象。优点是算法简单，缺点是“循环引用的无用对象”无法别识别。 循环引用示例: public class Student { String name; Student friend; public static void main(String[] args) { Student s1 = new Student(); Student s2 = new Student(); s1.friend = s2; s2.friend = s1; s1 = null; s2 = null; } } s1和s2互相引用对方，导致他们引用计数不为0，但是实际已经无用，但无法被识别。 2. 引用可达法(根搜索算法) 程序把所有的引用关系看作一张图，从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。 本文引用：https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html]]></content>
       <tags>
@@ -33,7 +33,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[JavaProblem_1]]></title>
+    <title><![CDATA[JavaProblem1]]></title>
     <url>%2F2019%2F09%2F23%2FJava_problem1%2F</url>
     <content type="text"><![CDATA[1.JAVA精度问题 double,float变量如何比较相等?解决办法 java.math包下面的两个有用的类： BigInteger和BigDecimal，这两个类可以处理任意长度的数值。 BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。 2.字符串连接符：“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串) int a=12; System.out.println(&quot;a=&quot;+a);//输出结果: a=12 3.变量类型误区1.boolean 是bit类型的它只占一位存储空间 2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！ 3.byte是一字节，short是两字节 4.自动类型转换自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。 可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。 5.带标签的break和continue goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。 “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。 在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。 //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数) public class Test18 { public static void main(String args[]) { outer: for (int i = 101; i &lt; 150; i++) { for (int j = 2; j &lt; i / 2; j++) { if (i % j == 0) continue outer; } System.out.print(i + &quot; &quot;); } } } JDK,JRE,JVM 部分转自：https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html]]></content>
       <tags>

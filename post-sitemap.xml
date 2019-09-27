@@ -7,6 +7,38 @@
     </url>
 
     <url>
+        <loc>http://yoursite.com/2019/09/27/Java_problem7_%E5%86%85%E9%83%A8%E7%B1%BB/</loc>
+        <lastmod>2019-09-27T12:27:01.244Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/09/27/Java_problem8_arrays%E7%B1%BB/</loc>
+        <lastmod>2019-09-27T12:13:12.398Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/09/24/Java_problem2/</loc>
+        <lastmod>2019-09-27T11:05:01.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/09/27/java_problem6/</loc>
+        <lastmod>2019-09-27T10:29:57.686Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite.com/2019/09/23/Java_problem1/</loc>
         <lastmod>2019-09-27T02:42:06.861Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -15,24 +47,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/2019/09/27/Java_problem6/</loc>
-        <lastmod>2019-09-27T02:35:19.838Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://yoursite.com/2019/09/25/java_problem5/</loc>
         <lastmod>2019-09-27T02:16:35.719Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://yoursite.com/2019/09/24/Java_problem2/</loc>
-        <lastmod>2019-09-27T02:14:32.272Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

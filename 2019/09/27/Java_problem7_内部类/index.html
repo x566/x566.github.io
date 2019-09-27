@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="垃圾回收原理和算法·内存管理 　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。 　　对象空间的分配：使用new关键字创建对象即可 　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。 ·垃圾回收过程 　　任何一种垃圾回收算法一般要做两件基本事情： 　　1. 发现无用的对象 　　2. 回收无用对象占用的内存空间。 　　垃圾回收">
+<meta name="description" content="java.util.Arrays类1.toStringArrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同">
 <meta name="keywords" content="java_base">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaProblrm2">
-<meta property="og:url" content="http://yoursite.com/2019/09/24/Java_problem2/index.html">
+<meta property="og:title" content="Java_Problem7">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/Java_problem7_内部类/index.html">
 <meta property="og:site_name" content="x566">
-<meta property="og:description" content="垃圾回收原理和算法·内存管理 　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。 　　对象空间的分配：使用new关键字创建对象即可 　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。 ·垃圾回收过程 　　任何一种垃圾回收算法一般要做两件基本事情： 　　1. 发现无用的对象 　　2. 回收无用对象占用的内存空间。 　　垃圾回收">
+<meta property="og:description" content="java.util.Arrays类1.toStringArrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-27T11:05:01.771Z">
+<meta property="og:updated_time" content="2019-09-27T12:27:01.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaProblrm2">
-<meta name="twitter:description" content="垃圾回收原理和算法·内存管理 　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。 　　对象空间的分配：使用new关键字创建对象即可 　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。 ·垃圾回收过程 　　任何一种垃圾回收算法一般要做两件基本事情： 　　1. 发现无用的对象 　　2. 回收无用对象占用的内存空间。 　　垃圾回收">
+<meta name="twitter:title" content="Java_Problem7">
+<meta name="twitter:description" content="java.util.Arrays类1.toStringArrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/24/Java_problem2/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/27/Java_problem7_内部类/"/>
 
 
 
 
 
-  <title>JavaProblrm2 | x566</title>
+  <title>Java_Problem7 | x566</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/Java_problem2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/Java_problem7_内部类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x566">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaProblrm2</h1>
+          <h1 class="post-title" itemprop="name headline">Java_Problem7</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T19:22:50+08:00">
-                2019-09-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T19:06:22+08:00">
+                2019-09-27
               </time>
             
 
@@ -357,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/24/Java_problem2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/24/Java_problem2/" itemprop="commentCount"></span>
+                <a href="/2019/09/27/Java_problem7_内部类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/27/Java_problem7_内部类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,37 +386,7 @@
       
 
       
-        <h1 id="垃圾回收原理和算法"><a href="#垃圾回收原理和算法" class="headerlink" title="垃圾回收原理和算法"></a>垃圾回收原理和算法</h1><p>·内存管理</p>
-<p>　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。</p>
-<p>　　对象空间的分配：使用new关键字创建对象即可</p>
-<p>　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。</p>
-<p>·垃圾回收过程</p>
-<p>　　任何一种垃圾回收算法一般要做两件基本事情：</p>
-<p>　　1. 发现无用的对象</p>
-<p>　　2. 回收无用对象占用的内存空间。</p>
-<p>　　垃圾回收机制保证可以将“无用的对象”进行回收。无用的对象指的就是没有任何变量引用该对象。Java的垃圾回收器通过相关算法发现无用对象，并进行清除和整理。</p>
-<h1 id="·垃圾回收相关算法"><a href="#·垃圾回收相关算法" class="headerlink" title="·垃圾回收相关算法"></a>·垃圾回收相关算法</h1><h2 id="1-引用计数法"><a href="#1-引用计数法" class="headerlink" title="　　1. 引用计数法"></a>　　1. 引用计数法</h2><p>　　堆中每个对象都有一个引用计数。被引用一次，计数加1. 被引用变量值变为null，则计数减1，直到计数为0，则表示变成无用对象。优点是算法简单，缺点是“循环引用的无用对象”无法别识别。</p>
-<pre><code>循环引用示例:　　
-
-public class Student {
-    String name;
-    Student friend;
-
-    public static void main(String[] args) {
-        Student s1 = new Student();
-        Student s2 = new Student();
-
-        s1.friend = s2;
-        s2.friend = s1;        
-        s1 = null;
-        s2 = null;
-    }
-}
-</code></pre><p>　　s1和s2互相引用对方，导致他们引用计数不为0，但是实际已经无用，但无法被识别。</p>
-<h2 id="2-引用可达法-根搜索算法"><a href="#2-引用可达法-根搜索算法" class="headerlink" title="　　2. 引用可达法(根搜索算法)"></a>　　2. 引用可达法(根搜索算法)</h2><p>　　程序把所有的引用关系看作一张图，从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。</p>
-<blockquote>
-<p>本文引用：<a href="https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html</a></p>
-</blockquote>
+        <h1 id="java-util-Arrays类"><a href="#java-util-Arrays类" class="headerlink" title="java.util.Arrays类"></a>java.util.Arrays类</h1><h2 id="1-toString"><a href="#1-toString" class="headerlink" title="1.toString"></a>1.toString</h2><p>Arrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同</p>
 
       
     </div>
@@ -447,8 +417,8 @@ public class Student {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/23/Java_problem1/" rel="next" title="JavaProblem1">
-                <i class="fa fa-chevron-left"></i> JavaProblem1
+              <a href="/2019/09/27/java_problem6/" rel="next" title="Java_Problem6">
+                <i class="fa fa-chevron-left"></i> Java_Problem6
               </a>
             
           </div>
@@ -457,8 +427,8 @@ public class Student {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/24/Java_problem3/" rel="prev" title="JavaProblem3">
-                JavaProblem3 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/27/Java_problem8_arrays类/" rel="prev" title="Java_Problem6">
+                Java_Problem6 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +562,7 @@ public class Student {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收原理和算法"><span class="nav-number">1.</span> <span class="nav-text">垃圾回收原理和算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#·垃圾回收相关算法"><span class="nav-number">2.</span> <span class="nav-text">·垃圾回收相关算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-引用计数法"><span class="nav-number">2.1.</span> <span class="nav-text">　　1. 引用计数法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-引用可达法-根搜索算法"><span class="nav-number">2.2.</span> <span class="nav-text">　　2. 引用可达法(根搜索算法)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-util-Arrays类"><span class="nav-number">1.</span> <span class="nav-text">java.util.Arrays类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-toString"><span class="nav-number">1.1.</span> <span class="nav-text">1.toString</span></a></li></ol></li></ol></div>
             
 
           </div>

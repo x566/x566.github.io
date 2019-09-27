@@ -309,6 +309,307 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/02/八皇后问题-易懂/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/02/八皇后问题-易懂/" itemprop="url">八皇后问题-易懂</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-02T15:58:58+08:00">
+                2018-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/02/八皇后问题-易懂/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/02/八皇后问题-易懂/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一:八皇后问题</p>八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：<br>&gt;在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都&lt;不能处于同一行、同一列或同一斜线上&gt;，问有多少种摆法。 高斯认为有76种方案。1854年在柏林的象棋杂志上不同的作者发表了40种不同的解，后来有人用图论的方法解出92种结果。计算机发明后，有多种计算机语言可以解决此问题。<br><br><p>二:解题思路:回溯法遍历</p><br>&gt;回溯法是什么?<br>&gt;<br>&gt;答：一句话:”不撞南墙不回头”,<br>&gt;<br>&gt;这是什么意思呢？<br>&gt;<br>&gt;举个例子：有一个迷宫游戏，只有一个出口一个入口，迷宫很简单，在整个迷宫唯一的分岔点处有三条路可走，只有一条是正确的，其它两条是死路，在这里我们随机选择一条路走，如果一次选中我就不说什么了(感觉很可能是人民币玩家)，如果我们选择的是死路，这时我们只要走回来，并给它做记号，下次不走就行了，这时只要从剩下的两条路二选一，如果第二次你还是走了死路(真够惨的)怎么办?我们同样给这条路做记号，下次不走就是了(反正我们的迷宫很安全又没有陷阱),最后走剩下那条路就完成了。<br><br>&gt;总结:我们解八皇后问题的过程是一个用计算机尝试的过程，先放棋子后判断是否合法(比如是否一条线上….)，如果不合法我们就退回来尝试另一种办法，直到找到我们迷宫出口。<br><br><p>三:正式解题:</p>
+
+<ol>
+<li><p>在题目条件&lt;不能处于同一行、同一列或同一斜线上&gt;得知，八个皇后一定分别是在八个不同的行或八个不同的列上的，写代码尝试的时候直接按行或列放置8次，而不是每个格子都尝试放置，这能省去不少计算</p>
+</li>
+<li><p>如果以递归来实现，假如递归是按行遍历，则for循环按列遍历(相当于两个for循环遍历棋盘)</p>
+</li>
+<li><p>合法性判断:同行同列好判断，同斜线呢?  </p>
+</li>
+<li><p>判断同一斜线我们采用”坐标法”，即把平面直角坐标系抽象到棋盘上，设棋盘的行为x轴，列为y轴，例子:假设棋盘第2行第1列有皇后，则x=2，y=1，如果同时构造另一个点x=3,y=2上有皇后，使这两个点在一条直线上，你能看出什么规律吗?答案:横纵坐标之差的绝对值相等，这就是判断依据</p>
+</li>
+</ol>
+<blockquote>
+<p>递归:(‘递’是自己调用自己,’归’是逐层返回),递归在某种程度上可视为for循环</p>
+</blockquote>
+<p>四，代码</p>
+
+<pre><code>int c[10] = {0}, //用一维数组存放每个皇后行列(x,y)值,下标是x，元素值是y
+         cnt = 0;
+
+/*递归按行for循环按列遍历*/
+void Q8(int r)
+{
+    if (r == 8)//一次搜索成功
+    {
+        ++cnt; //解的个数
+        return;
+    }
+    for (int i = 0; i&lt;n; ++i)//按列搜索，即该行上的点试一遍
+    {
+        c[r] = i;//标记遍历
+        int tag = 1;
+        for (int j=0; j&lt;r;j++)
+            //判断在同列或斜线上
+            if (c[r]==c[j]||r-j==c[r]-c[j]||r-j==c[j]-c[r]){
+                tag=0; 
+                break;
+            }
+        if (tag)//当前行有解继续深入递归(继续下一行) 
+            Q8(r + 1);
+    }
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/排序小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/23/排序小结/" itemprop="url">排序小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T22:16:14+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/23/排序小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/23/排序小结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2018/05/23/排序小结/2.jpg" alt="导图"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/归并排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1690,282 +1991,11 @@ void ShellSort(int sort[], int N)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/test3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="x566">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="x566">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/26/test3/" itemprop="url">关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T23:32:53+08:00">
-                2018-04-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/26/test3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/26/test3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助<br>   Node.js是用来做什么的？<br>        它一种javascript的运行环境，能够使得javascript脱离浏览器运行<br>   Git是什么？<br>    git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方)<br>   大家可以参考一下：<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000</a><br><a href="http://blog.jobbole.com/111187/" target="_blank" rel="noopener">http://blog.jobbole.com/111187/</a></p>
-<p>   总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了</p>
-<p>   以下不写出完整过程，仅写出一些关键点<br>   1  首先是安装Node.js和Git<br>   2  在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务)<br>   3  (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次<br>   4  匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客<br>   5  配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分<br>   6  每个参数后基本都有空格<br>   7  个别hexo官方的主题可能会无法显示<br>   8  标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚<br>   9  评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理<br>   10 换电脑以后怎么继续使用？<br>       答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥)<br>   11 hexo的使用可以参考官方文档: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
-<p>附：Next主题使用:   <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>    如何发布第一篇文章: <a href="https://www.jianshu.com/p/2c9f0b3b2b0e" target="_blank" rel="noopener">https://www.jianshu.com/p/2c9f0b3b2b0e</a><br>    Lean Clond: <a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="x566">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="x566">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/25/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T20:55:51+08:00">
-                2018-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/25/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/25/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2011,7 +2041,7 @@ void ShellSort(int sort[], int N)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

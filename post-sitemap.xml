@@ -8,7 +8,15 @@
 
     <url>
         <loc>http://yoursite.com/2019/09/23/Java_problem1/</loc>
-        <lastmod>2019-09-27T02:32:17.224Z</lastmod>
+        <lastmod>2019-09-27T02:42:06.861Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/2019/09/27/Java_problem6/</loc>
+        <lastmod>2019-09-27T02:35:19.838Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

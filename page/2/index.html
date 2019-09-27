@@ -309,6 +309,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/归并排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/归并排序/" itemprop="url">归并排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T19:55:59+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/12/归并排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/12/归并排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表</p>
+<p>归并排序的基本思想:</p>
+<blockquote>
+</blockquote>
+<p>将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个长度为2的有序子表，再将这n/2个长度为2的有序子表合并为n/4个长度为4的有序子表，以此类推直至合并为长度为n的有序表</p>
+<p>例如:</p>
+<pre><code>(12,15,30,80,100,46,78,33,90,86,64,55,120,230,45）
+
+([12][15][30][80][100][46][78][33][90][86][64][55][120][230] [45])
+   |——|    |——|     |——|    |——|    |——|    |——|     |——|     |
+( [12 15] [30 80] [46 100] [33 78] [86 90] [55 64] [120 230] [45])
+       |————|           |————|          |————|           |————|
+(  [12 15 30 80]    [33 46 78 100]  [55 64 86 90]   [45 120 230] )
+...
+</code></pre><p>完成这个归并过程一般分为2步:</p>
+<ol>
+<li>划分原表</li>
+<li>归并子表</li>
+</ol>
+<p>1&gt;划分原表(利用递归)</p>
+<pre><code>/*用不同的Al我们可以对数组中自己想要的区间排序,这里可以和快速排序与二叉树的
+遍历对比,递归的顺序不同了，归并是先划分，快排是先排后划分，请仔细体会两者差异*/
+void mergeSort(int arr[], int Al, int Ar)
+{
+    if (Al &lt; Ar)
+    {
+        int m = Al + (Ar - Al)/2;
+        mergeSort(arr,Al,m);    //划分左半个数组
+        mergeSort(arr,m+1,Ar);  //划分右半个数组
+        merge(arr,Al,m,Ar);
+    }
+}
+/*以上类似二叉树的后续遍历，只要还有子表的长度大于一，就会一直划分*/
+/*递归是个巧妙的过程，比较难理解可以画图分析*/
+</code></pre><p>2&gt;归并子表</p>
+<pre><code>/*这个函数并不神秘，其实就是两个有序集合的合并*/
+void merge(int arr[],int Al,int m,int Ar)
+{
+    int i, j, k;
+    int n1 = m - Al + 1;//左半边元素个数
+    int n2 = Ar - m;    //右半边元素个数
+
+    /*建立临时数组*/
+    int *L = new int[n1], *R = new int[n2];
+
+    /*将原数列数据填充到两个临时数组*/
+    for ( i = 0; i &lt; n1; i++)
+        L[i] = arr[Al+i];
+    for ( j = 0; j &lt; n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    /*将临时数组处理后合并回去*/
+    i = 0;
+    j = 0;
+    k = Al;
+    while ( i&lt;n1 &amp;&amp; j&lt;n2)
+    {
+        if (L[i] &lt;= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    /*将余下的元素填充*/
+    while (i &lt; n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j &lt; n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+
+    delete []L;
+    delete []R;
+}
+</code></pre><p>代码参考自:<a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/</a><br>这是一个学习各种算法的好网站(●’◡’●)</p>
+<p>归并排序动态视频演示推荐:<a href="https://www.bilibili.com/video/av18980253" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980253</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/堆排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1792,7 +2011,7 @@ void ShellSort(int sort[], int N)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

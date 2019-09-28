@@ -24,7 +24,21 @@
 
     <url>
         <loc>http://yoursite.com/tags/java-base/</loc>
-        <lastmod>2019-09-27T13:56:34.393Z</lastmod>
+        <lastmod>2019-09-28T03:06:15.023Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/cpp-base/</loc>
+        <lastmod>2019-09-28T08:24:27.726Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://yoursite.com/tags/cpp-algorithm/</loc>
+        <lastmod>2019-09-28T08:26:11.931Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

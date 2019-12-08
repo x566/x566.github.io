@@ -107,7 +107,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'x566'
+      author: '博志'
     },
     algolia: {
       applicationID: '',
@@ -305,6 +305,181 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/JavaIO_简记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/JavaIO_简记/" itemprop="url">Java_IO简记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T17:03:24+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/10/JavaIO_简记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/10/JavaIO_简记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="java类的构造器"><a href="#java类的构造器" class="headerlink" title="java类的构造器"></a>java类的构造器</h1><p>有构造器：直接使用new xx()可以创建实例</p>
+<p>无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类</p>
+<h1 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h1><ol>
+<li>static String pathSeparator 路径分隔符 Windows(;)        Linux(:)</li>
+<li>static char pathSeparatorChar 1的字符型</li>
+<li>static char Separator 名称分隔符 ()</li>
+<li><p>static char separatorChar  3的字符型</p>
+<pre><code>//以下三种写法都能正确请求到文件
+//String temp = &quot;C:&quot;+File.separator+&quot;out.txt&quot;;//文件不存在会新建一个没有后缀的空文件，但有些系统保留的文件名无法用于创建（如操作系统的设备名con）
+//temp = &quot;C:/out.txt&quot;
+//temp = &quot;C:\\out.txt&quot;        
+
+File f = new File(temp);
+</code></pre><h1 id="字符集与乱码"><a href="#字符集与乱码" class="headerlink" title="字符集与乱码"></a>字符集与乱码</h1><p>乱码原因：</p>
+</li>
+<li><p>因为初始化String实例时给的字节数组长度不是字节数组长度（如定长unicode四个汉字应该是8个字节，结果给String在初始化时传的长度是7个，那么最后一个字符很可能乱码）</p>
+</li>
+<li><p>编码与解码用的字符集不统一</p>
+<pre><code>String msg = new String(&quot;姓名生命使命&quot;);
+byte[] by = msg.getBytes();//编码，这里可以指定编码格式，3有解释
+
+String str = new String(by,0,by.length);
+System.out.println(str);
+str = new String(by,0,by.length-1);
+System.out.println(str);
+
+System.out.println(&quot;------------&quot;);
+str = new String(by,0,by.length,&quot;utf8&quot;);//解码
+System.out.println(str);
+str = new String(by,0,by.length,&quot;gbk&quot;);//解码
+System.out.println(str);
+</code></pre></li>
+</ol>
+<pre><code>/*运行结果，工程默认使用了GBK*/
+姓名生命使命
+姓名生命使?
+------------
+???????????
+姓名生命使命
+</code></pre><p>3.另外getByte()方法可以指定编码格式，如：</p>
+<pre><code>msg.getBytes()；
+msg.getBytes(&quot;GBK&quot;)；
+msg.getBytes(&quot;UTF-16BE&quot;)；
+</code></pre><h1 id="字节流与字符流"><a href="#字节流与字符流" class="headerlink" title="字节流与字符流"></a>字节流与字符流</h1><p>字节流操作的对象是字节byte[]，<br>字符流操作的对象是字符char[].(另外字符输出流还可以使用write.append()追加输出内容)</p>
+<h1 id="节点流与处理流"><a href="#节点流与处理流" class="headerlink" title="节点流与处理流"></a>节点流与处理流</h1><p>一般以File，ByteArray前缀的流是节点流<br>处理流底层是节点流，处理流的目的是简化操作提高效率，缓冲流关闭时会自动关闭它里边的节点流，所以不需要再次关闭缓冲流，缓冲流也分字节缓冲流和字符缓冲流</p>
+<h1 id="字节数组流"><a href="#字节数组流" class="headerlink" title="字节数组流"></a>字节数组流</h1><p>ByteArrayInputStream,ByteArrayOutputStream(不需要指定目的地，有java开辟内存存储，有新增方法，建议不使用多态来新建实例)，并且他们不需要调用close()释放资源，它们不需要通知操作系统关闭文件，它们的close()函数体是空的<br>        InputStream is = new ByteArrayInputStream(byte[]);<br>        ByteArrayOutputStream os = new ByteArrayOutputStream();//无目的地</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1793,173 +1968,6 @@ public class Student {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/Java_problem1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="x566">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="x566">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/23/Java_problem1/" itemprop="url">JavaProblem1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T20:48:58+08:00">
-                2019-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/23/Java_problem1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/Java_problem1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-JAVA精度问题-double-float变量如何比较相等"><a href="#1-JAVA精度问题-double-float变量如何比较相等" class="headerlink" title="1.JAVA精度问题 double,float变量如何比较相等?"></a>1.JAVA精度问题 double,float变量如何比较相等?</h2><p>解决办法<br>  java.math包下面的两个有用的类：</p>
-<pre><code>BigInteger和BigDecimal，这两个类可以处理任意长度的数值。
-
-BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。
-</code></pre><h2 id="2-字符串连接符："><a href="#2-字符串连接符：" class="headerlink" title="2.字符串连接符："></a>2.字符串连接符：</h2><pre><code>“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串)
-
-int a=12;
-System.out.println(&quot;a=&quot;+a);//输出结果: a=12
-</code></pre><h2 id="3-变量类型误区"><a href="#3-变量类型误区" class="headerlink" title="3.变量类型误区"></a>3.变量类型误区</h2><pre><code>1.boolean 是bit类型的它只占一位存储空间
-2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！
-3.byte是一字节，short是两字节
-</code></pre><h2 id="4-自动类型转换"><a href="#4-自动类型转换" class="headerlink" title="4.自动类型转换"></a>4.自动类型转换</h2><pre><code>自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。
-</code></pre><p><img src="http://boze.club//java_img_1/transform.png" alt=""></p>
-<pre><code>可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。
-</code></pre><h2 id="5-带标签的break和continue"><a href="#5-带标签的break和continue" class="headerlink" title="5.带标签的break和continue"></a>5.带标签的break和continue</h2><pre><code> goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。
-
-  “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。
-
-  在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。
-
- //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数)
- public class Test18 
- {
-    public static void main(String args[]) 
-    {
-        outer: for (int i = 101; i &lt; 150; i++) 
-    {
-        for (int j = 2; j &lt; i / 2; j++) 
-        {
-            if (i % j == 0)
-                continue outer;
-        }
-        System.out.print(i + &quot;  &quot;);
-    }
-}
-</code></pre><p>}</p>
-<h2 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK,JRE,JVM"></a>JDK,JRE,JVM</h2><p><img src="http://boze.club//java_img_1/JDK_JRE_JVM.png" alt=""></p>
-<p>部分转自：<a href="https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2010,7 +2018,7 @@ System.out.println(&quot;a=&quot;+a);//输出结果: a=12
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2023,7 +2031,7 @@ System.out.println(&quot;a=&quot;+a);//输出结果: a=12
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

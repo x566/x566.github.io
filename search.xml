@@ -1,186 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[cpp_algorithm_1]]></title>
-    <url>%2F2019%2F09%2F28%2Fcpp_problem2%2F</url>
-    <content type="text"><![CDATA[1.数字黑洞2.最大公约数3.最小公倍数4.素数和素数表]]></content>
-      <tags>
-        <tag>cpp_algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Java_Problem8_Arrays类]]></title>
-    <url>%2F2019%2F09%2F27%2FJava_problem8_arrays%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[Java内部类1.内部类的概念一般情况，我们把类定义成独立的单元。有些情况下，我们把一个类放在另一个类的内部定义，称为内部类(innerclasses)。 内部类可以使用public、default、protected 、private以及static修饰。而外部顶级类(我们以前接触的类)只能使用public和default修饰。 注意 内部类只是一个编译时概念，一旦我们编译成功，就会成为完全不同的两个类。对于一个名为Outer的外部类和其内部定义的名为Inner的内部类。编译完成后会出现Outer.class和Outer$Inner.class两个类的字节码文件。所以内部类是相对独立的一种存在，其成员变量/方法名可以和外部类的相同。 内部类的作用： 内部类提供了更好的封装。只能让外部类直接访问，不允许同一个包中的其他类直接访问。 内部类可以直接访问外部类的私有属性，内部类被当成其外部类的成员。 但外部类不能访问内部类的内部属性。 接口只是解决了多重继承的部分问题，而内部类使得多重继承的解决方案变得更加完整。 内部类的使用场合： 由于内部类提供了更好的封装特性，并且可以很方便的访问外部类的属性。所以，在只为外部类提供服务的情况下可以优先考虑使用内部类。 使用内部类间接实现多继承：每个内部类都能独立地继承一个类或者实现某些接口，所以无论外部类是否已经继承了某个类或者实现了某些接口，对于内部类没有任何影响。 内部类的分类在Java中内部类主要分为成员内部类(非静态内部类、静态内部类)、匿名内部类、局部内部类。且成员内部类(可以使用private、default、protected、public任意进行修饰。 类文件：外部类$内部类.class) 一：非静态内部类(外部类里使用非静态内部类和平时使用其他类没什么不同)i.非静态内部类必须寄存在一个外部类对象里。因此，如果有一个非静态内部类对象那么一定存在对应的外部类对象。非静态内部类对象单独属于外部类的某个对象。 ii. 非静态内部类可以直接访问外部类的成员，但是外部类不能直接访问非静态内部类成员。 iii. 非静态内部类不能有静态方法、静态属性和静态初始化块。 iv. 外部类的静态方法、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例。 v. 成员变量访问要点： 内部类里方法的局部变量：变量名。 内部类属性：this.变量名。 外部类属性：外部类名.this.变量名 二：静态内部类i. 定义方式： static class ClassName { //类体 } ii. 使用要点： 当一个静态内部类对象存在，并不一定存在对应的外部类对象。 因此，静态内部类的实例方法不能直接访问外部类的实例方法。 静态内部类看做外部类的一个静态成员。 因此，外部类的方法中可以通过：“静态内部类.名字”的方式访问静态内部类的静态成员，通过 new 静态内部类()访问静态内部类的实例。 三：匿名内部类注意：适合那种只需要使用一次的类。比如：键盘监听操作等等。 this.addWindowListener(new WindowAdapter(){ @Override public void windowClosing(WindowEvent e) { System.exit(0); } }); this.addKeyListener(new KeyAdapter(){ @Override public void keyPressed(KeyEvent e) { myTank.keyPressed(e); } @Override public void keyReleased(KeyEvent e) { myTank.keyReleased(e); } }); 匿名内部类没有访问修饰符。 匿名内部类没有构造方法。因为它连名字都没有那又何来构造方法呢。 四：局部内部类还有一种内部类，它是定义在方法内部的，作用域只限于本方法，称为局部内部类。 局部内部类的的使用主要是用来解决比较复杂的问题，想创建一个类来辅助我们的解决方案，到那时又不希望这个类是公共可用的，所以就产生了局部内部类。局部内部类和成员内部类一样被编译，只是它的作用域发生了改变，它只能在该方法中被使用，出了该方法就会失效。局部内部类在实际开发中应用很少。 总结：public class Test2 { public void show() { //作用域仅限于该方法 class Inner { public void fun() { System.out.println(&quot;helloworld&quot;); } } new Inner().fun(); } public static void main(String[] args) { new Test2().show(); } } class tt{} //供继承另一个类 public class outclass { /*成员变量*/ int out; static outclass.static_inner inner3; /*成员方法*/ void outprint(MyInt_1 mT){ System.out.println(&quot;outclass&quot;); } void outprint(){} public static void main(String args[]) { outclass.innerclass inner = new outclass().new innerclas();//非静态内部类实例 outclass.static_inner inner2 = new outclass.static_inner();//静态内部类实例 inner3 = new outclass.static_inner(); outclass ma = new outclass(); ma.outprint( new MyInt_1()//匿名内部类 { @Override public void In_print() { } }); } /*非静态内部类*/ public class innerclass extends tt implements MyInt_1 //内部类可以实现自己的方法 { void print() { System.out.println(&quot;Inner&quot;); System.out.println(out); //非静态内部类能直接访问外部类的成员变量 outprint(); //非静态内部类能直接访问外部类的方法 outclass.this.outprint(); //在内部类中使用外部类的方法 } @Override public void In_print(){} } /*静态内部类*/ static class static_inner { void print(){ System.out.println(&quot;static_inner&quot;); } } }]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Java_Problem7_Arrays类]]></title>
-    <url>%2F2019%2F09%2F27%2FJava_problem7_%E5%86%85%E9%83%A8%E7%B1%BB%2F</url>
-    <content type="text"><![CDATA[java.util.Arrays类1.toStringArrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Java_Problem6]]></title>
-    <url>%2F2019%2F09%2F27%2Fjava_problem6%2F</url>
-    <content type="text"><![CDATA[String类常用方法1.String类和常量池在Java的内存分析中，我们会经常听到关于“常量池”的描述，实际上常量池也分了以下三种： 全局字符串常量池(String Pool) 全局字符串常量池中存放的内容是在类加载完成后存到String Pool中的，在每个VM中只有一份，存放的是字符串常量的引用值(在堆中生成字符串对象实例)。 class文件常量池(Class Constant Pool) class常量池是在编译的时候每个class都有的，在编译阶段，存放的是常量(文本字符串、final常量等)和符号引用。 运行时常量池(Runtime Constant Pool) 运行时常量池是在类加载完成之后，将每个class常量池中的符号引用值转存到运行时常量池中，也就是说，每个class都有一个运行时常量池，类在解析之后，将符号引用替换成直接引用，与全局常量池中的引用值保持一致。]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaProblem5]]></title>
-    <url>%2F2019%2F09%2F25%2Fjava_problem5%2F</url>
-    <content type="text"><![CDATA[super关键字 super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。 使用super调用普通方法，语句没有位置限制，可以在子类中随便调用。 若是构造方法的第一行代码没有显式的调用super(…)或者this(…);那么Java默认都会调用super(),含义是调用父类的无参数构造方法。这里的super()可以省略。 包包机制是Java中管理类的重要手段。 开发中，我们会遇到大量同名的类，通过包我们很容易对解决类重名的问题，也可以实现对类的有效管理。 包对于类，相当于文件夹对于文件的作用。 多态多态指的是同一个方法调用，由于对象不同可能会有不同的行为。现实生活中，同一个方法，具体实现会完全不同。 比如：同样是调用人的“休息”方法，张三是睡觉，李四是旅游，高淇老师是敲代码，数学教授是做数学题; 同样是调用人“吃饭”的方法，中国人用筷子吃饭，英国人用刀叉吃饭，印度人用手吃饭。 多态的要点： 1. 多态是方法的多态，不是属性的多态(多态与属性无关)。 2. 多态的存在要有3个必要条件：继承，方法重写，父类引用指向子类对象。 3. 父类引用指向子类对象后，用该父类引用调用子类重写的方法，此时多态就出现了。 4. 但是多态也有弊端，就是无法调用子类特有的功能，比如，我不能使用父类的引用变量调用Dog类特有的seeDoor()方法。 那如果我们就想使用子类特有的功能行不行呢?行!这就是我们下一章节所讲的内容：对象的转型 对象的转型(casting)父类引用指向子类对象，我们称这个过程为向上转型，属于自动类型转换。 向上转型后的父类引用变量只能调用它编译类型的方法，不能调用它运行时类型的方法。这时，我们就需要进行类型的强制转换，我们称之为向下转型! 在向下转型过程中，必须将引用变量转成真实的子类类型(运行时类型)否则会出现类型转换异常 为了避免出现这种异常，我们可以使用instanceof运算符（判断对象是否是类的实例）进行判断 final 修饰变量: 被他修饰的变量不可改变。一旦赋了初值，就不能被重新赋值。 final int MAX_SPEED = 120; 修饰方法：该方法不可被子类重写。但是可以被重载! final void study(){} 修饰类: 修饰的类不能被继承。比如：Math、String等。 final class A {} 部分转自：https://www.sxt.cn]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[cpp_problem_1]]></title>
-    <url>%2F2019%2F09%2F25%2Fcpp_problem1%2F</url>
-    <content type="text"><![CDATA[1.round函数Round函数返回一个数值，该数值是按照指定的小数位数进行四舍五入运算的结果。 IEEE754 https://blog.csdn.net/crjmail/article/details/79723051 https://www.cnblogs.com/HDK2016/p/10506083.html]]></content>
-      <tags>
-        <tag>cpp_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaProblem4]]></title>
-    <url>%2F2019%2F09%2F24%2FJava_problem4%2F</url>
-    <content type="text"><![CDATA[静态初始化块构造方法用于对象的初始化!静态初始化块，用于类的初始化操作!在静态初始化块中不能直接访问非static成员。 注意事项： 静态初始化块执行顺序(学完继承再看这里)： 1. 上溯到Object类，先执行Object的静态初始化块，再向下执行子类的静态初始化块，直到我们的类的静态初始化块为止。 2. 构造方法执行顺序和上面顺序一样!! package我们通过package实现对类的管理，package的使用有两个要点： 1. 通常是类的第一句非注释性语句。 2. 包名：域名倒着写即可，再加上模块名，便于内部管理类。 package的命名举例 com.sun.test; com.oracle.test; cn.sxt.gao.test; cn.sxt.gao.view; cn.sxt.gao.view.model; 注意事项： 1. 写项目时都要加包，不要使用默认包。 2. com.gao和com.gao.car，这两个包没有包含关系，是两个完全独立的包。只是逻辑上看起来后者是前者的一部分。 package的使用 package cn.sxt;public class Test { public static void main(String[] args) { System.out.println(“helloworld”); }} 导入类import 如果我们要使用其他包的类，需要使用import导入，从而可以在本类中直接通过类名来调用，否则就需要书写类的完整包名和类名。import后，便于编写代码，提高可维护性。 注意要点： 1. Java会默认导入java.lang包下所有的类，因此这些类我们可以直接使用。 2. 如果导入两个同名的类，只能用包名+类名来显示调用相关类： java.util.Date date = new java.util.Date(); 静态导入(static import)是在JDK1.5新增加的功能，其作用是用于导入指定类的静态属性，这样我们可以直接使用静态属性。 静态导入的使用 package cn.sxt; //以下两种静态导入的方式二选一即可 import static java.lang.Math.*;//导入Math类的所有静态属性 import static java.lang.Math.PI;//导入Math类的PI属性 public class Test2 { public static void main(String [] args) { System.out.println(PI); System.out.println(random()); } } instanceof 运算符instanceof是二元运算符，左边是对象，右边是类；当对象是右面类或子类所创建对象时，返回true；否则，返回false。比如： 使用instanceof运算符进行类型判断 public class Test{ public static void main(String[] args) { Student s = new Student(&quot;高淇&quot;,172,&quot;Java&quot;); System.out.println(s instanceof Person); System.out.println(s instanceof Student); } } 两条语句的输出结果都是true。 补充 1.object,getClass()//取得对象类型 2.如果想要自定义两个对象（不是一个对象，即这两个对象分别有自己的一块内存）是否相等的规则，那么必须在对象的类定义中重写equals()方法，如果不重写equals()方法的话，默认的比较方式是比较两个对象是否为同一个对象。注：有些类比如String类已经为我们重写好了equals()方法（此条引用自：https://blog.csdn.net/u013063153/article/details/78808923） 》 部分转自：https://www.sxt.cn]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaProblem3]]></title>
-    <url>%2F2019%2F09%2F24%2FJava_problem3%2F</url>
-    <content type="text"><![CDATA[通用的分代垃圾回收机制 分代垃圾回收机制，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。我们将对象分为三种状态：年轻代、年老代、持久代。JVM将堆内存划分为 Eden、Survivor 和 Tenured/Old 空间。 1. 年轻代 所有新生成的对象首先都是放在Eden区。 年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象，对应的是Minor GC，每次 Minor GC 会清理年轻代的内存，算法采用效率较高的复制算法，频繁的操作，但是会浪费内存空间。当“年轻代”区域存放满对象后，就将对象存放到年老代区域。 2. 年老代 在年轻代中经历了N(默认15)次垃圾回收后仍然存活的对象，就会被放到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。年老代对象越来越多，我们就需要启动Major GC和Full GC(全量回收)，来一次大扫除，全面清理年轻代区域和年老代区域。 3. 持久代 用于存放静态文件，如Java类、方法等。持久代对垃圾回收没有显著影响。 ·Minor GC: 用于清理年轻代区域。Eden区满了就会触发一次Minor GC。清理无用对象，将有用对象复制到“Survivor1”、“Survivor2”区中(这两个区，大小空间也相同，同一时刻Survivor1和Survivor2只有一个在用，一个为空) ·Major GC： 用于清理老年代区域。 ·Full GC： 用于清理年轻代、年老代区域。 成本较高，会对系统性能产生影响。 垃圾回收过程： 1、新创建的对象，绝大多数都会存储在Eden中， 2、当Eden满了（达到一定比例）不能创建新对象，则触发垃圾回收（GC），将无用对象清理掉， 然后剩余对象复制到某个Survivor中，如S1，同时清空Eden区 3、当Eden区再次满了，会将S1中的不能清空的对象存到另外一个Survivor中，如S2， 同时将Eden区中的不能清空的对象，也复制到S1中，保证Eden和S1，均被清空。 4、重复多次(默认15次)Survivor中没有被清理的对象，则会复制到老年代Old(Tenured)区中， 5、当Old区满了，则会触发一个一次完整地垃圾回收（FullGC），之前新生代的垃圾回收称为（minorGC） JVM调优在对JVM调优的过程中，很大一部分工作就是对于Full GC的调节。有如下原因可能导致Full GC： 1.年老代(Tenured)被写满 2.持久代(Perm)被写满 3.System.gc()被显式调用（程序建议GC启动，不是调用GC） 4.上一次GC之后Heap的各域分配策略动态变化 部分转自：https://www.sxt.cn]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaProblrm2]]></title>
-    <url>%2F2019%2F09%2F24%2FJava_problem2%2F</url>
-    <content type="text"><![CDATA[垃圾回收原理和算法·内存管理 Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。 对象空间的分配：使用new关键字创建对象即可 对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。 ·垃圾回收过程 任何一种垃圾回收算法一般要做两件基本事情： 1. 发现无用的对象 2. 回收无用对象占用的内存空间。 垃圾回收机制保证可以将“无用的对象”进行回收。无用的对象指的就是没有任何变量引用该对象。Java的垃圾回收器通过相关算法发现无用对象，并进行清除和整理。 ·垃圾回收相关算法 1. 引用计数法 堆中每个对象都有一个引用计数。被引用一次，计数加1. 被引用变量值变为null，则计数减1，直到计数为0，则表示变成无用对象。优点是算法简单，缺点是“循环引用的无用对象”无法别识别。 循环引用示例: public class Student { String name; Student friend; public static void main(String[] args) { Student s1 = new Student(); Student s2 = new Student(); s1.friend = s2; s2.friend = s1; s1 = null; s2 = null; } } s1和s2互相引用对方，导致他们引用计数不为0，但是实际已经无用，但无法被识别。 2. 引用可达法(根搜索算法) 程序把所有的引用关系看作一张图，从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。 本文引用：https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JavaProblem1]]></title>
-    <url>%2F2019%2F09%2F23%2FJava_problem1%2F</url>
-    <content type="text"><![CDATA[1.JAVA精度问题 double,float变量如何比较相等?解决办法 java.math包下面的两个有用的类： BigInteger和BigDecimal，这两个类可以处理任意长度的数值。 BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。 2.字符串连接符：“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串) int a=12; System.out.println(&quot;a=&quot;+a);//输出结果: a=12 3.变量类型误区1.boolean 是bit类型的它只占一位存储空间 2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！ 3.byte是一字节，short是两字节 4.自动类型转换自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。 可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。 5.带标签的break和continue goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。 “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。 在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。 //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数) public class Test18 { public static void main(String args[]) { outer: for (int i = 101; i &lt; 150; i++) { for (int j = 2; j &lt; i / 2; j++) { if (i % j == 0) continue outer; } System.out.print(i + &quot; &quot;); } } } JDK,JRE,JVM 部分转自：https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html]]></content>
-      <tags>
-        <tag>java_base</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[关于误差]]></title>
-    <url>%2F2019%2F09%2F21%2Fc1%2F</url>
-    <content type="text"><![CDATA[浮点数的比较 经常，浮点数经过运算后会发生改变如3.14变成3.14000001，这样的误差会逐渐积累，那么在判断浮点数相等时就没办法了？ 这种现象无法避免，所以实际中我们允许一定的误差，那么在判断两数相等时只要判断另一数是否在允许的区间内即可 const double eps = 1e-8;//10的负8次方，大多数情况下不会误判也不会漏判 const double Pi acos((double)-1.0) #define EQU(a,b) (fabs((a)-(b)) &lt; (eps))//等于 #define More(a,b) ((a)-(b) &gt; (eps)) //大于 #define Less(a,b) ((a)-(b) &lt; (-eps)) //小于 #define MoreEqu(a,b) ((a)-(b) &gt; (-eps)) //大于等于 #define LessEqu(a,b) ((a)-(b) &lt; (eqs)) //小于等于 if(EQU(a,y)) { printf(&quot;Hello&quot;); } 1.由于精度问题，经过大量运算，变量中存储的0可能是很小的负数，这时候开平方会出错asin(x),acos(x),x=1||x=-1时要检查是否在定义域内 2.编译环境影响0.00可能会变成-0.00,这时需要将-0.00存放到字符串中再与-0.00比较如果成功，加上eps修正为0.00 参考：曾磊《算法笔记》]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[初识正则表达式和元字符]]></title>
-    <url>%2F2019%2F09%2F17%2FRegex%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF1%2F</url>
-    <content type="text"><![CDATA[我又回来啦，加油！ 先认识两个重要的符号 *任意长度的字符串 （例：*t.exe,表示所有以结尾的exe文件） ?任意长度为1的字符 (例：?.exe，)]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[八皇后问题-易懂]]></title>
-    <url>%2F2018%2F06%2F02%2F%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E6%98%93%E6%87%82%2F</url>
-    <content type="text"><![CDATA[一:八皇后问题八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：&gt;在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都&lt;不能处于同一行、同一列或同一斜线上&gt;，问有多少种摆法。 高斯认为有76种方案。1854年在柏林的象棋杂志上不同的作者发表了40种不同的解，后来有人用图论的方法解出92种结果。计算机发明后，有多种计算机语言可以解决此问题。二:解题思路:回溯法遍历&gt;回溯法是什么?&gt;&gt;答：一句话:”不撞南墙不回头”,&gt;&gt;这是什么意思呢？&gt;&gt;举个例子：有一个迷宫游戏，只有一个出口一个入口，迷宫很简单，在整个迷宫唯一的分岔点处有三条路可走，只有一条是正确的，其它两条是死路，在这里我们随机选择一条路走，如果一次选中我就不说什么了(感觉很可能是人民币玩家)，如果我们选择的是死路，这时我们只要走回来，并给它做记号，下次不走就行了，这时只要从剩下的两条路二选一，如果第二次你还是走了死路(真够惨的)怎么办?我们同样给这条路做记号，下次不走就是了(反正我们的迷宫很安全又没有陷阱),最后走剩下那条路就完成了。&gt;总结:我们解八皇后问题的过程是一个用计算机尝试的过程，先放棋子后判断是否合法(比如是否一条线上….)，如果不合法我们就退回来尝试另一种办法，直到找到我们迷宫出口。三:正式解题: 在题目条件&lt;不能处于同一行、同一列或同一斜线上&gt;得知，八个皇后一定分别是在八个不同的行或八个不同的列上的，写代码尝试的时候直接按行或列放置8次，而不是每个格子都尝试放置，这能省去不少计算 如果以递归来实现，假如递归是按行遍历，则for循环按列遍历(相当于两个for循环遍历棋盘) 合法性判断:同行同列好判断，同斜线呢? 判断同一斜线我们采用”坐标法”，即把平面直角坐标系抽象到棋盘上，设棋盘的行为x轴，列为y轴，例子:假设棋盘第2行第1列有皇后，则x=2，y=1，如果同时构造另一个点x=3,y=2上有皇后，使这两个点在一条直线上，你能看出什么规律吗?答案:横纵坐标之差的绝对值相等，这就是判断依据 递归:(‘递’是自己调用自己,’归’是逐层返回),递归在某种程度上可视为for循环 四，代码 int c[10] = {0}, //用一维数组存放每个皇后行列(x,y)值,下标是x，元素值是y cnt = 0; /*递归按行for循环按列遍历*/ void Q8(int r) { if (r == 8)//一次搜索成功 { ++cnt; //解的个数 return; } for (int i = 0; i&lt;n; ++i)//按列搜索，即该行上的点试一遍 { c[r] = i;//标记遍历 int tag = 1; for (int j=0; j&lt;r;j++) //判断在同列或斜线上 if (c[r]==c[j]||r-j==c[r]-c[j]||r-j==c[j]-c[r]){ tag=0; break; } if (tag)//当前行有解继续深入递归(继续下一行) Q8(r + 1); } }]]></content>
-      <tags>
-        <tag>interesting_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[排序小结]]></title>
-    <url>%2F2018%2F05%2F23%2F%E6%8E%92%E5%BA%8F%E5%B0%8F%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[归并排序]]></title>
-    <url>%2F2018%2F05%2F12%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表 归并排序的基本思想: 将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个长度为2的有序子表，再将这n/2个长度为2的有序子表合并为n/4个长度为4的有序子表，以此类推直至合并为长度为n的有序表 例如: (12,15,30,80,100,46,78,33,90,86,64,55,120,230,45） ([12][15][30][80][100][46][78][33][90][86][64][55][120][230] [45]) |——| |——| |——| |——| |——| |——| |——| | ( [12 15] [30 80] [46 100] [33 78] [86 90] [55 64] [120 230] [45]) |————| |————| |————| |————| ( [12 15 30 80] [33 46 78 100] [55 64 86 90] [45 120 230] ) ... 完成这个归并过程一般分为2步: 划分原表 归并子表 1&gt;划分原表(利用递归) /*用不同的Al我们可以对数组中自己想要的区间排序,这里可以和快速排序与二叉树的 遍历对比,递归的顺序不同了，归并是先划分，快排是先排后划分，请仔细体会两者差异*/ void mergeSort(int arr[], int Al, int Ar) { if (Al &lt; Ar) { int m = Al + (Ar - Al)/2; mergeSort(arr,Al,m); //划分左半个数组 mergeSort(arr,m+1,Ar); //划分右半个数组 merge(arr,Al,m,Ar); } } /*以上类似二叉树的后续遍历，只要还有子表的长度大于一，就会一直划分*/ /*递归是个巧妙的过程，比较难理解可以画图分析*/ 2&gt;归并子表 /*这个函数并不神秘，其实就是两个有序集合的合并*/ void merge(int arr[],int Al,int m,int Ar) { int i, j, k; int n1 = m - Al + 1;//左半边元素个数 int n2 = Ar - m; //右半边元素个数 /*建立临时数组*/ int *L = new int[n1], *R = new int[n2]; /*将原数列数据填充到两个临时数组*/ for ( i = 0; i &lt; n1; i++) L[i] = arr[Al+i]; for ( j = 0; j &lt; n2; j++) R[j] = arr[m + 1 + j]; /*将临时数组处理后合并回去*/ i = 0; j = 0; k = Al; while ( i&lt;n1 &amp;&amp; j&lt;n2) { if (L[i] &lt;= R[j]) { arr[k] = L[i]; i++; } else { arr[k] = R[j]; j++; } k++; } /*将余下的元素填充*/ while (i &lt; n1) { arr[k] = L[i]; i++; k++; } while (j &lt; n2) { arr[k] = R[j]; j++; k++; } delete []L; delete []R; } 代码参考自:https://www.geeksforgeeks.org/这是一个学习各种算法的好网站(●’◡’●) 归并排序动态视频演示推荐:https://www.bilibili.com/video/av18980253]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[堆排序]]></title>
-    <url>%2F2018%2F05%2F12%2F%E5%A0%86%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[“堆排序”:就是利用堆来进行的一种排序 在了解堆排序前我们应了解以下几点: 当满足 ki &lt;= k2i 和 ki &lt;= k2i+1 或 ki &gt;= k2i 和 ki &gt;= k2i+1 时称为”堆” 第一点的含义是:每一结点均不大于或不小于其左右孩子节点的值，并且将根值最大的称为”大根堆”，小根堆则反之 堆排序的第一步就是创造如上两点所描述的”堆”，这和排序有何关系?这样的堆有什么特点? 解答第三点 我们建的堆类似如下,只要我们用一个循环每次把根选出来(即选出最大值或最小值)，依次填入一个数组，排序就完成了 100 80 90 70 60 65 55 30 50 概括:堆排序可以分为三步 第一步，从待排数列取元素构造一棵完全二叉树(还不是堆),然后将这棵完全二叉树”改造”为有序的”堆” 第二步，将根(最大/小值)输出 第三步，将刚才去掉了根的”堆”重新排列整理为新的”堆”,重复步骤二直至将所有元素输出 代码 “改造”函数:将二叉树改为有规律的”堆” void shif(int A[],int key,int m) //m是对序号不大于m的以key为根的子序列调整 { A[0] = A[key]; //A[0]元素作为临时变量保存根值 bool finish = false; int i = key, j = i*2; //i指示空位(树根),j指示左孩子 while ( j&lt;=m &amp;&amp; !finish)//i不是叶子结点且搜索为结束 { if ( j&lt;m &amp;&amp; A[j]&lt;A[j+1]) j = j + 1; //选出根key左右孩子中最大者 if (A[0] &gt;= A[j]) finish = true; //原根最大，此次调整结束 else { A[i] = A[j]; //值大的孩子节点上移 i = j; //继续向下(子树)筛选 j = j * 2; } } A[i] = A[0];//将原根值元素填到当前空位 代码 建初堆和添加循环 void HeapSort(int sort[],int n) { //第一部分建初堆的过程是从叶子结点往树根方向梳理的,i为各个子树的树根 //一颗有n个元素的二叉树有n/2个有孩子的子树(即前n/2个) for (int i = n/2; i &gt;= 1; i--) shif(sort,i,n); //建初堆后的排序是从树根往叶子结点方向筛选的(已经有序),每次循环排号一个数 for (int i = n; i &gt;= 2; i--) { swap(sort[1],sort[i]); shif(sort,1,i-1); //调整子序列sort[1]-sort[i-1]为堆 } } 以上描述比较抽象，现在引用B站两个排序过程动画帮助大家了解: https://www.bilibili.com/video/av18980178 https://www.bilibili.com/video/av12667435 本文参考了，张先宜编辑的&lt;&lt;数据结构&gt;&gt;第266-269页的部分内容]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[快速排序（此贴存在问题）]]></title>
-    <url>%2F2018%2F05%2F10%2F%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[今天带来的是大名鼎鼎的快速排序法，所谓快速排序法，是因为它的排序速度很快，在多种情下仍能保持着很高的效率 快速排序法，是一种基于比较的算法，基本思想是选定一个元素作为中间元素，我们的目的是使得比他小的元素归在它的左边，比他大的元素归在在它的右边，当前元素就会变成一个分界点把其它数分列在它的左右两边（例如： [8 16 5 35 12 20] (80) [90 110 85 105 100]）然后在对中间元素左右两边的数列进行同样的操作直到每个子数列仅含一个元素或没有元素，这就是整个排序的过程 总结：快速排序通过一趟操作将待排数列划分为左右两个部分，使得左边任一元素不大于右边任一元素，再分别对左右两部分进行同样的排序 由此可见，对数列进行元素选择和划分是关键，下面给出划分算法，这个算法对数列进行了划分，我们只需要对每个划分进行操作 void Quick_sort(int sort[], int be ,int end )//划分 { int i; if (be &lt; end)//集合至少有两个元素 { partition(sort,be,end,&amp;i); Quick_sort(sort,be,i-1); //左半部分 Quick_sort(sort,i+1,end); //右半部分 } } /*这个算法是递归的，大家可以和二叉树的递归遍历算法对比一下*/ 下面给出对每次划分进行操作的算法 void partition(int a[], int be, int end, int* cut) { int x = a[be],i = be,j = end; while (i!=j) { while (i &lt; j&amp;&amp;a[j] &gt; x) j--; if (i&lt;j) { a[i] = a[j]; i += 1; } while (i &lt; j&amp;&amp;a[i] &lt; x) i++; if (i&lt;j) { a[j] = a[i]; j -= 1; } } a[i] = x;//i==j *cut = i; } 例子：对(80 16 100 35 85 20 12 90 110 5 105) //从右边选取比中间元素80小的数放到左边,空位是80，但先不填入 ([] 16 100 35 85 20 12 90 110 5 105 8) 80&lt;--------------------------------| //从左边选取比中间元素80大的100放到右边 (8 16 100 35 85 20 12 90 110 5 []) |-----------------------&gt; //从右边选取比中间元素80小的5放到左边 (8 16 [] 35 85 20 12 90 110 5 100) &lt;--------------------| //从左边选取比中间元素80大的85放到右边 (8 16 5 35 85 20 12 90 110 [] 100) |--------------&gt; 最后： [8 16 5 35 12 20] (80) [90 110 85 105 100] 大家可以试试在自己的稿纸上进行推导 总结：平均时间复杂度为：O(knlog2n)k为常数，最坏的情况是每次选中的中间元素是其中最大或最小的元素，这时为O(n2) 平均性能上默认为目前最好的一种内部排序算法]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[计数排序]]></title>
-    <url>%2F2018%2F05%2F05%2F%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的 排序思想:先建立两个数组 第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4 第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组 排序步骤： 先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中 说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:https://www.bilibili.com/video/av18980575) 对count数组进行加法处理 count[i] = count[i] + count[i-1] 为什么要这么做?你会发现这个加法操作：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了) 将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座 将结果output[] 写入给待排数组 代码: void Counting_Sort(int sort[], int N) { int *output = new int[N];//分配中间数组 int count[10]; memset(count,0,sizeof(count));//将cout数组初始化为0 for (int i = 0;i &lt; 10; i++) //count数组存放sort数组每个元素的个数 if (sort[i]) ++count[sort[i]]; for (int i = 2; i &lt; 10; i++)//将cout数组进行加法处理，数组结果是表示当前位置 count[i] = count[i] + count[i - 1]; for (int i = 0; i &lt; N; i++)//0不计入排序,以sort内容为基础遍历,写入output数组 { output[count[sort[i]]-1] = sort[i];//sort和output的内容和下标是相反的 --count[sort[i]]; } for (int i = 0; i &lt; N; i++) sort[i] = output[i]; delete []output; } 总结: 时间复杂度时间复杂度是 O(n+K) k = range 在O(k)&lt;O(n*log(n))快于任何排序法 代码中 count[10]中的10是我测试用的，这个就是range各位替换就好]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[希尔排序]]></title>
-    <url>%2F2018%2F05%2F05%2F%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看 希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为基本有序从而减少时间复杂度 希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 即:(1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件,这个过程实际上就相当于简单插入排序后移数组的过程) 这里贴b站up主上传的希尔排序可视化视频，建议参考：https://www.bilibili.com/video/av17004970 下面贴代码: void ShellSort(int sort[], int N) { int tags ;//排序间隔,步长 int j = 0; for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间 { for (int i = tags; i < N; i++) //插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历 { j = i; while (j >= tags && sort[i] < sort[j - tags]) //一直朝前边插入，直到不能插入，即插入排序 { swap(sort[j],sort[j-tags]); j = j - tags; } } } } 时间复杂度大约是 O(n1.25)，空间复杂度是O(1) ，是不稳定排序]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[选择排序]]></title>
-    <url>%2F2018%2F05%2F03%2F%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[先将待排序列分为 已排序部分 和 未排序部分 选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完 void Selection_Sort(int sort[], int N) { int min = 0, j = 0; for (int i = 0; i &lt;= N - 1; i++) //外循环遍历待排数据 { min = sort[i]; for (int j = i; j &lt;= N-1; j++) //内循环挑选最小值 { if (min &gt; sort[j]) swap(min,sort[j]); sort[i] = min; } } } 结果 输入：5 3 1 4 2 1|5 3 4 2|1 2|5 4 3|1 2 3|5 4|1 2 3 4|5|时间复杂度是 O(n2) 空间复杂度是O(1) 是不稳定排序： 例：将括号中的数据(3h,5s,3d,1s)“以数字为基准”手动在稿纸上执行一次算法可以发现是不稳定的3h和3d的相对位置发生了变化 引用《挑战程序设计竞赛》的总结： 相比冒泡排序，冒泡排序法与选择排序法相比，一个从局部入手减少逆序元素，一个放眼大局逐个选取最小值，二者思路大部相同。但是他们又有着“通过i次外层循环，从数据中顺次求出i个最小值”的相同特征。相对地插入排序法是通过i次外层循环，之间将原数组的i个元素重新排序。另外，不含flag的简单冒泡排序法和选择排序法不依赖数据，即比较运算的次数(算法复杂度)不受输入数据影响，而插入排序法在执行时却依赖数据，处理某些数据时有很高的效率(插入排序法要在已排数列中搜索自己插入的位置) ·此文参考了《挑战程序设计竞赛》的内容]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[冒泡排序]]></title>
-    <url>%2F2018%2F05%2F02%2F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程小的轻的元素像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端 (举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他与他前面的人比身高，如果他比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直比下去，最后找到比他矮的人，只要站在比他矮的人后边，他就完成了任务，我们让所有人都按这个规矩比较,冒泡排序就完成了) 待排数列分为已排集合和未排集合两部分 每次的排序都会将当前待排数列的最小值放入指定位置 每次都会有数据元素进入最终位置,即每次的排序对于已排数列已经是最终结果 (假如第一次最小值到了数组头，第二次排序跟在它后面的一定是次小值) 参考代码： int BubbleSort(int sort[], int N)//冒泡排序{ bool flag = true; for (int i = 0; flag; i++) { flag = false; for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿 { if (sort[j]&lt;sort[j-1]) { swap(sort[j],sort[j-1]); flag = true; } } }} 时间复杂度是 O(n2)空间复杂度是O(1) ·代码参考简化了《挑战程序设计竞赛》的内容]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[插入排序]]></title>
-    <url>%2F2018%2F05%2F01%2F%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F%2F</url>
-    <content type="text"><![CDATA[插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止 void InsertSort(int sort[],int N)//插入排序核心算法 { int v = 0, j = 0; for (int i = 1; i &lt;= N-1; i++) //第一个元素视为已排集合，这里将待排集合遍历 { v = sort[i]; j = i-1; while (j &gt;= 0 &amp;&amp; sort[j] &gt; v) //在已排集合中搜索插入的位置 { sort[j + 1] = sort[j]; j--; } sort[j + 1] = v; print(sort,N); } } 结果输入 &gt;&gt;5 3 4 1 2 &gt;&gt; 5|3 4 1 2| &gt;&gt; 3 5|4 1 2| &gt;&gt; 1 3 4|5 2| &gt;&gt; 1 2 3 4|5| 在经历的5次输出结果中，待排数列数据个数逐个减少，已排数列数据个数逐一增加，这是因为我们每次都只对一个数据操作，每次操作的任务是将这个数据插入已排数据 由数据元素元素的位置可以发现该排序法是稳定排序法，且每次操作后数据元素不一定到达最终位置 时间复杂度是 O(n2) 空间复杂度O(1) 稳定性指的是经过排序，这些记录的相对次序时否保持相对不变]]></content>
-      <tags>
-        <tag>Base_arithmetic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？]]></title>
-    <url>%2F2018%2F04%2F26%2Ftest3%2F</url>
-    <content type="text"><![CDATA[大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助 Node.js是用来做什么的？ 它一种javascript的运行环境，能够使得javascript脱离浏览器运行 Git是什么？ git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方) 大家可以参考一下：https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000http://blog.jobbole.com/111187/ 总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了 以下不写出完整过程，仅写出一些关键点 1 首先是安装Node.js和Git 2 在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务) 3 (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次 4 匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客 5 配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分 6 每个参数后基本都有空格 7 个别hexo官方的主题可能会无法显示 8 标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚 9 评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理 10 换电脑以后怎么继续使用？ 答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥) 11 hexo的使用可以参考官方文档: https://hexo.io/zh-cn/docs/ 附：Next主题使用: http://theme-next.iissnan.com/ 如何发布第一篇文章: https://www.jianshu.com/p/2c9f0b3b2b0e Lean Clond: https://leancloud.cn/]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F04%2F25%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title>Java_IO简记</title>
+      <link href="/2019/10/10/JavaIO_%E7%AE%80%E8%AE%B0/"/>
+      <url>/2019/10/10/JavaIO_%E7%AE%80%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="java类的构造器"><a href="#java类的构造器" class="headerlink" title="java类的构造器"></a>java类的构造器</h1><p>有构造器：直接使用new xx()可以创建实例</p><p>无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类</p><h1 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h1><ol><li>static String pathSeparator 路径分隔符 Windows(;)        Linux(:)</li><li>static char pathSeparatorChar 1的字符型</li><li>static char Separator 名称分隔符 ()</li><li><p>static char separatorChar  3的字符型</p><pre><code>//以下三种写法都能正确请求到文件//String temp = &quot;C:&quot;+File.separator+&quot;out.txt&quot;;//文件不存在会新建一个没有后缀的空文件，但有些系统保留的文件名无法用于创建（如操作系统的设备名con）//temp = &quot;C:/out.txt&quot;//temp = &quot;C:\\out.txt&quot;        File f = new File(temp);</code></pre><h1 id="字符集与乱码"><a href="#字符集与乱码" class="headerlink" title="字符集与乱码"></a>字符集与乱码</h1><p>乱码原因：</p></li><li><p>因为初始化String实例时给的字节数组长度不是字节数组长度（如定长unicode四个汉字应该是8个字节，结果给String在初始化时传的长度是7个，那么最后一个字符很可能乱码）</p></li><li><p>编码与解码用的字符集不统一</p><pre><code>String msg = new String(&quot;姓名生命使命&quot;);byte[] by = msg.getBytes();//编码，这里可以指定编码格式，3有解释String str = new String(by,0,by.length);System.out.println(str);str = new String(by,0,by.length-1);System.out.println(str);System.out.println(&quot;------------&quot;);str = new String(by,0,by.length,&quot;utf8&quot;);//解码System.out.println(str);str = new String(by,0,by.length,&quot;gbk&quot;);//解码System.out.println(str);</code></pre></li></ol><pre><code>/*运行结果，工程默认使用了GBK*/姓名生命使命姓名生命使?------------???????????姓名生命使命</code></pre><p>3.另外getByte()方法可以指定编码格式，如：</p><pre><code>msg.getBytes()；msg.getBytes(&quot;GBK&quot;)；msg.getBytes(&quot;UTF-16BE&quot;)；</code></pre><h1 id="字节流与字符流"><a href="#字节流与字符流" class="headerlink" title="字节流与字符流"></a>字节流与字符流</h1><p>字节流操作的对象是字节byte[]，<br>字符流操作的对象是字符char[].(另外字符输出流还可以使用write.append()追加输出内容)</p><h1 id="节点流与处理流"><a href="#节点流与处理流" class="headerlink" title="节点流与处理流"></a>节点流与处理流</h1><p>一般以File，ByteArray前缀的流是节点流<br>处理流底层是节点流，处理流的目的是简化操作提高效率，缓冲流关闭时会自动关闭它里边的节点流，所以不需要再次关闭缓冲流，缓冲流也分字节缓冲流和字符缓冲流</p><h1 id="字节数组流"><a href="#字节数组流" class="headerlink" title="字节数组流"></a>字节数组流</h1><p>ByteArrayInputStream,ByteArrayOutputStream(不需要指定目的地，有java开辟内存存储，有新增方法，建议不使用多态来新建实例)，并且他们不需要调用close()释放资源，它们不需要通知操作系统关闭文件，它们的close()函数体是空的<br>        InputStream is = new ByteArrayInputStream(byte[]);<br>        ByteArrayOutputStream os = new ByteArrayOutputStream();//无目的地</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_IO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>cpp_algorithm_1</title>
+      <link href="/2019/09/28/cpp_problem2/"/>
+      <url>/2019/09/28/cpp_problem2/</url>
+      <content type="html"><![CDATA[<h2 id="1-数字黑洞"><a href="#1-数字黑洞" class="headerlink" title="1.数字黑洞"></a>1.数字黑洞</h2><h2 id="2-最大公约数"><a href="#2-最大公约数" class="headerlink" title="2.最大公约数"></a>2.最大公约数</h2><h2 id="3-最小公倍数"><a href="#3-最小公倍数" class="headerlink" title="3.最小公倍数"></a>3.最小公倍数</h2><h2 id="4-素数和素数表"><a href="#4-素数和素数表" class="headerlink" title="4.素数和素数表"></a>4.素数和素数表</h2>]]></content>
+      
+      
+        <tags>
+            
+            <tag> cpp_algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Java_Problem8_Arrays类</title>
+      <link href="/2019/09/27/Java_problem8_arrays%E7%B1%BB/"/>
+      <url>/2019/09/27/Java_problem8_arrays%E7%B1%BB/</url>
+      <content type="html"><![CDATA[<h1 id="Java内部类"><a href="#Java内部类" class="headerlink" title="Java内部类"></a>Java内部类</h1><h2 id="1-内部类的概念"><a href="#1-内部类的概念" class="headerlink" title="1.内部类的概念"></a>1.内部类的概念</h2><p>一般情况，我们把类定义成独立的单元。有些情况下，我们把一个类放在另一个类的内部定义，称为内部类(innerclasses)。</p><p>内部类可以使用public、default、protected 、private以及static修饰。而外部顶级类(我们以前接触的类)只能使用public和default修饰。</p><p>注意</p><p>内部类只是一个编译时概念，一旦我们编译成功，就会成为完全不同的两个类。对于一个名为Outer的外部类和其内部定义的名为Inner的内部类。编译完成后会出现Outer.class和Outer$Inner.class两个类的字节码文件。所以内部类是相对独立的一种存在，其成员变量/方法名可以和外部类的相同。</p><h2 id="内部类的作用："><a href="#内部类的作用：" class="headerlink" title="内部类的作用："></a>内部类的作用：</h2><ol><li><p>内部类提供了更好的封装。只能让外部类直接访问，不允许同一个包中的其他类直接访问。</p></li><li><p>内部类可以直接访问外部类的私有属性，内部类被当成其外部类的成员。 但外部类不能访问内部类的内部属性。</p></li><li><p>接口只是解决了多重继承的部分问题，而内部类使得多重继承的解决方案变得更加完整。</p></li></ol><h2 id="内部类的使用场合："><a href="#内部类的使用场合：" class="headerlink" title="内部类的使用场合："></a>内部类的使用场合：</h2><ol><li><p>由于内部类提供了更好的封装特性，并且可以很方便的访问外部类的属性。所以，在只为外部类提供服务的情况下可以优先考虑使用内部类。</p></li><li><p>使用内部类间接实现多继承：每个内部类都能独立地继承一个类或者实现某些接口，所以无论外部类是否已经继承了某个类或者实现了某些接口，对于内部类没有任何影响。</p></li></ol><h2 id="内部类的分类"><a href="#内部类的分类" class="headerlink" title="内部类的分类"></a>内部类的分类</h2><p>在Java中内部类主要分为成员内部类(非静态内部类、静态内部类)、匿名内部类、局部内部类。<br>且成员内部类(可以使用private、default、protected、public任意进行修饰。 类文件：外部类$内部类.class)</p><h3 id="一：非静态内部类-外部类里使用非静态内部类和平时使用其他类没什么不同"><a href="#一：非静态内部类-外部类里使用非静态内部类和平时使用其他类没什么不同" class="headerlink" title="一：非静态内部类(外部类里使用非静态内部类和平时使用其他类没什么不同)"></a>一：非静态内部类(外部类里使用非静态内部类和平时使用其他类没什么不同)</h3><p>i.非静态内部类必须寄存在一个外部类对象里。因此，如果有一个非静态内部类对象那么一定存在对应的外部类对象。非静态内部类对象单独属于外部类的某个对象。</p><p>ii. 非静态内部类可以直接访问外部类的成员，但是外部类不能直接访问非静态内部类成员。</p><p>iii. 非静态内部类不能有静态方法、静态属性和静态初始化块。</p><p>iv. 外部类的静态方法、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例。</p><p>v. 成员变量访问要点：</p><ol><li><p>内部类里方法的局部变量：变量名。</p></li><li><p>内部类属性：this.变量名。</p></li><li><p>外部类属性：外部类名.this.变量名</p></li></ol><h3 id="二：静态内部类"><a href="#二：静态内部类" class="headerlink" title="二：静态内部类"></a>二：静态内部类</h3><pre><code>i. 定义方式：    static  class   ClassName {    //类体    }</code></pre><p>ii. 使用要点：</p><ol><li><p>当一个静态内部类对象存在，并不一定存在对应的外部类对象。 因此，静态内部类的实例方法不能直接访问外部类的实例方法。</p></li><li><p>静态内部类看做外部类的一个静态成员。 因此，外部类的方法中可以通过：“静态内部类.名字”的方式访问静态内部类的静态成员，通过 new 静态内部类()访问静态内部类的实例。</p></li></ol><h3 id="三：匿名内部类"><a href="#三：匿名内部类" class="headerlink" title="三：匿名内部类"></a>三：匿名内部类</h3><p>注意：适合那种只需要使用一次的类。比如：键盘监听操作等等。</p><pre><code>this.addWindowListener(new WindowAdapter(){        @Override        public void windowClosing(WindowEvent e) {            System.exit(0);        }    });this.addKeyListener(new KeyAdapter(){    @Override    public void keyPressed(KeyEvent e) {        myTank.keyPressed(e);    }          @Override    public void keyReleased(KeyEvent e) {        myTank.keyReleased(e);    }});</code></pre><ol><li><p>匿名内部类没有访问修饰符。</p></li><li><p>匿名内部类没有构造方法。因为它连名字都没有那又何来构造方法呢。</p></li></ol><h3 id="四：局部内部类"><a href="#四：局部内部类" class="headerlink" title="四：局部内部类"></a>四：局部内部类</h3><p>还有一种内部类，它是定义在方法内部的，作用域只限于本方法，称为局部内部类。</p><p>局部内部类的的使用主要是用来解决比较复杂的问题，想创建一个类来辅助我们的解决方案，到那时又不希望这个类是公共可用的，所以就产生了局部内部类。局部内部类和成员内部类一样被编译，只是它的作用域发生了改变，它只能在该方法中被使用，出了该方法就会失效。<br>局部内部类在实际开发中应用很少。</p><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code>public class Test2 {    public void show() {        //作用域仅限于该方法        class Inner {            public void fun() {                System.out.println(&quot;helloworld&quot;);            }        }        new Inner().fun();    }    public static void main(String[] args) {        new Test2().show();    }}    class tt{}    //供继承另一个类    public class outclass     {        /*成员变量*/        int out;        static outclass.static_inner inner3;        /*成员方法*/        void outprint(MyInt_1 mT){            System.out.println(&quot;outclass&quot;);        }        void outprint(){}        public static void main(String args[])         {                outclass.innerclass inner = new outclass().new innerclas();//非静态内部类实例                            outclass.static_inner inner2 = new outclass.static_inner();//静态内部类实例            inner3 = new outclass.static_inner();                            outclass ma = new outclass();            ma.outprint(                    new MyInt_1()//匿名内部类                    {                        @Override                        public void In_print() {                        }                    });        }        /*非静态内部类*/        public class innerclass extends tt implements MyInt_1    //内部类可以实现自己的方法        {            void print()            {                System.out.println(&quot;Inner&quot;);                System.out.println(out);    //非静态内部类能直接访问外部类的成员变量                outprint();                    //非静态内部类能直接访问外部类的方法                outclass.this.outprint();    //在内部类中使用外部类的方法            }            @Override            public void In_print(){}        }        /*静态内部类*/        static class static_inner                    {            void print(){                System.out.println(&quot;static_inner&quot;);            }        }    }</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Java_Problem7_Arrays类</title>
+      <link href="/2019/09/27/Java_problem7_%E5%86%85%E9%83%A8%E7%B1%BB/"/>
+      <url>/2019/09/27/Java_problem7_%E5%86%85%E9%83%A8%E7%B1%BB/</url>
+      <content type="html"><![CDATA[<h1 id="java-util-Arrays类"><a href="#java-util-Arrays类" class="headerlink" title="java.util.Arrays类"></a>java.util.Arrays类</h1><h2 id="1-toString"><a href="#1-toString" class="headerlink" title="1.toString"></a>1.toString</h2><p>Arrays类内有一个静态的toString()方法，此方法与Object方法内的非静态toString()不同</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Java_Problem6</title>
+      <link href="/2019/09/27/java_problem6/"/>
+      <url>/2019/09/27/java_problem6/</url>
+      <content type="html"><![CDATA[<h1 id="String类常用方法"><a href="#String类常用方法" class="headerlink" title="String类常用方法"></a>String类常用方法</h1><h1 id="1-String类和常量池"><a href="#1-String类和常量池" class="headerlink" title="1.String类和常量池"></a>1.String类和常量池</h1><p>在Java的内存分析中，我们会经常听到关于“常量池”的描述，实际上常量池也分了以下三种：</p><ol><li><p>全局字符串常量池(String Pool)</p><p>   全局字符串常量池中存放的内容是在类加载完成后存到String Pool中的，在每个VM中只有一份，存放的是字符串常量的引用值(在堆中生成字符串对象实例)。</p></li><li><p>class文件常量池(Class Constant Pool)</p><p>   class常量池是在编译的时候每个class都有的，在编译阶段，存放的是常量(文本字符串、final常量等)和符号引用。</p></li><li><p>运行时常量池(Runtime Constant Pool)</p><p>   运行时常量池是在类加载完成之后，将每个class常量池中的符号引用值转存到运行时常量池中，也就是说，每个class都有一个运行时常量池，类在解析之后，将符号引用替换成直接引用，与全局常量池中的引用值保持一致。</p></li></ol>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JavaProblem5</title>
+      <link href="/2019/09/25/java_problem5/"/>
+      <url>/2019/09/25/java_problem5/</url>
+      <content type="html"><![CDATA[<h2 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h2><p> super是直接父类对象的引用。可以通过super来访问父类中被子类覆盖的方法或属性。</p><p> 使用super调用普通方法，语句没有位置限制，可以在子类中随便调用。</p><p> 若是构造方法的第一行代码没有显式的调用super(…)或者this(…);那么Java默认都会调用super(),含义是调用父类的无参数构造方法。这里的super()可以省略。</p><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>包机制是Java中管理类的重要手段。 开发中，我们会遇到大量同名的类，通过包我们很容易对解决类重名的问题，也可以实现对类的有效管理。 包对于类，相当于文件夹对于文件的作用。</p><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态指的是同一个方法调用，由于对象不同可能会有不同的行为。现实生活中，同一个方法，具体实现会完全不同。 比如：同样是调用人的“休息”方法，张三是睡觉，李四是旅游，高淇老师是敲代码，数学教授是做数学题; 同样是调用人“吃饭”的方法，中国人用筷子吃饭，英国人用刀叉吃饭，印度人用手吃饭。</p><pre><code>多态的要点：1. 多态是方法的多态，不是属性的多态(多态与属性无关)。2. 多态的存在要有3个必要条件：继承，方法重写，父类引用指向子类对象。3. 父类引用指向子类对象后，用该父类引用调用子类重写的方法，此时多态就出现了。4. 但是多态也有弊端，就是无法调用子类特有的功能，比如，我不能使用父类的引用变量调用Dog类特有的seeDoor()方法。那如果我们就想使用子类特有的功能行不行呢?行!这就是我们下一章节所讲的内容：对象的转型</code></pre><h2 id="对象的转型-casting"><a href="#对象的转型-casting" class="headerlink" title="对象的转型(casting)"></a>对象的转型(casting)</h2><p>父类引用指向子类对象，我们称这个过程为向上转型，属于自动类型转换。</p><p> 向上转型后的父类引用变量只能调用它编译类型的方法，不能调用它运行时类型的方法。这时，我们就需要进行类型的强制转换，我们称之为向下转型!</p><p>在向下转型过程中，必须将引用变量转成真实的子类类型(运行时类型)否则会出现类型转换异常</p><p>为了避免出现这种异常，我们可以使用instanceof运算符（判断对象是否是类的实例）进行判断</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><ol><li><p>修饰变量: 被他修饰的变量不可改变。一旦赋了初值，就不能被重新赋值。</p><pre><code>final  int   MAX_SPEED = 120;</code></pre></li><li><p>修饰方法：该方法不可被子类重写。但是可以被重载!</p><pre><code>final  void  study(){}</code></pre></li><li><p>修饰类: 修饰的类不能被继承。比如：Math、String等。</p><pre><code>final   class  A {}</code></pre></li></ol><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>cpp_problem_1</title>
+      <link href="/2019/09/25/cpp_problem1/"/>
+      <url>/2019/09/25/cpp_problem1/</url>
+      <content type="html"><![CDATA[<h2 id="1-round函数"><a href="#1-round函数" class="headerlink" title="1.round函数"></a>1.round函数</h2><p>Round函数返回一个数值，该数值是按照指定的小数位数进行四舍五入运算的结果。</p><h2 id="IEEE754"><a href="#IEEE754" class="headerlink" title="IEEE754"></a>IEEE754</h2><p> <a href="https://blog.csdn.net/crjmail/article/details/79723051" target="_blank" rel="noopener">https://blog.csdn.net/crjmail/article/details/79723051</a></p><p> <a href="https://www.cnblogs.com/HDK2016/p/10506083.html" target="_blank" rel="noopener">https://www.cnblogs.com/HDK2016/p/10506083.html</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> cpp_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JavaProblem4</title>
+      <link href="/2019/09/24/Java_problem4/"/>
+      <url>/2019/09/24/Java_problem4/</url>
+      <content type="html"><![CDATA[<h1 id="静态初始化块"><a href="#静态初始化块" class="headerlink" title="静态初始化块"></a>静态初始化块</h1><p>构造方法用于对象的初始化!静态初始化块，用于类的初始化操作!在静态初始化块中不能直接访问非static成员。</p><p>注意事项：</p><p>　　静态初始化块执行顺序(学完继承再看这里)：</p><p>　　1. 上溯到Object类，先执行Object的静态初始化块，再向下执行子类的静态初始化块，直到我们的类的静态初始化块为止。</p><p>　　2. 构造方法执行顺序和上面顺序一样!!</p><h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><p>我们通过package实现对类的管理，package的使用有两个要点：</p><p>　　1. 通常是类的第一句非注释性语句。</p><p>　　2. 包名：域名倒着写即可，再加上模块名，便于内部管理类。</p><blockquote><p>package的命名举例</p></blockquote><pre><code>com.sun.test;com.oracle.test;cn.sxt.gao.test;cn.sxt.gao.view;cn.sxt.gao.view.model;</code></pre><blockquote><p>注意事项：</p></blockquote><p>　　1. 写项目时都要加包，不要使用默认包。</p><p>　　2. com.gao和com.gao.car，这两个包没有包含关系，是两个完全独立的包。只是逻辑上看起来后者是前者的一部分。</p><blockquote><p>package的使用</p></blockquote><p>package cn.sxt;<br>public class Test {<br>    public static void main(String[] args) {<br>        System.out.println(“helloworld”);<br>    }<br>}</p><h2 id="导入类import"><a href="#导入类import" class="headerlink" title="导入类import"></a>导入类import</h2><p>　　如果我们要使用其他包的类，需要使用import导入，从而可以在本类中直接通过类名来调用，否则就需要书写类的完整包名和类名。import后，便于编写代码，提高可维护性。</p><p>注意要点：</p><p>　　1. Java会默认导入java.lang包下所有的类，因此这些类我们可以直接使用。</p><p>　　2. 如果导入两个同名的类，只能用包名+类名来显示调用相关类：　</p><pre><code>java.util.Date date  = new  java.util.Date();</code></pre><p>静态导入(static import)是在JDK1.5新增加的功能，其作用是用于导入指定类的静态属性，这样我们可以直接使用静态属性。</p><h2 id="静态导入的使用"><a href="#静态导入的使用" class="headerlink" title="静态导入的使用　　"></a>静态导入的使用　　</h2><pre><code>package cn.sxt; //以下两种静态导入的方式二选一即可import static java.lang.Math.*;//导入Math类的所有静态属性import static java.lang.Math.PI;//导入Math类的PI属性public class Test2{    public static void main(String [] args)    {            System.out.println(PI);        System.out.println(random());    }}</code></pre><h2 id="instanceof-运算符"><a href="#instanceof-运算符" class="headerlink" title="instanceof 运算符"></a>instanceof 运算符</h2><p>instanceof是二元运算符，左边是对象，右边是类；当对象是右面类或子类所创建对象时，返回true；否则，返回false。比如：</p><blockquote><p>使用instanceof运算符进行类型判断</p></blockquote><pre><code>public class Test{    public static void main(String[] args) {        Student s = new Student(&quot;高淇&quot;,172,&quot;Java&quot;);        System.out.println(s instanceof Person);        System.out.println(s instanceof Student);    }}</code></pre><p> 两条语句的输出结果都是true。</p><h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><blockquote><p>1.object,getClass()//取得对象类型</p></blockquote><blockquote><p>2.如果想要自定义两个对象（不是一个对象，即这两个对象分别有自己的一块内存）是否相等的规则，那么必须在对象的类定义中重写equals()方法，如果不重写equals()方法的话，默认的比较方式是比较两个对象是否为同一个对象。<br>注：有些类比如String类已经为我们重写好了equals()方法<br>（此条引用自：<a href="https://blog.csdn.net/u013063153/article/details/78808923）" target="_blank" rel="noopener">https://blog.csdn.net/u013063153/article/details/78808923）</a></p></blockquote><p>》</p><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JavaProblem3</title>
+      <link href="/2019/09/24/Java_problem3/"/>
+      <url>/2019/09/24/Java_problem3/</url>
+      <content type="html"><![CDATA[<h1 id="通用的分代垃圾回收机制"><a href="#通用的分代垃圾回收机制" class="headerlink" title="通用的分代垃圾回收机制"></a>通用的分代垃圾回收机制</h1><p>　　分代垃圾回收机制，是基于这样一个事实：不同的对象的生命周期是不一样的。因此，不同生命周期的对象可以采取不同的回收算法，以便提高回收效率。我们将对象分为三种状态：年轻代、年老代、持久代。JVM将堆内存划分为 Eden、Survivor 和 Tenured/Old 空间。</p><p>　　1. 年轻代</p><p>　　所有新生成的对象首先都是放在Eden区。 年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象，对应的是Minor GC，每次 Minor GC 会清理年轻代的内存，算法采用效率较高的复制算法，频繁的操作，但是会浪费内存空间。当“年轻代”区域存放满对象后，就将对象存放到年老代区域。</p><p>　　2. 年老代</p><p>　　在年轻代中经历了N(默认15)次垃圾回收后仍然存活的对象，就会被放到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。年老代对象越来越多，我们就需要启动Major GC和Full GC(全量回收)，来一次大扫除，全面清理年轻代区域和年老代区域。</p><p>　　3. 持久代</p><p>　　用于存放静态文件，如Java类、方法等。持久代对垃圾回收没有显著影响。</p><blockquote><p>·Minor GC:</p></blockquote><p>　　用于清理年轻代区域。Eden区满了就会触发一次Minor GC。清理无用对象，将有用对象复制到“Survivor1”、“Survivor2”区中(这两个区，大小空间也相同，同一时刻Survivor1和Survivor2只有一个在用，一个为空)</p><blockquote><p>·Major GC：</p></blockquote><p>　　用于清理老年代区域。</p><blockquote><p>·Full GC：</p></blockquote><p>　　用于清理年轻代、年老代区域。 成本较高，会对系统性能产生影响。</p><p>垃圾回收过程：</p><pre><code>1、新创建的对象，绝大多数都会存储在Eden中，2、当Eden满了（达到一定比例）不能创建新对象，则触发垃圾回收（GC），将无用对象清理掉，       然后剩余对象复制到某个Survivor中，如S1，同时清空Eden区3、当Eden区再次满了，会将S1中的不能清空的对象存到另外一个Survivor中，如S2，      同时将Eden区中的不能清空的对象，也复制到S1中，保证Eden和S1，均被清空。4、重复多次(默认15次)Survivor中没有被清理的对象，则会复制到老年代Old(Tenured)区中，5、当Old区满了，则会触发一个一次完整地垃圾回收（FullGC），之前新生代的垃圾回收称为（minorGC）</code></pre><h2 id="JVM调优"><a href="#JVM调优" class="headerlink" title="JVM调优"></a>JVM调优</h2><p>在对JVM调优的过程中，很大一部分工作就是对于Full GC的调节。有如下原因可能导致Full GC：</p><p>　　1.年老代(Tenured)被写满</p><p>　　2.持久代(Perm)被写满</p><p>　　3.System.gc()被显式调用（程序建议GC启动，不是调用GC）</p><p>　　4.上一次GC之后Heap的各域分配策略动态变化</p><blockquote><p>部分转自：<a href="https://www.sxt.cn" target="_blank" rel="noopener">https://www.sxt.cn</a></p></blockquote>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JavaProblrm2</title>
+      <link href="/2019/09/24/Java_problem2/"/>
+      <url>/2019/09/24/Java_problem2/</url>
+      <content type="html"><![CDATA[<h1 id="垃圾回收原理和算法"><a href="#垃圾回收原理和算法" class="headerlink" title="垃圾回收原理和算法"></a>垃圾回收原理和算法</h1><p>·内存管理</p><p>　　Java的内存管理很大程度指的就是对象的管理，其中包括对象空间的分配和释放。</p><p>　　对象空间的分配：使用new关键字创建对象即可</p><p>　　对象空间的释放：将对象赋值null即可。垃圾回收器将负责回收所有”不可达”对象的内存空间。</p><p>·垃圾回收过程</p><p>　　任何一种垃圾回收算法一般要做两件基本事情：</p><p>　　1. 发现无用的对象</p><p>　　2. 回收无用对象占用的内存空间。</p><p>　　垃圾回收机制保证可以将“无用的对象”进行回收。无用的对象指的就是没有任何变量引用该对象。Java的垃圾回收器通过相关算法发现无用对象，并进行清除和整理。</p><h1 id="·垃圾回收相关算法"><a href="#·垃圾回收相关算法" class="headerlink" title="·垃圾回收相关算法"></a>·垃圾回收相关算法</h1><h2 id="1-引用计数法"><a href="#1-引用计数法" class="headerlink" title="　　1. 引用计数法"></a>　　1. 引用计数法</h2><p>　　堆中每个对象都有一个引用计数。被引用一次，计数加1. 被引用变量值变为null，则计数减1，直到计数为0，则表示变成无用对象。优点是算法简单，缺点是“循环引用的无用对象”无法别识别。</p><pre><code>循环引用示例:　　public class Student {    String name;    Student friend;    public static void main(String[] args) {        Student s1 = new Student();        Student s2 = new Student();        s1.friend = s2;        s2.friend = s1;                s1 = null;        s2 = null;    }}</code></pre><p>　　s1和s2互相引用对方，导致他们引用计数不为0，但是实际已经无用，但无法被识别。</p><h2 id="2-引用可达法-根搜索算法"><a href="#2-引用可达法-根搜索算法" class="headerlink" title="　　2. 引用可达法(根搜索算法)"></a>　　2. 引用可达法(根搜索算法)</h2><p>　　程序把所有的引用关系看作一张图，从一个节点GC ROOT开始，寻找对应的引用节点，找到这个节点以后，继续寻找这个节点的引用节点，当所有的引用节点寻找完毕之后，剩余的节点则被认为是没有被引用到的节点，即无用的节点。</p><blockquote><p>本文引用：<a href="https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/Principle_and_algorithm_of_garbage_collection.html</a></p></blockquote>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>JavaProblem1</title>
+      <link href="/2019/09/23/Java_problem1/"/>
+      <url>/2019/09/23/Java_problem1/</url>
+      <content type="html"><![CDATA[<h2 id="1-JAVA精度问题-double-float变量如何比较相等"><a href="#1-JAVA精度问题-double-float变量如何比较相等" class="headerlink" title="1.JAVA精度问题 double,float变量如何比较相等?"></a>1.JAVA精度问题 double,float变量如何比较相等?</h2><p>解决办法<br>  java.math包下面的两个有用的类：</p><pre><code>BigInteger和BigDecimal，这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。</code></pre><h2 id="2-字符串连接符："><a href="#2-字符串连接符：" class="headerlink" title="2.字符串连接符："></a>2.字符串连接符：</h2><pre><code>“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串)int a=12;System.out.println(&quot;a=&quot;+a);//输出结果: a=12</code></pre><h2 id="3-变量类型误区"><a href="#3-变量类型误区" class="headerlink" title="3.变量类型误区"></a>3.变量类型误区</h2><pre><code>1.boolean 是bit类型的它只占一位存储空间2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！3.byte是一字节，short是两字节</code></pre><h2 id="4-自动类型转换"><a href="#4-自动类型转换" class="headerlink" title="4.自动类型转换"></a>4.自动类型转换</h2><pre><code>自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。</code></pre><p><img src="http://boze.club//java_img_1/transform.png" alt=""></p><pre><code>可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。</code></pre><h2 id="5-带标签的break和continue"><a href="#5-带标签的break和continue" class="headerlink" title="5.带标签的break和continue"></a>5.带标签的break和continue</h2><pre><code> goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。  “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。  在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。 //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数) public class Test18  {    public static void main(String args[])     {        outer: for (int i = 101; i &lt; 150; i++)     {        for (int j = 2; j &lt; i / 2; j++)         {            if (i % j == 0)                continue outer;        }        System.out.print(i + &quot;  &quot;);    }}</code></pre><p>}</p><h2 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK,JRE,JVM"></a>JDK,JRE,JVM</h2><p><img src="http://boze.club//java_img_1/JDK_JRE_JVM.png" alt=""></p><p>部分转自：<a href="https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> java_base </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>关于误差</title>
+      <link href="/2019/09/21/c1/"/>
+      <url>/2019/09/21/c1/</url>
+      <content type="html"><![CDATA[<p>浮点数的比较</p><p> 经常，浮点数经过运算后会发生改变如3.14变成3.14000001，这样的误差会逐渐积累，那么在判断浮点数相等时就没办法了？</p><p> 这种现象无法避免，所以实际中我们允许一定的误差，那么在判断两数相等时只要判断另一数是否在允许的区间内即可</p><pre><code>const double eps = 1e-8;//10的负8次方，大多数情况下不会误判也不会漏判 const double Pi acos((double)-1.0)#define EQU(a,b)       (fabs((a)-(b)) &lt; (eps))//等于#define More(a,b)      ((a)-(b) &gt; (eps))        //大于#define Less(a,b)      ((a)-(b) &lt; (-eps))         //小于#define MoreEqu(a,b) ((a)-(b) &gt; (-eps))      //大于等于#define LessEqu(a,b) ((a)-(b) &lt; (eqs))        //小于等于if(EQU(a,y)){    printf(&quot;Hello&quot;);}</code></pre><p>1.由于精度问题，经过大量运算，变量中存储的0可能是很小的负数，这时候开平方会出错asin(x),acos(x),x=1||x=-1时要检查是否在定义域内</p><p>2.编译环境影响0.00可能会变成-0.00,这时需要将-0.00存放到字符串中再与-0.00比较如果成功，加上eps修正为0.00</p><p>参考：曾磊《算法笔记》</p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>初识正则表达式和元字符</title>
+      <link href="/2019/09/17/Regex%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF1/"/>
+      <url>/2019/09/17/Regex%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF1/</url>
+      <content type="html"><![CDATA[<p>我又回来啦，加油！</p><p>先认识两个重要的符号</p><pre><code>*任意长度的字符串 （例：*t.exe,表示所有以结尾的exe文件）?任意长度为1的字符 (例：?.exe，)</code></pre>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>八皇后问题-易懂</title>
+      <link href="/2018/06/02/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E6%98%93%E6%87%82/"/>
+      <url>/2018/06/02/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98-%E6%98%93%E6%87%82/</url>
+      <content type="html"><![CDATA[<p>一:八皇后问题</p>八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯·贝瑟尔于1848年提出：<br>&gt;在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都&lt;不能处于同一行、同一列或同一斜线上&gt;，问有多少种摆法。 高斯认为有76种方案。1854年在柏林的象棋杂志上不同的作者发表了40种不同的解，后来有人用图论的方法解出92种结果。计算机发明后，有多种计算机语言可以解决此问题。<br><br><p>二:解题思路:回溯法遍历</p><br>&gt;回溯法是什么?<br>&gt;<br>&gt;答：一句话:”不撞南墙不回头”,<br>&gt;<br>&gt;这是什么意思呢？<br>&gt;<br>&gt;举个例子：有一个迷宫游戏，只有一个出口一个入口，迷宫很简单，在整个迷宫唯一的分岔点处有三条路可走，只有一条是正确的，其它两条是死路，在这里我们随机选择一条路走，如果一次选中我就不说什么了(感觉很可能是人民币玩家)，如果我们选择的是死路，这时我们只要走回来，并给它做记号，下次不走就行了，这时只要从剩下的两条路二选一，如果第二次你还是走了死路(真够惨的)怎么办?我们同样给这条路做记号，下次不走就是了(反正我们的迷宫很安全又没有陷阱),最后走剩下那条路就完成了。<br><br>&gt;总结:我们解八皇后问题的过程是一个用计算机尝试的过程，先放棋子后判断是否合法(比如是否一条线上….)，如果不合法我们就退回来尝试另一种办法，直到找到我们迷宫出口。<br><br><p>三:正式解题:</p><ol><li><p>在题目条件&lt;不能处于同一行、同一列或同一斜线上&gt;得知，八个皇后一定分别是在八个不同的行或八个不同的列上的，写代码尝试的时候直接按行或列放置8次，而不是每个格子都尝试放置，这能省去不少计算</p></li><li><p>如果以递归来实现，假如递归是按行遍历，则for循环按列遍历(相当于两个for循环遍历棋盘)</p></li><li><p>合法性判断:同行同列好判断，同斜线呢?  </p></li><li><p>判断同一斜线我们采用”坐标法”，即把平面直角坐标系抽象到棋盘上，设棋盘的行为x轴，列为y轴，例子:假设棋盘第2行第1列有皇后，则x=2，y=1，如果同时构造另一个点x=3,y=2上有皇后，使这两个点在一条直线上，你能看出什么规律吗?答案:横纵坐标之差的绝对值相等，这就是判断依据</p></li></ol><blockquote><p>递归:(‘递’是自己调用自己,’归’是逐层返回),递归在某种程度上可视为for循环</p></blockquote><p>四，代码</p><pre><code>int c[10] = {0}, //用一维数组存放每个皇后行列(x,y)值,下标是x，元素值是y         cnt = 0;/*递归按行for循环按列遍历*/void Q8(int r){    if (r == 8)//一次搜索成功    {        ++cnt; //解的个数        return;    }    for (int i = 0; i&lt;n; ++i)//按列搜索，即该行上的点试一遍    {        c[r] = i;//标记遍历        int tag = 1;        for (int j=0; j&lt;r;j++)            //判断在同列或斜线上            if (c[r]==c[j]||r-j==c[r]-c[j]||r-j==c[j]-c[r]){                tag=0;                 break;            }        if (tag)//当前行有解继续深入递归(继续下一行)             Q8(r + 1);    }}</code></pre>]]></content>
+      
+      
+        <tags>
+            
+            <tag> interesting_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>排序小结</title>
+      <link href="/2018/05/23/%E6%8E%92%E5%BA%8F%E5%B0%8F%E7%BB%93/"/>
+      <url>/2018/05/23/%E6%8E%92%E5%BA%8F%E5%B0%8F%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p><img src="/2018/05/23/排序小结/2.jpg" alt="导图"></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>归并排序</title>
+      <link href="/2018/05/12/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/12/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>归并排序是一种基于归并方法的排序，”归并”是指将两个或者两个以上的有序表合并成为一个新的有序表</p><p>归并排序的基本思想:</p><blockquote></blockquote><p>将待排数表看成n个有序子表，每个子表的长度为1，然后两两归并，得到n/2个长度为2的有序子表，再将这n/2个长度为2的有序子表合并为n/4个长度为4的有序子表，以此类推直至合并为长度为n的有序表</p><p>例如:</p><pre><code>(12,15,30,80,100,46,78,33,90,86,64,55,120,230,45）([12][15][30][80][100][46][78][33][90][86][64][55][120][230] [45])   |——|    |——|     |——|    |——|    |——|    |——|     |——|     |( [12 15] [30 80] [46 100] [33 78] [86 90] [55 64] [120 230] [45])       |————|           |————|          |————|           |————|(  [12 15 30 80]    [33 46 78 100]  [55 64 86 90]   [45 120 230] )...</code></pre><p>完成这个归并过程一般分为2步:</p><ol><li>划分原表</li><li>归并子表</li></ol><p>1&gt;划分原表(利用递归)</p><pre><code>/*用不同的Al我们可以对数组中自己想要的区间排序,这里可以和快速排序与二叉树的遍历对比,递归的顺序不同了，归并是先划分，快排是先排后划分，请仔细体会两者差异*/void mergeSort(int arr[], int Al, int Ar){    if (Al &lt; Ar)    {        int m = Al + (Ar - Al)/2;        mergeSort(arr,Al,m);    //划分左半个数组        mergeSort(arr,m+1,Ar);  //划分右半个数组        merge(arr,Al,m,Ar);    }}/*以上类似二叉树的后续遍历，只要还有子表的长度大于一，就会一直划分*//*递归是个巧妙的过程，比较难理解可以画图分析*/</code></pre><p>2&gt;归并子表</p><pre><code>/*这个函数并不神秘，其实就是两个有序集合的合并*/void merge(int arr[],int Al,int m,int Ar){    int i, j, k;    int n1 = m - Al + 1;//左半边元素个数    int n2 = Ar - m;    //右半边元素个数    /*建立临时数组*/    int *L = new int[n1], *R = new int[n2];    /*将原数列数据填充到两个临时数组*/    for ( i = 0; i &lt; n1; i++)        L[i] = arr[Al+i];    for ( j = 0; j &lt; n2; j++)        R[j] = arr[m + 1 + j];    /*将临时数组处理后合并回去*/    i = 0;    j = 0;    k = Al;    while ( i&lt;n1 &amp;&amp; j&lt;n2)    {        if (L[i] &lt;= R[j])        {            arr[k] = L[i];            i++;        }        else        {            arr[k] = R[j];            j++;        }        k++;    }    /*将余下的元素填充*/    while (i &lt; n1)    {        arr[k] = L[i];        i++;        k++;    }    while (j &lt; n2)    {        arr[k] = R[j];        j++;        k++;    }    delete []L;    delete []R;}</code></pre><p>代码参考自:<a href="https://www.geeksforgeeks.org/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/</a><br>这是一个学习各种算法的好网站(●’◡’●)</p><p>归并排序动态视频演示推荐:<a href="https://www.bilibili.com/video/av18980253" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980253</a></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>堆排序</title>
+      <link href="/2018/05/12/%E5%A0%86%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/12/%E5%A0%86%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>  “堆排序”:就是利用堆来进行的一种排序</p><p>在了解堆排序前我们应了解以下几点:</p><ol><li>当满足 k<sub>i</sub> &lt;= k<sub>2i</sub> 和 k<sub>i</sub> &lt;= k<sub>2i+1</sub> 或 k<sub>i</sub> &gt;= k<sub>2i</sub> 和 k<sub>i</sub> &gt;= k<sub>2i+1</sub> 时称为”堆”</li><li>第一点的含义是:每一结点均不大于或不小于其左右孩子节点的值，并且将根值最大的称为”大根堆”，小根堆则反之</li><li>堆排序的第一步就是创造如上两点所描述的”堆”，这和排序有何关系?这样的堆有什么特点?</li><li><p>解答第三点 我们建的堆类似如下,只要我们用一个循环每次把根选出来(即选出最大值或最小值)，依次填入一个数组，排序就完成了</p><pre><code>       100    80     90  70  60 65  5530  50</code></pre><p>概括:堆排序可以分为三步</p></li><li>第一步，从待排数列取元素构造一棵完全二叉树(还不是堆),然后将这棵完全二叉树”改造”为有序的”堆”</li><li>第二步，将根(最大/小值)输出</li><li>第三步，将刚才去掉了根的”堆”重新排列整理为新的”堆”,重复步骤二直至将所有元素输出</li></ol><blockquote></blockquote><p>代码</p><ol><li><p>“改造”函数:将二叉树改为有规律的”堆”</p><p> void shif(int A[],int key,int m)<br> //m是对序号不大于m的以key为根的子序列调整<br> {</p><pre><code>A[0] = A[key];          //A[0]元素作为临时变量保存根值bool finish = false;int i = key, j = i*2;   //i指示空位(树根),j指示左孩子while ( j&lt;=m &amp;&amp; !finish)//i不是叶子结点且搜索为结束{    if ( j&lt;m &amp;&amp; A[j]&lt;A[j+1])        j = j + 1;        //选出根key左右孩子中最大者    if (A[0] &gt;= A[j])        finish = true;  //原根最大，此次调整结束    else    {        A[i] = A[j];    //值大的孩子节点上移        i = j;            //继续向下(子树)筛选        j = j * 2;    }}A[i] = A[0];//将原根值元素填到当前空位</code></pre></li></ol><blockquote></blockquote><p>代码</p><ol start="2"><li><p>建初堆和添加循环</p><p> void HeapSort(int sort[],int n)<br> {</p><pre><code>//第一部分建初堆的过程是从叶子结点往树根方向梳理的,i为各个子树的树根//一颗有n个元素的二叉树有n/2个有孩子的子树(即前n/2个)for (int i = n/2; i &gt;= 1; i--)    shif(sort,i,n);//建初堆后的排序是从树根往叶子结点方向筛选的(已经有序),每次循环排号一个数for (int i = n; i &gt;= 2; i--){    swap(sort[1],sort[i]);    shif(sort,1,i-1);      //调整子序列sort[1]-sort[i-1]为堆}</code></pre><p> }</p></li></ol><p>以上描述比较抽象，现在引用B站两个排序过程动画帮助大家了解:</p><p><a href="https://www.bilibili.com/video/av18980178" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980178</a></p><p><a href="https://www.bilibili.com/video/av12667435" target="_blank" rel="noopener">https://www.bilibili.com/video/av12667435</a></p><blockquote><blockquote><p>本文参考了，张先宜编辑的&lt;&lt;数据结构&gt;&gt;第266-269页的部分内容</p></blockquote></blockquote>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>快速排序（此贴存在问题）</title>
+      <link href="/2018/05/10/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/10/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>  今天带来的是大名鼎鼎的快速排序法，所谓快速排序法，是因为它的排序速度很快，在多种情下仍能保持着很高的效率</p><p>  快速排序法，是一种基于比较的算法，基本思想是选定一个元素作为中间元素，我们的目的是使得比他小的元素归在它的左边，比他大的元素归在在它的右边，当前元素就会变成一个分界点把其它数分列在它的左右两边（例如： [8 16 5 35 12 20] (80) [90 110 85 105 100]）然后在对中间元素左右两边的数列进行同样的操作直到每个子数列仅含一个元素或没有元素，这就是整个排序的过程</p><p>总结：快速排序通过一趟操作将待排数列划分为左右两个部分，使得左边任一元素不大于右边任一元素，再分别对左右两部分进行同样的排序</p><p>由此可见，对数列进行元素选择和划分是关键，下面给出划分算法，这个算法对数列进行了划分，我们只需要对每个划分进行操作</p><pre><code>void Quick_sort(int sort[], int be ,int end )//划分{    int i;    if (be &lt; end)//集合至少有两个元素    {        partition(sort,be,end,&amp;i);        Quick_sort(sort,be,i-1);  //左半部分        Quick_sort(sort,i+1,end); //右半部分    }}/*这个算法是递归的，大家可以和二叉树的递归遍历算法对比一下*/</code></pre><p>下面给出对每次划分进行操作的算法</p><pre><code>void partition(int a[], int be, int end, int* cut){    int x = a[be],i = be,j = end;    while (i!=j)    {        while (i &lt; j&amp;&amp;a[j] &gt; x)            j--;        if (i&lt;j)        {            a[i] = a[j];            i += 1;        }        while (i &lt; j&amp;&amp;a[i] &lt; x)            i++;        if (i&lt;j)        {            a[j] = a[i];            j -= 1;        }    }    a[i] = x;//i==j    *cut = i;}例子：对(80 16 100 35 85 20 12 90 110 5 105)//从右边选取比中间元素80小的数放到左边,空位是80，但先不填入([] 16 100 35 85 20 12 90 110 5 105 8)   80&lt;--------------------------------|//从左边选取比中间元素80大的100放到右边(8 16 100 35 85 20 12 90 110 5 [])       |-----------------------&gt;//从右边选取比中间元素80小的5放到左边(8 16 [] 35 85 20 12 90 110 5 100)       &lt;--------------------|//从左边选取比中间元素80大的85放到右边(8 16 5 35 85 20 12 90 110 [] 100)             |--------------&gt;最后：    [8 16 5 35 12 20] (80) [90 110 85 105 100]</code></pre><p>大家可以试试在自己的稿纸上进行推导</p><p>总结：平均时间复杂度为：O(knlog<sub>2</sub>n)k为常数，最坏的情况是每次选中的中间元素是其中最大或最小的元素，这时为O(n<sup>2</sup>)</p><p>平均性能上默认为目前最好的一种内部排序算法</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>计数排序</title>
+      <link href="/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/05/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>计数排序：是一种非基于比较的算法,顾名思义，它在排序时用”计数”来排序的</p><p>排序思想:先建立两个数组</p><p>第一个数组: count[range] 用来计录每个数的个数 (如：原数组 arr[0-N]中有恰有4个元素值都是5,则 count[5] = 4</p><p>第二个数组: output[N] 用来临时存放排序结果, output[N] 就是排序结果，最后要把它重新赋值给原数组</p><p>排序步骤：</p><ol><li><p>先计数待排数组(原数组)中各数据元素的个数，将这个结果放到count[range]数组中</p><blockquote><p>说明:range表示的是数据范围，如果原数据是1-9则range=10,1-99则range = 100,不理解?参考这个视频:<a href="https://www.bilibili.com/video/av18980575" target="_blank" rel="noopener">https://www.bilibili.com/video/av18980575</a>)</p></blockquote></li><li><p>对count数组进行加法处理 count[i] = count[i] + count[i-1]</p><blockquote><p>  为什么要这么做?<br>你会发现这个加法操作：原来count[range]记录的是各数据的个数，现在变成了记录比它小的元素有几个，换句话说，现在表示当前数在原数组中按顺序排列它应该处在的位置下标，表示排序时这个数排在第几位————这里超级关键！！(举例：如果处理完后count[5] = 4,说明数据5应该排在第4位，以此类推我们这时只要把待排数据一个个拿出来和count[]比较，就能知道每个数据该排在那里了)</p></blockquote></li><li><p>将待排数据拿出来一个个和count[] 比较，找到自己在哪?然后在output[]中对号入座</p></li><li><p>将结果output[] 写入给待排数组</p></li></ol><p>代码:</p><pre><code>void Counting_Sort(int sort[], int N){    int *output = new int[N];//分配中间数组    int count[10];    memset(count,0,sizeof(count));//将cout数组初始化为0    for (int i = 0;i &lt; 10; i++)  //count数组存放sort数组每个元素的个数     if (sort[i])        ++count[sort[i]];     for (int i = 2; i &lt; 10; i++)//将cout数组进行加法处理，数组结果是表示当前位置        count[i] = count[i] + count[i - 1];    for (int i = 0; i &lt; N; i++)//0不计入排序,以sort内容为基础遍历,写入output数组    {        output[count[sort[i]]-1] = sort[i];//sort和output的内容和下标是相反的        --count[sort[i]];    }    for (int i = 0; i &lt; N; i++)        sort[i] = output[i];     delete []output;}</code></pre><p>总结:</p><p>时间复杂度<br>时间复杂度是 O(n+K)</p><p>k = range</p><p>在O(k)&lt;O(n*log(n))快于任何排序法</p><p>代码中 count[10]中的10是我测试用的，这个就是range各位替换就好</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>希尔排序</title>
+      <link href="/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/05/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>这次带来的是希尔排序，这个排序法有点复杂，请耐心往下看</p><p>希尔排序是为了解决插入排序效率低的问题，插入排序的时间复杂度严重依赖于数据列的有序度，希尔排序的作用就是将数列整理为基本有序从而减少时间复杂度</p><p>希尔排序的基本思想：将数据分为若干组，对每组进行直接插入排序使整个数列基本有序，最后再直接插入排序(这段话可能不好理解，按我的理解，我们先按步长分组比如12个数据我们步长为3时分成4组 即:(1 2 6|7 5 3 4 8 9 10 11 12) 我们要做的就是将后边大于步长为下标的数据一个个地遍历[后9个：3-11]，并且相隔步长与前面的数据相比较插入，直到不满足插入条件,这个过程实际上就相当于简单插入排序后移数组的过程)</p><p>这里贴b站up主上传的希尔排序可视化视频，建议参考：<a href="https://www.bilibili.com/video/av17004970" target="_blank" rel="noopener">https://www.bilibili.com/video/av17004970</a></p><p>下面贴代码:</p><pre>void ShellSort(int sort[], int N){    int tags ;//排序间隔,步长    int j = 0;    for ( tags = N/2; tags > 0; tags = tags/2)//间隔选取在1—N/2之间    {        for (int i = tags; i < N; i++)//插入排序过程，把待排集合遍历,对应于前面说的把后边大于tags下标的数据遍历        {            j = i;            while (j >= tags && sort[i] < sort[j - tags])//一直朝前边插入，直到不能插入，即插入排序            {                swap(sort[j],sort[j-tags]);                j = j - tags;            }        }    }}</pre><p>时间复杂度大约是 O(n<sup>1.25</sup>)，空间复杂度是O(1) ，是不稳定排序</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>选择排序</title>
+      <link href="/2018/05/03/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/03/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>  先将待排序列分为 已排序部分 和 未排序部分</p><p>  选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完</p><pre><code>void Selection_Sort(int sort[], int N){    int min = 0, j = 0;    for (int i = 0; i &lt;= N - 1; i++)//外循环遍历待排数据    {        min = sort[i];        for (int j = i; j &lt;= N-1; j++)//内循环挑选最小值        {            if (min &gt; sort[j])                swap(min,sort[j]);            sort[i] = min;        }    }}</code></pre><p>结果</p><p><pre><br>输入：5 3 1 4 2</pre></p><p>1|5 3 4 2|<br>1 2|5 4 3|<br>1 2 3|5 4|<br>1 2 3 4|5|<br><br>时间复杂度是 O(n<sup>2</sup>) </p><p>空间复杂度是O(1)</p><p>是不稳定排序：<br>  例：将括号中的数据(3h,5s,3d,1s)“以数字为基准”手动在稿纸上执行一次算法可以发现是不稳定的3h和3d的相对位置发生了变化</p><p>引用《挑战程序设计竞赛》的总结：</p><p>相比冒泡排序，冒泡排序法与选择排序法相比，一个从局部入手减少逆序元素，一个放眼大局逐个选取最小值，二者思路大部相同。但是他们又有着“通过i次外层循环，从数据中顺次求出i个最小值”的相同特征。相对地插入排序法是通过i次外层循环，之间将原数组的i个元素重新排序。另外，不含flag的简单冒泡排序法和选择排序法不依赖数据，即比较运算的次数(算法复杂度)不受输入数据影响，而插入排序法在执行时却依赖数据，处理某些数据时有很高的效率(插入排序法要在已排数列中搜索自己插入的位置)</p><p>  ·此文参考了《挑战程序设计竞赛》的内容</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>冒泡排序</title>
+      <link href="/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/02/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>  今天带来的是基础算法之冒泡排序，冒泡排序，可以先从字面上理解，冒泡就是指算法的操作过程小的轻的元素像泡泡一样慢慢浮到水面上，比如，我们使一组待排数列的最小值经多次比较最终移动到数列的某一端</p><p>(举个例子：假如一个小个子在按身高排队，这时他站在队尾，他需要在一群人中找到合适自己身高的位置，根据冒泡排序的思想，他与他前面的人比身高，如果他比前面的人矮，他们俩就换位置，然后他接着与新的站在他前面的人比身高，一直比下去，最后找到比他矮的人，只要站在比他矮的人后边，他就完成了任务，我们让所有人都按这个规矩比较,冒泡排序就完成了)</p><p>  待排数列分为已排集合和未排集合两部分</p><p>  每次的排序都会将当前待排数列的最小值放入指定位置</p><p>  每次都会有数据元素进入最终位置,即每次的排序对于已排数列已经是最终结果<br>  (假如第一次最小值到了数组头，第二次排序跟在它后面的一定是次小值)</p><p>  参考代码：</p><p><pre><code><br>int BubbleSort(int sort[], int N)//冒泡排序<br>{<br>    bool flag = true;<br>    for (int i = 0; flag; i++)<br>    {<br>        flag = false;<br>        for (int j = N-1; j &gt;= i+1 ; j–)//从后往前搜索直到已排数列的边沿<br>        {<br>            if (sort[j]&lt;sort[j-1])<br>            {<br>                swap(sort[j],sort[j-1]);<br>                flag = true;<br>            }<br>        }<br>    }<br>}</code></pre></p><p>时间复杂度是 O(n<sup>2</sup>)<br>空间复杂度是O(1)<br><br>  ·代码参考简化了《挑战程序设计竞赛》的内容</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>插入排序</title>
+      <link href="/2018/05/01/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+      <url>/2018/05/01/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>   插入排序法，思想是将待排数列分为&lt;待排数据集合&gt;和&lt;已排数据集合&gt;两个部分，每次从待排数列中(按从低到高，或从高到低)取一个元素，在已排数列中从后往前搜索自己该插入的地方插入(类似单链表的有序插入)，一次插入后还要一直朝前搜索，直到不能插入时停止</p><pre><code>void InsertSort(int sort[],int N)//插入排序核心算法{      int v = 0, j = 0;      for (int i = 1; i &lt;= N-1; i++)      //第一个元素视为已排集合，这里将待排集合遍历      {        v = sort[i];         j = i-1;                 while (j &gt;= 0 &amp;&amp; sort[j] &gt; v)        //在已排集合中搜索插入的位置        {            sort[j + 1] = sort[j];           j--;        }         sort[j + 1] = v;        print(sort,N);     }}</code></pre><p>结果<br>输入 &gt;&gt;5 3 4 1 2</p><pre><code>&gt;&gt; 5|3 4 1 2|&gt;&gt; 3 5|4 1 2|&gt;&gt; 1 3 4|5 2|&gt;&gt; 1 2 3 4|5|</code></pre><p>在经历的5次输出结果中，待排数列数据个数逐个减少，已排数列数据个数逐一增加，这是因为我们每次都只对一个数据操作，每次操作的任务是将这个数据插入已排数据</p><p>由数据元素元素的位置可以发现该排序法是稳定排序法，且每次操作后数据元素不一定到达最终位置</p><p>时间复杂度是 O(n<sup>2</sup>) 空间复杂度O(1)</p><p>稳定性指的是经过排序，这些记录的相对次序时否保持相对不变</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Base_arithmetic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>关于用Git和Hexo创建个人博客的一些经验，换电脑以后怎么办？</title>
+      <link href="/2018/04/26/test3/"/>
+      <url>/2018/04/26/test3/</url>
+      <content type="html"><![CDATA[<p>大家好，相信在用hexo搭建自己的博客时，或多或少会遇到一些莫名其妙的坑，下面就我搭建过程总结出一些关键点，希望能给你带来帮助<br>   Node.js是用来做什么的？<br>        它一种javascript的运行环境，能够使得javascript脱离浏览器运行<br>   Git是什么？<br>    git是一个版本控制工具(软件)，而github是一个用git做版本控制的项目托管平台(大家放东西的地方)<br>   大家可以参考一下：<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000</a><br><a href="http://blog.jobbole.com/111187/" target="_blank" rel="noopener">http://blog.jobbole.com/111187/</a></p><p>   总之就是利用github提供的托管服务，加上hexo的网页搭建出你的博客了</p><p>   以下不写出完整过程，仅写出一些关键点<br>   1  首先是安装Node.js和Git<br>   2  在github上注册并申请自己的仓库(我们的页面会上传上去并由github提供它的服务)<br>   3  (关键)在安装npm的过程中可能会遇到很多警告，请仔细查看，可以用 npm -v (查看当前npm版本)查看是否安装成功，不成功的可以(翻过去)再安装一次<br>   4  匹配自己的github库(在本机创建密钥，在github上填写)，这样以后才能上传自己的博客<br>   5  配置文件有两个，一个是主题配置文件，一个是站点配置文件，站点配置文件在自己的bolg文件夹下，主题配置文件在 **/blog/theme 文件夹下，修改时注意区分<br>   6  每个参数后基本都有空格<br>   7  个别hexo官方的主题可能会无法显示<br>   8  标签页，分类页，的创建问题，加上—可的index标签页可能会出现tags cannot found的问题404，不加—虽然不会404但是标签页不能点击，这个我目前还弄不清楚<br>   9  评论功能可以利用第三方服务，这里推荐使用Lean Clond搭建，LC有很方便的数据可视化等功能，便于管理<br>   10 换电脑以后怎么继续使用？<br>       答:按原先的搭建步骤搭建准备环境(node.js等)，拷贝老的主题文件，在github上添加新电脑产生的密钥授权即可(ssh密钥)<br>   11 hexo的使用可以参考官方文档: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p><p>附：Next主题使用:   <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a><br>    如何发布第一篇文章: <a href="https://www.jianshu.com/p/2c9f0b3b2b0e" target="_blank" rel="noopener">https://www.jianshu.com/p/2c9f0b3b2b0e</a><br>    Lean Clond: <a href="https://leancloud.cn/" target="_blank" rel="noopener">https://leancloud.cn/</a> </p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2018/04/25/hello-world/"/>
+      <url>/2018/04/25/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+    </entry>
+    
+  
+  
 </search>

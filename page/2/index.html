@@ -107,7 +107,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'x566'
+      author: '博志'
     },
     algolia: {
       applicationID: '',
@@ -305,6 +305,173 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/23/Java_problem1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x566">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="x566">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/23/Java_problem1/" itemprop="url">JavaProblem1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T20:48:58+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/23/Java_problem1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/23/Java_problem1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-JAVA精度问题-double-float变量如何比较相等"><a href="#1-JAVA精度问题-double-float变量如何比较相等" class="headerlink" title="1.JAVA精度问题 double,float变量如何比较相等?"></a>1.JAVA精度问题 double,float变量如何比较相等?</h2><p>解决办法<br>  java.math包下面的两个有用的类：</p>
+<pre><code>BigInteger和BigDecimal，这两个类可以处理任意长度的数值。
+
+BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。
+</code></pre><h2 id="2-字符串连接符："><a href="#2-字符串连接符：" class="headerlink" title="2.字符串连接符："></a>2.字符串连接符：</h2><pre><code>“+”运算符两侧的操作数中只要有一个是字符串(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。(注意：char类型不可以用这个连接，它适用于字符串)
+
+int a=12;
+System.out.println(&quot;a=&quot;+a);//输出结果: a=12
+</code></pre><h2 id="3-变量类型误区"><a href="#3-变量类型误区" class="headerlink" title="3.变量类型误区"></a>3.变量类型误区</h2><pre><code>1.boolean 是bit类型的它只占一位存储空间
+2.引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！
+3.byte是一字节，short是两字节
+</code></pre><h2 id="4-自动类型转换"><a href="#4-自动类型转换" class="headerlink" title="4.自动类型转换"></a>4.自动类型转换</h2><pre><code>自动类型转换指的是容量小的数据类型可以自动转换为容量大的数据类型。如图所示，黑色的实线表示无数据丢失的自动类型转换，而虚线表示在转换时可能会有精度的损失。
+</code></pre><p><img src="http://boze.club//java_img_1/transform.png" alt=""></p>
+<pre><code>可以将整型常量直接赋值给byte、 short、 char等类型变量，而不需要进行强制类型转换，只要不超出其表数范围即可。
+</code></pre><h2 id="5-带标签的break和continue"><a href="#5-带标签的break和continue" class="headerlink" title="5.带标签的break和continue"></a>5.带标签的break和continue</h2><pre><code> goto关键字很早就在程序设计语言中出现。尽管goto仍是Java的一个保留字，但并未在Java语言中得到正式使用;Java没有goto语句。然而，在break和continue这两个关键字的身上，我们仍然能看出一些goto的影子---带标签的break和continue。
+
+  “标签”是指后面跟一个冒号的标识符，例如：“label:”。对Java来说唯一用到标签的地方是在循环语句之前。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另一个循环，由于break和continue关键字通常只中断当前循环，但若随同标签使用，它们就会中断到存在标签的地方。
+
+  在 “goto有害”论中，最有问题的就是标签，而非goto， 随着标签在一个程序里数量的增多，产生错误的机会也越来越多。 但Java标签不会造成这方面的问题，因为它们的活动场所已被限死，不可通过特别的方式到处传递程序的控制权。由此也引出了一个有趣的问题：通过限制语句的能力，反而能使一项语言特性更加有用。
+
+ //带标签break和continue：控制嵌套循环跳转(打印101-150之间所有的质数)
+ public class Test18 
+ {
+    public static void main(String args[]) 
+    {
+        outer: for (int i = 101; i &lt; 150; i++) 
+    {
+        for (int j = 2; j &lt; i / 2; j++) 
+        {
+            if (i % j == 0)
+                continue outer;
+        }
+        System.out.print(i + &quot;  &quot;);
+    }
+}
+</code></pre><p>}</p>
+<h2 id="JDK-JRE-JVM"><a href="#JDK-JRE-JVM" class="headerlink" title="JDK,JRE,JVM"></a>JDK,JRE,JVM</h2><p><img src="http://boze.club//java_img_1/JDK_JRE_JVM.png" alt=""></p>
+<p>部分转自：<a href="https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html" target="_blank" rel="noopener">https://www.sxt.cn/Java_jQuery_in_action/break_and_continue_With_labels.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1834,161 +2001,6 @@ void ShellSort(int sort[], int N)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/选择排序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="x566">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="x566">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/03/选择排序/" itemprop="url">选择排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T23:38:51+08:00">
-                2018-05-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/03/选择排序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/03/选择排序/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  先将待排序列分为 已排序部分 和 未排序部分</p>
-<p>  选择排序法，即在每个计算步骤中选出一个最小值加入到已排序列中直至将待排数据选完</p>
-<pre><code>void Selection_Sort(int sort[], int N)
-{
-    int min = 0, j = 0;
-    for (int i = 0; i &lt;= N - 1; i++)
-//外循环遍历待排数据
-    {
-        min = sort[i];
-        for (int j = i; j &lt;= N-1; j++)
-//内循环挑选最小值
-        {
-            if (min &gt; sort[j])
-                swap(min,sort[j]);
-            sort[i] = min;
-        }
-    }
-}
-</code></pre><p>结果</p>
-<p><pre><br>输入：5 3 1 4 2</pre></p>
-<p>1|5 3 4 2|<br>1 2|5 4 3|<br>1 2 3|5 4|<br>1 2 3 4|5|<br><br>时间复杂度是 O(n<sup>2</sup>) </p>
-<p>空间复杂度是O(1)</p>
-<p>是不稳定排序：<br>  例：将括号中的数据(3h,5s,3d,1s)“以数字为基准”手动在稿纸上执行一次算法可以发现是不稳定的3h和3d的相对位置发生了变化</p>
-<p>引用《挑战程序设计竞赛》的总结：</p>
-<p>相比冒泡排序，冒泡排序法与选择排序法相比，一个从局部入手减少逆序元素，一个放眼大局逐个选取最小值，二者思路大部相同。但是他们又有着“通过i次外层循环，从数据中顺次求出i个最小值”的相同特征。相对地插入排序法是通过i次外层循环，之间将原数组的i个元素重新排序。另外，不含flag的简单冒泡排序法和选择排序法不依赖数据，即比较运算的次数(算法复杂度)不受输入数据影响，而插入排序法在执行时却依赖数据，处理某些数据时有很高的效率(插入排序法要在已排数列中搜索自己插入的位置)</p>
-<p>  ·此文参考了《挑战程序设计竞赛》的内容</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2039,7 +2051,7 @@ void ShellSort(int sort[], int N)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2052,7 +2064,7 @@ void ShellSort(int sort[], int N)
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

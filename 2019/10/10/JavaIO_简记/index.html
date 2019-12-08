@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Base_arithmetic," />
+  <meta name="keywords" content="java_IO," />
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="keywords" content="Base_arithmetic">
+<meta name="description" content="java类的构造器有构造器：直接使用new xx()可以创建实例 无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类 分隔符 static String pathSeparator 路径分隔符 Windows(;)        Linux(:) static char pathSeparatorChar 1的字符型 static char Se">
+<meta name="keywords" content="java_IO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序小结">
-<meta property="og:url" content="http://yoursite.com/2018/05/23/排序小结/index.html">
+<meta property="og:title" content="Java_IO简记">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/JavaIO_简记/index.html">
 <meta property="og:site_name" content="x566">
+<meta property="og:description" content="java类的构造器有构造器：直接使用new xx()可以创建实例 无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类 分隔符 static String pathSeparator 路径分隔符 Windows(;)        Linux(:) static char pathSeparatorChar 1的字符型 static char Se">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/05/23/排序小结/2.jpg">
-<meta property="og:updated_time" content="2018-05-23T14:18:02.210Z">
+<meta property="og:updated_time" content="2019-10-10T13:12:59.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序小结">
-<meta name="twitter:image" content="http://yoursite.com/2018/05/23/排序小结/2.jpg">
+<meta name="twitter:title" content="Java_IO简记">
+<meta name="twitter:description" content="java类的构造器有构造器：直接使用new xx()可以创建实例 无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类 分隔符 static String pathSeparator 路径分隔符 Windows(;)        Linux(:) static char pathSeparatorChar 1的字符型 static char Se">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/23/排序小结/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/10/10/JavaIO_简记/"/>
 
 
 
 
 
-  <title>排序小结 | x566</title>
+  <title>Java_IO简记 | x566</title>
   
 
 
@@ -318,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/排序小结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/JavaIO_简记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x566">
@@ -335,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">排序小结</h1>
+          <h1 class="post-title" itemprop="name headline">Java_IO简记</h1>
         
 
         <div class="post-meta">
@@ -347,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T22:16:14+08:00">
-                2018-05-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T17:03:24+08:00">
+                2019-10-10
               </time>
             
 
@@ -366,8 +367,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/23/排序小结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/23/排序小结/" itemprop="commentCount"></span>
+                <a href="/2019/10/10/JavaIO_简记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/10/JavaIO_简记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -395,7 +396,52 @@
       
 
       
-        <p><img src="/2018/05/23/排序小结/2.jpg" alt="导图"></p>
+        <h1 id="java类的构造器"><a href="#java类的构造器" class="headerlink" title="java类的构造器"></a>java类的构造器</h1><p>有构造器：直接使用new xx()可以创建实例</p>
+<p>无构造器：不需要实例，可能是工具类，如(math)类 / 通过静态方法得到实例，如(Runtime)类</p>
+<h1 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h1><ol>
+<li>static String pathSeparator 路径分隔符 Windows(;)        Linux(:)</li>
+<li>static char pathSeparatorChar 1的字符型</li>
+<li>static char Separator 名称分隔符 ()</li>
+<li><p>static char separatorChar  3的字符型</p>
+<pre><code>//以下三种写法都能正确请求到文件
+//String temp = &quot;C:&quot;+File.separator+&quot;out.txt&quot;;//文件不存在会新建一个没有后缀的空文件，但有些系统保留的文件名无法用于创建（如操作系统的设备名con）
+//temp = &quot;C:/out.txt&quot;
+//temp = &quot;C:\\out.txt&quot;        
+
+File f = new File(temp);
+</code></pre><h1 id="字符集与乱码"><a href="#字符集与乱码" class="headerlink" title="字符集与乱码"></a>字符集与乱码</h1><p>乱码原因：</p>
+</li>
+<li><p>因为初始化String实例时给的字节数组长度不是字节数组长度（如定长unicode四个汉字应该是8个字节，结果给String在初始化时传的长度是7个，那么最后一个字符很可能乱码）</p>
+</li>
+<li><p>编码与解码用的字符集不统一</p>
+<pre><code>String msg = new String(&quot;姓名生命使命&quot;);
+byte[] by = msg.getBytes();//编码，这里可以指定编码格式，3有解释
+
+String str = new String(by,0,by.length);
+System.out.println(str);
+str = new String(by,0,by.length-1);
+System.out.println(str);
+
+System.out.println(&quot;------------&quot;);
+str = new String(by,0,by.length,&quot;utf8&quot;);//解码
+System.out.println(str);
+str = new String(by,0,by.length,&quot;gbk&quot;);//解码
+System.out.println(str);
+</code></pre></li>
+</ol>
+<pre><code>/*运行结果，工程默认使用了GBK*/
+姓名生命使命
+姓名生命使?
+------------
+???????????
+姓名生命使命
+</code></pre><p>3.另外getByte()方法可以指定编码格式，如：</p>
+<pre><code>msg.getBytes()；
+msg.getBytes(&quot;GBK&quot;)；
+msg.getBytes(&quot;UTF-16BE&quot;)；
+</code></pre><h1 id="字节流与字符流"><a href="#字节流与字符流" class="headerlink" title="字节流与字符流"></a>字节流与字符流</h1><p>字节流操作的对象是字节byte[]，<br>字符流操作的对象是字符char[].(另外字符输出流还可以使用write.append()追加输出内容)</p>
+<h1 id="节点流与处理流"><a href="#节点流与处理流" class="headerlink" title="节点流与处理流"></a>节点流与处理流</h1><p>一般以File，ByteArray前缀的流是节点流<br>处理流底层是节点流，处理流的目的是简化操作提高效率，缓冲流关闭时会自动关闭它里边的节点流，所以不需要再次关闭缓冲流，缓冲流也分字节缓冲流和字符缓冲流</p>
+<h1 id="字节数组流"><a href="#字节数组流" class="headerlink" title="字节数组流"></a>字节数组流</h1><p>ByteArrayInputStream,ByteArrayOutputStream(不需要指定目的地，有java开辟内存存储，有新增方法，建议不使用多态来新建实例)，并且他们不需要调用close()释放资源，它们不需要通知操作系统关闭文件，它们的close()函数体是空的<br>        InputStream is = new ByteArrayInputStream(byte[]);<br>        ByteArrayOutputStream os = new ByteArrayOutputStream();//无目的地</p>
 
       
     </div>
@@ -413,7 +459,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Base-arithmetic/" rel="tag"># Base_arithmetic</a>
+            <a href="/tags/java-IO/" rel="tag"># java_IO</a>
           
         </div>
       
@@ -426,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/12/归并排序/" rel="next" title="归并排序">
-                <i class="fa fa-chevron-left"></i> 归并排序
+              <a href="/2019/09/28/cpp_problem2/" rel="next" title="cpp_algorithm_1">
+                <i class="fa fa-chevron-left"></i> cpp_algorithm_1
               </a>
             
           </div>
@@ -435,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/02/八皇后问题-易懂/" rel="prev" title="八皇后问题-易懂">
-                八皇后问题-易懂 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -552,6 +603,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java类的构造器"><span class="nav-number">1.</span> <span class="nav-text">java类的构造器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分隔符"><span class="nav-number">2.</span> <span class="nav-text">分隔符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符集与乱码"><span class="nav-number">3.</span> <span class="nav-text">字符集与乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节流与字符流"><span class="nav-number">4.</span> <span class="nav-text">字节流与字符流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#节点流与处理流"><span class="nav-number">5.</span> <span class="nav-text">节点流与处理流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字节数组流"><span class="nav-number">6.</span> <span class="nav-text">字节数组流</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
